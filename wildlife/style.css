@@ -1,0 +1,152 @@
+body{
+  margin: 0;
+  padding: 0;
+  font-family: 'Open Sans', sans-serif;
+  --orange-main: #CD6326;
+  --orange-light: #E39128;
+  --orange-dark: #8F5613;
+  --font-light: #F7F7F7;
+  --font-gray: #666;
+  --font-dark: #333;
+}
+
+/*header-and-survival section*/
+.background_header{
+  background-color: #02160b;
+}
+
+#header-and-survival{
+  max-width: 1440px;
+  min-height: 780px;
+  width: 100%;
+  height: 100vh; 
+  margin: 0 auto;
+  background-color: #02160b;
+  background-image: url("./assets/fox.png");
+  background-repeat: no-repeat;
+}
+
+header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  width: 100%;
+  margin:0 auto;
+}
+
+/*Logo block*/
+.logo{
+  display: flex;
+  position: relative;
+  top: 20px;
+}
+
+.logo__image{
+  position: relative;
+  bottom: 8px;
+}
+
+.logo__text{  
+  position: relative;
+  left: 14px;
+  margin: 0;
+  font-weight: 100;
+  font-size: 24pt;
+  color: var(--font-light);
+}
+
+/*navigation block*/
+.nav-list{
+  display: flex;
+  align-items: baseline;
+  margin: 0;
+  margin-top: 26px;
+  margin-right: 1px;
+  list-style: none;
+}
+
+.nav-list__link{
+  margin-left: 60px;
+  font-size: 18pt;
+}
+
+.nav-list__link:nth-child(3){
+  position: relative;
+  top:7px;
+}
+
+.nav-list__link a{
+  text-decoration: none;
+  color: var(--font-light);
+}
+
+.nav-list__link:hover a{ color:var(--orange-main);}
+.nav-list__link:active a{ color:var(--orange-dark);}
+.nav-list__link:hover path{ fill: var(--orange-main);}
+.nav-list__link:active path{ fill:var(--orange-dark);}
+
+/*Styles for buttons*/
+.btn{
+  width: 120px;
+  height: 50px;
+  border-radius: 5px;
+  font-size: 18pt;
+  background-color: var(--orange-main);
+  border: 2px solid var(--orange-main);
+  color: var(--font-light);
+  outline: none;
+}
+
+.btn:hover{
+  background-color: var(--orange-light);
+  border: 2px solid var(--orange-light);
+  cursor: pointer;
+}
+
+.btn_secondary{ background-color: transparent;}
+
+.btn_secondary:hover{
+  background-color: var(--orange-main);
+  border: 2px solid var(--orange-main);
+}
+
+.btn_large{
+  width: 160px;
+  height: 60px;
+}
+
+.btn:active, .btn_secondary:active{ 
+  background-color: var(--orange-dark);
+  border: 2px solid var(--orange-dark);
+}
+
+/*Survival section*/
+.survival{
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.survival h2{
+  margin-top:130px;
+  margin-bottom: 54px;
+  font-size: 48px;
+  font-weight: lighter;
+  letter-spacing: 2px;
+  color: var(--orange-main);
+}
+
+.survival p{
+  width: 274px;
+  margin-bottom: 51px;
+  font-size: 18px;
+  line-height: 26px;
+  color:var(--font-light);
+}
+
+/*latest-and-notification section*/
+
+.latest-and-notification{
+  width: 100%;
+}
