@@ -148,5 +148,146 @@ header{
 /*latest-and-notification section*/
 
 .latest-and-notification{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
+  min-height: 1368px;
+  height: 100vh;
+  background-color: #ccc;
+}
+
+.latest-articles{
+  max-width: 1200px;
+  width: 100%;
+  margin:0 auto;
+  margin-bottom: 203px;
+}
+
+/*Titles section*/
+.section-titles{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 105px;
+  padding-top: 124px;
+}
+
+.section-titles h2{
+  margin:0;
+  margin-bottom: 25px;
+  font-size: 48px;
+  font-weight: normal;
+  color: var(--font-dark);
+  
+}
+
+.section-titles h3{
+  margin:0;
+  font-size: 24px;
+  font-weight: normal;
+  color: var(--font-gray);
+  
+}
+
+/*Articles section*/
+.articles{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/*Artical block*/
+.article{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 300px;
+  height: 360px;
+}
+
+.article_left{
+  position: relative;
+  left: 20px;
+}
+
+.article_right{
+  position: relative;
+  right: 20px;
+}
+
+.article__image{
+  width: 100%;
+}
+
+.article__title{
+  position: absolute;
+  bottom: 79px;
+  width: 100%;
+  text-align: center;
+  font-size: 24px;
+  font-weight: normal;
+  letter-spacing: -1px;
+  color: var( --font-light);
+}
+
+.article__subtitle{
+  position: absolute;
+  bottom: 25px;
+  width: 100%;
+  text-align: center;
+  font-size: 17px;
+  font-weight: lighter;
+  color: var(--font-light);
+}
+
+.arrow{
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  border: none;
+  outline: none;
+}
+.arrow:hover{ cursor: pointer;}
+.arrow:hover path{
+  fill:var(--orange-main);
+}
+
+/*Notification*/
+.notification{
+  max-width: 1200px;
+  width: 100%;
+}
+.notification h2{
+  font-size: 27px;
+  letter-spacing: -0.5px;
+  text-align: center;
+}
+
+.notification form{
+  display: flex;
+  justify-content: center;
+  margin-top: 62px;
+}
+
+.notification form input[type="email"]{
+  width: 525px;
+  height: 60px;
+  margin: 0;
+  padding: 0;
+  padding-left: 15px;
+  font-size: 24px;
+  background: transparent;
+  border: 1px solid black;
+  border-right: none;
+  outline: none;
+  letter-spacing: -1px;
+}
+
+.notification form .btn{
+  height: 62px;
+  border-radius: 4px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
 }
