@@ -1,7 +1,9 @@
+let keys = document.querySelectorAll('.piano-key');
+let piano = document.querySelector('.piano');
+
 // button switch
 
 function changeSign(str){
-  let keys = document.querySelectorAll('.piano-key');
   switch (str){
     case 'notes':
       document.querySelector(".btn-letters").classList.remove('btn-active');
@@ -37,3 +39,38 @@ document.querySelector('.fullscreen').addEventListener('click',()=>{
   document.fullscreenElement? document.exitFullscreen(): document.body.requestFullscreen();
 })
 
+// Play sound 
+function playSound(event){
+  let elem = event.target;
+  if(event.code){
+    for(let i =0; i < keys.length; i++){
+      let letter = keys[i].dataset.letter;
+      if(event.code === `Key${letter}`){
+        elem = keys[i];
+        break;
+      }
+    }
+    if(elem == event.target){
+      return;
+    }
+  }
+  let audio = document.createElement('audio');
+  audio.src=`./assets/audio/${elem.dataset.note}.mp3`;
+  audio.play();
+}
+
+// on click
+piano.addEventListener('click', e=>{
+  playSound(e);
+});
+
+
+// on button
+document.addEventListener('keydown', e=>{
+  playSound(e);
+});
+
+// on mousedown and move
+piano.addEventListener('click', e=>{
+  playSound(e);
+});
