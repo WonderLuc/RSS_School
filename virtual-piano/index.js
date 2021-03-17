@@ -29,4 +29,11 @@ document.querySelector(".btn-container").addEventListener('click',e=>{
   if(elem.classList.contains('btn-letters')){
     changeSign('letters');
   }
+});
+
+// fullSrceen switch
+
+document.querySelector('.fullscreen').addEventListener('click',()=>{
+  document.fullscreenElement? document.exitFullscreen(): document.body.requestFullscreen();
 })
+
