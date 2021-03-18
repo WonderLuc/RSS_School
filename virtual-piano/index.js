@@ -40,6 +40,8 @@ document.querySelector('.fullscreen').addEventListener('click',()=>{
 })
 
 // Play sound 
+let audios={};
+
 function playSound(event){
   let elem = event.target;
   if(event.code){
@@ -54,23 +56,61 @@ function playSound(event){
       return;
     }
   }
-  let audio = document.createElement('audio');
-  audio.src=`./assets/audio/${elem.dataset.note}.mp3`;
-  audio.play();
+  let audio;
+  if(!audios[elem.dataset.note]){
+    audio = document.createElement('audio');
+    audio.src=`./assets/audio/${elem.dataset.note}.mp3`;
+    audios[elem.dataset.note] = audio;
+  }
+  elem.classList.add('piano-key-active');
+  elem.classList.add('piano-key-active-pseudo');
+  audios[elem.dataset.note].load();
+  audios[elem.dataset.note].play();
 }
 
-// on click
-piano.addEventListener('click', e=>{
-  playSound(e);
-});
+function stopSound(event){
+  let elem = event.target;
+  if(event.code){
+    for(let i =0; i < keys.length; i++){
+      let letter = keys[i].dataset.letter;
+      if(event.code === `Key${letter}`){
+        elem = keys[i];
+        break;
+      }
+    }
+    if(elem == event.target){
+      return;
+    }
+  }
+  elem.classList.remove('piano-key-active');
+  elem.classList.remove('piano-key-active-pseudo');
+}
 
 
 // on button
 document.addEventListener('keydown', e=>{
-  playSound(e);
+  if(e.repeat !== true){
+    playSound(e);
+  }
+});
+document.addEventListener('keyup', e=>{
+  stopSound(e);
 });
 
+
 // on mousedown and move
-piano.addEventListener('click', e=>{
+piano.addEventListener('mousedown',e=>{
   playSound(e);
+  for(let i =0; i < keys.length; i++){
+    keys[i].addEventListener('mouseover',playSound,false);
+    keys[i].addEventListener('mouseout',stopSound,false);
+  }
+});
+
+piano.addEventListener('mouseup',e=>{
+  stopSound(e);
+  for(let i =0; i < keys.length; i++){
+    keys[i].removeEventListener('mouseover',playSound);
+    keys[i].removeEventListener('mouseout',stopSound,false);
+  }
 });
