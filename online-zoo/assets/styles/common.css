@@ -34,5 +34,65 @@ body{
   --gray: #767474;
   --gray-smoky: #ABABAB;
   --light-gray: #F1F3F2;
+  --white: #FFF;
   --frosted-glass-white: rgba(253, 253, 255, 0.52);
+}
+
+.logo{
+  position: relative;
+  left: 10px;
+  top: 2px;
+  width: 76px;
+  height: 50px;
+  padding: 2px 3px;
+  border: 1px solid var( --light-gray);
+  text-decoration: none;
+  text-align: center;
+}
+
+.logo__text{
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: normal;
+  color: var(--light-gray);
+}
+
+.logo__image{
+  position: absolute;
+  left: 10px;
+  bottom: 12px;
+}
+
+.btn{
+  width: 298px;
+  height: 54px;
+  outline: none;
+  border: none;
+  border-radius: 5px; 
+  font-weight: bold;
+  font-size: 1rem;
+  letter-spacing: -1px;
+  text-transform: uppercase;
+  color: white;
+  background: var(--orange); 
+}
+
+.btn:hover{
+  background: var(--green);
+  cursor: pointer;
+}
+
+.form-btn{
+  padding: 0;
+  width: 129px;
+  height: 42px;
+  border: 1px solid var(--black-blue);
+  font-size: 1rem;
+  color: var(--black-blue);
+}
+
+.form-btn:hover{
+  border: 1px solid var(--green);
+  color: var(--green);
+  cursor: pointer;
 }

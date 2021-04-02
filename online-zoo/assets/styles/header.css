@@ -1,6 +1,7 @@
 .header{
   padding: 12px;
   width: 100%;
+  box-sizing: border-box;
   background: var( --black);
 }
 
@@ -9,32 +10,6 @@
   align-items: center;
   max-width: 1160px;
   margin: 0 auto;
-}
-
-.logo{
-  position: relative;
-  left: 10px;
-  top: 2px;
-  padding: 2px 3px;
-  border: 1px solid var( --light-gray);
-  text-decoration: none;
-}
-
-.logo__text{
-  margin: 0;
-  font-size: 1.2rem;
-  color: var(--light-gray);
-}
-
-.logo__text_lower{
-  position: relative;
-  left: 10px;
-}
-
-.logo__image{
-  position: absolute;
-  left: 7px;
-  bottom: 6px;
 }
 
 nav{
@@ -62,4 +37,5 @@ nav{
 
 .navigation__link_active{
   color: var( --orange);
+  cursor: default;
 }
