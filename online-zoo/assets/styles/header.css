@@ -7,7 +7,7 @@
 .header__content{
   display: flex;
   align-items: center;
-  max-width: 1200px;
+  max-width: 1160px;
   margin: 0 auto;
 }
 
@@ -51,11 +51,15 @@ nav{
   margin-right: 43px;
 }
 
+.navigation__link{
+  color: var(--light-gray);
+  text-decoration: none;
+}
+
 .navigation__link:hover{
   color: var( --orange);
 }
 
-.navigation__link{
-  color: var(--light-gray);
-  text-decoration: none;
+.navigation__link_active{
+  color: var( --orange);
 }
