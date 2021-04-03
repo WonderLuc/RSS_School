@@ -82,6 +82,10 @@ body{
   cursor: pointer;
 }
 
+.btn_round{
+  border-radius: 25px;
+}
+
 .form-btn{
   padding: 0;
   width: 129px;
