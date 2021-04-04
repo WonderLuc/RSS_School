@@ -52,4 +52,46 @@
   right: 93px;
 }
 
-/* About block*/
+/* Backstage block*/
+.backstage{
+  width: 100%;
+  min-height: 635px;
+  background: right no-repeat url(./assets/images/flower_foto1.png);
+}
+
+.backstage-wrraper{
+  display: flex;
+  justify-content: center;
+  max-width: 1160px;
+  width: 100%;
+  margin: 0 auto;
+  padding-top: 140px;
+  padding-left: 13px;
+}
+
+.backstage__text-block{
+  padding-left: 89px;
+}
+
+.backstage__title{
+  margin: 0;
+  letter-spacing: 0.3px;
+  font-weight: normal;
+  font-size: 3rem;
+}
+
+.backstage__text{
+  padding-top: 6px;
+  letter-spacing: 0.1px;
+}
+.backstage__text:last-child{
+  margin: 0;
+  padding-top: 35px;
+  line-height: 22px;
+}
+
+.backstage__subtitle{
+  margin: 0;
+  padding-top: 40px;
+  font-size: 1.5rem;
+}
