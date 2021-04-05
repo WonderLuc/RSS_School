@@ -1,4 +1,11 @@
-/* DO!: Check links before deploy*/
+@keyframes fromBottom {
+  from{
+    bottom: -60px;
+  }
+  to{
+    bottom: 0px;
+  }
+}
 
 /*Watch your favorite animal block*/
 .watch{
@@ -94,4 +101,140 @@
   margin: 0;
   padding-top: 40px;
   font-size: 1.5rem;
+}
+
+/*Zoos block*/
+.zoos{
+  width: 100%;
+  height: 1195px;
+  background: bottom left no-repeat url(./assets/images/palm_foto.png),
+              bottom right no-repeat url(./assets/images/strelitzia\ 1.png);
+}
+
+.zoos-wrapper{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  max-width: 1160px;
+  width: 100%;
+  margin: 0 auto;
+  padding-top: 60px;
+}
+
+.animals{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 900px;
+  margin: 0 auto;
+  padding-top: 28px;
+  overflow: scroll;
+}
+
+.animals::-webkit-scrollbar{
+  display: none;
+}
+
+.arrow{
+  position: absolute;
+  top: 48%;
+  transform: translate(0,-50%);
+  z-index: 3;
+}
+
+.arrow_left{
+  left: -72px;
+}
+
+.arrow_right{
+  right: -90px;
+}
+
+.animal{
+  position: relative;
+  margin-left: 6px;
+  margin-right: 23px;
+  margin-bottom: 20px;
+  width: 362px;
+  height: 426px;
+  border: 1px solid var(--orange);
+  border-radius: 5px;
+  overflow: hidden;
+  transition: background-size 3s ease-out;
+}
+
+.animal:hover{
+  background-size: 125%;
+}
+
+.animal_panda{
+  background: center/cover no-repeat url(./assets/images/panda.jpg);
+}
+
+.animal_sloth{
+  background: center/cover no-repeat url(./assets/images/sloth.jpg);
+  
+}
+
+.animal_eagle{
+  background: center/cover no-repeat url(./assets/images/eagle.jpg);
+}
+
+.animal_cheetah{
+  background: center/cover no-repeat url(./assets/images/cheetahis.jpg);
+}
+
+.animal_gorila{
+  background: center/cover no-repeat url(./assets/images/gorrila.jpg);
+}
+
+.animal_penguin{
+  background: center/cover no-repeat url(./assets/images/penguin.jpg);
+}
+
+.animal_alligator{
+  background: center/cover no-repeat url(./assets/images/croco.jpg);
+}
+.animal__sign{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: none;
+  flex-direction: column;
+  width: 100%;
+  padding-top: 10px;
+  background: var(--white);
+}
+
+.animal:hover .animal__sign{
+  animation: fromBottom 1s ease-out;
+  display: flex;
+}
+
+.animal__food-image{
+  position: absolute;
+  bottom: 15px;
+  right: 12px;
+}
+
+.animal__location{
+  margin: 0;
+  padding-bottom: 15px;
+  padding-left: 15px;
+  text-transform: capitalize;
+  letter-spacing: -0.5px;
+}
+
+.animal__name{
+  margin: 0;
+  padding-left: 16px;
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+.zoos .btn{
+  align-self: center;
+  margin-top: 50px;
+  margin-left: 23px;
 }
