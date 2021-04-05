@@ -3,13 +3,21 @@ main{
   position: relative;
   display: grid;
   grid-template-columns: repeat(12,130px);
-  grid-template-rows: 112px 652px 290px;
-
+  grid-template-rows: 112px 652px 290px 664px;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1600px;
 }
 
+.text-link{
+  text-decoration: none;
+  color: var(--green);
+}
+
+/* Camera and aside blocks*/
 .animal-nav{ 
   position: sticky;
-  top:0;
+  top:30px;
   left: 30px;
   grid-area: 2/1/3/2;
   width: 100px;
@@ -23,17 +31,36 @@ main{
 }
 
 .animal-nav__item{
+  position: relative;
   margin-bottom: 3px;
 }
 
-.animal-nav__item:hover svg path{
+.animal-nav__item__current:hover,
+.animal-nav__item__current a
+{
+  cursor: default;
+}
+
+.animal-nav__item:hover svg path,
+.animal-nav__item__current svg path{
   fill: var(--green);
 }
 
-.animal-nav__item:hover svg stop{
+.animal-nav__item:hover svg stop,
+.animal-nav__item__current svg stop{
   stop-color: var(--green);
 }
 
+.animal-nav__item:hover::after{
+  content: attr(data-name);
+  position: absolute;
+  top: 50%;
+  right: 0;
+  padding: 20px;
+  font-weight: bold;
+  background: var(--gray-smoky);
+  transform: translate(110%, -50%);
+}
 .camera{
   grid-area: 1/3/3/12;
 }
@@ -49,4 +76,98 @@ main{
   margin: 0;
   padding-bottom: 15px;
 }
+.cam{
+  position: relative;
+}
 
+.cam::after{
+  content: "LIVE";
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 55px;
+  height: 24px;
+  border-radius: 5px;
+  text-align: center;
+  font-weight: bold;
+  background: rgba(255,255,255, .5);
+  z-index: 99;
+}
+
+/*Addition cameras block*/
+.arrow{
+  position: absolute;
+  top: 105px;
+  transform: translate(0,-50%);
+  z-index: 3;
+}
+
+.arrow_left{
+  left: -80px;
+}
+
+.arrow_right{
+  right: -70px;
+}
+
+.arrow:hover circle{
+  fill: var(--green);
+}
+
+.additional-cam{
+  position: relative;
+  left: 90px;
+  top: 80px;
+  grid-area: 3/2/4/11;
+}
+
+.cams{
+  display: flex;
+  justify-content: space-around;
+}
+
+.fake{
+  position: absolute;
+  top:0;
+  left:0;
+  width: 100%;
+  height: 73%;
+  z-index: 100;
+}
+
+/*About animal block*/
+.about-animal{
+  grid-area: 4/2/5/12;
+  display: flex;
+  padding-top: 125px;
+  padding-left: 54px;
+  border-bottom: 1px solid var(--gray);
+}
+
+.about-animal__title{
+  margin: 0;
+  font-size: 3rem;
+  color: var(--green);
+}
+
+.about-animal__img{
+  width: 421px;
+  height: 421px;
+  margin-top: 25px;
+}
+
+.about-animal__text{
+  padding-top: 73px;
+  padding-left: 28px;
+  width: 668px;
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 0.1px;
+  line-height: 36px;
+  color: var(--gray);
+}
+
+.about-animal .btn{
+  margin-top: 15px;
+  margin-left: 32px;
+}

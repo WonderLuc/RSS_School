@@ -41,7 +41,7 @@
   <main>
     <aside class="animal-nav">
       <ul class="animal-nav__list">
-        <li class="animal-nav__item">
+        <li class="animal-nav__item" data-name="Gorila">
           <a href="" class="animal-nav__link">
             <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
               <circle cx="40" cy="40" r="39" fill="white" stroke="url(#gorila)" stroke-width="2"/>
@@ -60,7 +60,7 @@
             </svg>
           </a>
         </li>
-        <li class="animal-nav__item">
+        <li class="animal-nav__item" data-name="Alligator">
           <a href="" class="animal-nav__link">
             <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
               <circle cx="40" cy="40" r="39" fill="white" stroke="url(#croco)" stroke-width="2"/>
@@ -74,7 +74,7 @@
             </svg>
           </a>
         </li>
-        <li class="animal-nav__item">
+        <li class="animal-nav__item animal-nav__item__current" data-name="Giant Panda">
           <a href="" class="animal-nav__link">
             <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
               <circle cx="40" cy="40" r="39" fill="white" stroke="url(#panda)" stroke-width="2"/>
@@ -91,7 +91,7 @@
             </svg>
           </a>
         </li>
-        <li class="animal-nav__item">
+        <li class="animal-nav__item" data-name="Eagle">
           <a href="" class="animal-nav__link">
             <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
               <circle cx="40" cy="40" r="39" fill="white" stroke="url(#eagle)" stroke-width="2"/>
@@ -110,8 +110,8 @@
             </svg>
           </a>
         </li>
-        <li class="animal-nav__item">
-          <a href="" class="animal-nav__link">
+        <li class="animal-nav__item" data-name="Sloth">
+          <a href="" class="animal-nav__link" >
             <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
               <circle cx="40" cy="40" r="39" fill="white" stroke="url(#sloth)" stroke-width="2"/>
               <path d="M46.9345 23.6112C46.1576 23.2983 40.9514 21.8115 39.3201 24.1588C39.3201 24.1588 38.6983 24.7064 39.7089 26.0371C39.7089 26.0371 40.4858 24.5503 41.5739 24.3936C41.772 24.3653 42.0464 24.3527 42.3664 24.3489L42.5064 23.2196L42.7864 24.3489C44.2301 24.3621 46.2626 24.4893 47.0126 24.3155C47.0126 24.3155 46.4689 24.7064 44.4483 24.7851L44.5258 26.8196L43.8589 24.804C43.0126 24.8292 42.3526 24.8575 41.6726 25.1225L41.8064 27.68L41.1514 25.3711C40.6751 25.6412 40.1639 26.0472 39.5533 26.6628C39.5533 26.6628 40.2526 28.6973 42.1951 28.6192C44.1376 28.5411 48.2557 25.2541 48.8776 23.3764C48.877 23.3764 47.7114 23.9246 46.9345 23.6112Z" fill="black"/>
@@ -129,7 +129,7 @@
             </svg>                
           </a>
         </li>
-        <li class="animal-nav__item">
+        <li class="animal-nav__item" data-name="Penguin">
           <a href="" class="animal-nav__link">
             <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
               <circle cx="40" cy="40" r="39" fill="white" stroke="url(#penguin)" stroke-width="2"/>
@@ -143,7 +143,7 @@
             </svg>
           </a>
         </li>
-        <li class="animal-nav__item">
+        <li class="animal-nav__item" data-name="More">
           <a href="" class="animal-nav__link">
             <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
               <circle cx="40" cy="40" r="39" fill="white" stroke="url(#arrow)" stroke-width="2"/>
@@ -165,6 +165,58 @@
         <h2 class="cam-online__title">Panda camera</h2>
         <iframe class="cam-online__frame" width="1160" height="652" src="https://www.youtube.com/embed/OObOQ2GElhA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
         </iframe>
+      </section>
+    </article>
+    <article class="additional-cam">
+      <div class="fake"></div>
+      <svg class="arrow arrow_left" width="62" height="62" viewBox="0 0 62 62" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="31" cy="31" r="31" fill="url(#paint0_linear)"/>
+        <path d="M27.0018 35.1075L27.1065 35.2094L27.2111 35.1074L27.3513 34.9709L27.4616 34.8635L27.3513 34.756L23.7484 31.2466H39H39.15V31.0966V30.9034V30.7534H39H23.7488L27.3513 27.244L27.4616 27.1365L27.3513 27.0291L27.2111 26.8926L27.1065 26.7906L27.0018 26.8926L22.8953 30.8927L22.785 31.0002L22.8953 31.1076L27.0018 35.1075Z" fill="white" stroke="white" stroke-width="0.3"/>
+        <defs>
+          <linearGradient id="paint0_linear" x1="-2.74684" y1="9.18518" x2="72.0012" y2="42.4082" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#F9804B"/>
+            <stop offset="1" stop-color="#FE9013"/>
+          </linearGradient>
+        </defs>
+      </svg>       
+      <section class="cams">
+        <div class="cam">
+          <iframe  width="268" height="210" src="https://www.youtube.com/embed/D0eqnda8dOk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+          </iframe>
+        </div>
+        <div class="cam">
+          <iframe class="cam" width="268" height="210" src="https://www.youtube.com/embed/D0eqnda8dOk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+          </iframe>
+        </div>
+        <div class="cam">
+          <iframe class="cam" width="268" height="210" src="https://www.youtube.com/embed/D0eqnda8dOk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+          </iframe>
+        </div>
+        <div class="cam">
+          <iframe class="cam" width="268" height="210" src="https://www.youtube.com/embed/D0eqnda8dOk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+          </iframe>
+        </div>   
+      </section>
+      <svg class="arrow arrow_right" width="62" height="62" viewBox="0 0 62 62" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="31" cy="31" r="31" fill="url(#paint0_linear)"/>
+        <path d="M34.9982 26.8925L34.8935 26.7906L34.7889 26.8926L34.6487 27.0291L34.5384 27.1365L34.6487 27.244L38.2516 30.7534H23H22.85V30.9034V31.0966V31.2466H23H38.2512L34.6487 34.756L34.5384 34.8635L34.6487 34.9709L34.7889 35.1074L34.8935 35.2094L34.9982 35.1074L39.1047 31.1073L39.215 30.9998L39.1047 30.8924L34.9982 26.8925Z" fill="white" stroke="white" stroke-width="0.3"/>
+        <defs>
+          <linearGradient id="paint0_linear" x1="-2.74684" y1="9.18518" x2="72.0012" y2="42.4082" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#F9804B"/>
+            <stop offset="1" stop-color="#FE9013"/>
+          </linearGradient>
+        </defs>
+      </svg>
+    </article>
+    <article class="about-animal">
+      <figure class="about-animal__intro">
+        <h2 class="about-animal__title">Giant Panda</h2>
+        <img class="about-animal__img" src="../../assets/images/panda-portret.png" alt="panga">
+      </figure>
+      <section class="about-animal__content">
+        <p class="about-animal__text">Giant pandas are very <a class="text-link" href="https://en.wikipedia.org/wiki/Giant_panda">unusual animals</a> that eat almost exclusively <a class="text-link" href="https://en.wikipedia.org/wiki/Giant_panda#Diet">bamboo</a> , which is very low in nutrients. Because of this, they have many unique adaptations for their low-energy lifestyle. Giant pandas are solitary, with males and females coming together only briefly to mate. Habitat loss is the primary threat to this species. Its popularity around the world has helped the giant panda become the focus of successful conservation programs.
+        </p>
+        <button class="btn btn_round">Feed a friend now</button>
       </section>
     </article>
   </main>
