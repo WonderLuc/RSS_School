@@ -3,10 +3,12 @@ main{
   position: relative;
   display: grid;
   grid-template-columns: repeat(12,130px);
-  grid-template-rows: 112px 652px 290px 664px;
+  grid-template-rows: 112px 652px 290px 664px 1328px;
   margin: 0 auto;
   width: 100%;
   max-width: 1600px;
+  background: bottom right no-repeat url(../../assets/images/leave_foto_big.png),
+  bottom left no-repeat url(../../assets/images/strelitzia\ left.png);
 }
 
 .text-link{
@@ -171,3 +173,48 @@ main{
   margin-top: 15px;
   margin-left: 32px;
 }
+
+/*Info block*/
+
+.info{
+  grid-area: 5/2/6/12;
+  padding-left: 90px;
+  padding-top: 41px;
+}
+
+.info__piece{
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: 23px;
+}
+
+.info__title{
+  margin: 0;
+  font-size: 1.5rem;
+  text-transform: capitalize;
+}
+
+.info__title::after{
+  content: ':';
+  padding-right: 14px;
+}
+
+.info__text{
+  margin: 0;
+  letter-spacing: 0.1px;
+}
+
+.info__piece_multi{
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.info__piece_multi .info__title{
+  padding-bottom: 11px;
+  padding-top: 13px;
+}
+
+.info__piece_multi p:nth-child(3n){
+  margin-top: 26px;
+}
+
