@@ -1,5 +1,5 @@
 function goToZoos(){
-  window.location.assign("./pages/zoos/template.html");
+  window.location.assign("./pages/zoos/panda.html");
 }
 
 function goToMap(){
