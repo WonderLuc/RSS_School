@@ -1,25 +1,30 @@
 
 main{  
+  width: 100%;
+  background: bottom left no-repeat url(../../assets/images/strelitzia\ left.png),
+              100% 103% no-repeat url(../../assets/images/leave_foto_big.png);
+}
+
+.content-wrapper{
   position: relative;
   display: grid;
   grid-template-columns: repeat(12,130px);
-  grid-template-rows: 112px 652px 290px 664px 1328px 390px;
+  grid-template-rows: 112px 652px 290px 664px 1328px ;
   margin: 0 auto;
   width: 100%;
   max-width: 1600px;
-
 }
 
 .gorilla{
-  grid-template-rows: 112px 652px 290px 664px 2297px 390px;
+  grid-template-rows: 112px 652px 290px 664px 2297px;
 }
 
 .eagle{
-  grid-template-rows: 112px 652px 290px 664px 1188px 390px;
+  grid-template-rows: 112px 652px 290px 664px 1188px;
 }
 
 .alligator{
-  grid-template-rows: 112px 652px 290px 664px 1297px 390px;
+  grid-template-rows: 112px 652px 290px 664px 1297px;
 }
 
 .text-link{
@@ -267,7 +272,8 @@ main{
 }
 
 .donate{
-  grid-area: 6/1/7/14;
+  width: 100%;
+  height: 390px;
   display: flex;
   justify-content: center;
   align-items: flex-end;
@@ -278,19 +284,20 @@ main{
   margin-bottom: 60px;
 }
 
-.gorilla .donate{
+ .donate_gorilla{
   background: center/cover url(../../assets/images/gorilla-donate.png);
 }
 
-.eagle .donate{
+ .donate_eagle{
   background: center/cover url(../../assets/images/eagle-donate.png);
   transform: scaleX(-1);
 }
 
-.eagle .donate .btn{
+.donate_eagle .btn{
   transform: scaleX(-1);
 }
 
-.alligator .donate{
-  background: 25% 9%/100% 271% no-repeat url(../../assets/images/alligator-donate.png);
+ .donate_alligator{
+  background: center/cover  no-repeat url(../../assets/images/alligator-donate.png);
+  background-position: 0 10%;
 }

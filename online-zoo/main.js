@@ -13,3 +13,4 @@ function goToDonate(){
 document.querySelector('.watch .btn').addEventListener('click', goToZoos);
 document.querySelector('.zoos .btn').addEventListener('click', goToMap);
 document.querySelector('.feed .btn').addEventListener('click', goToDonate);
+document.querySelector('.contacts .btn').addEventListener('click', goToDonate);
