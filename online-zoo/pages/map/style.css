@@ -1,0 +1,175 @@
+
+@keyframes show{
+  from{
+    display: none;
+    opacity: 0;
+  }
+  to{
+    display: block;
+    opacity: 1;
+  }
+}
+
+.ocean{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 938px;
+  background: #EAF7FE;
+}
+
+.map-container{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  width: 100%;
+}
+
+.map__legend{
+  position: absolute;
+  top: 0;
+  width: 1085px;
+  height: 100%;
+}
+
+.tooltip{
+  display: none;
+}
+
+.animal{
+  position: absolute;
+}
+.ocean svg path{
+  fill:var(--orange);
+}
+
+svg:hover path{
+  fill: var(--green);
+  cursor: pointer;
+}
+
+.animal__place,
+.animal__img{
+  position: relative;
+}
+
+.animal__img:hover ~ .tooltip,
+.animal__marker:hover ~ .tooltip,
+.tooltip:hover{
+  animation: show 1s;
+  display: block;
+  position: absolute;
+}
+
+/*PANDA*/
+.animal_panda{
+  top: 327px;
+  right: 187px;
+}
+
+.animal_panda .animal__img{
+  top: -94px;
+  right: 38px;
+}
+
+.animal_panda .animal__place{
+  bottom: 17px;
+  right: 85px;
+}
+
+.animal_panda .tooltip{
+  top: 45px;
+  left: -82px;
+}
+
+/*EAGLE*/
+.animal_eagle{
+  top: 355px;
+  left: 140px;
+}
+.animal_eagle .animal__place{
+  bottom: 40px;
+  left: 26px;
+}
+
+.animal_eagle .animal__img{
+  bottom: 82px;
+  right: 45px;
+}
+
+.animal_eagle .tooltip{
+  top: 69px;
+  right: 3px;
+}
+
+/*GORILLA*/
+.animal_gorilla{
+  top: 458px;
+  left: 544px;
+}
+
+.animal_gorilla .animal__place{
+  bottom: 34px;
+  left: 24px;
+}
+
+.animal_gorilla .animal__img{
+  bottom: 52px;
+}
+
+.animal_gorilla .tooltip{
+  top: 85px;
+  left: -30px;
+}
+
+
+.animal_alligator{
+  left: 257px;
+  top: 370px;
+}
+
+.animal_alligator .animal__place{
+  bottom: 32px;
+  left: 22px;
+}
+
+.animal_alligator .animal__img{
+  bottom: 50px;
+  right: 10px;
+}
+
+.animal_alligator .tooltip{
+  top: 69px;
+  right: -57px;
+}
+
+.zoom svg path:first-child{
+  fill: var(--white);
+}
+
+.zoom svg path{
+  fill: var(--black-blue);
+}
+
+.zoom{
+  position: absolute;
+  display: flex;
+  top: 855px;
+  right: 40px;
+  flex-direction: column;
+}
+
+.zoom__btn_plus{
+  margin: 8px 0;
+}
+
+.zoom svg:hover path:first-child{
+  fill: var(--orange);
+}
+
+.zoom svg:active path:first-child{
+  fill: var(--green);
+}

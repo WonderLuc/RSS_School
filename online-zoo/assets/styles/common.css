@@ -100,3 +100,54 @@ body{
   color: var(--green);
   cursor: pointer;
 }
+
+/*Tooltip*/
+
+.tooltip{
+  position: relative;
+  width: 138;
+  height: 88px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid var(--black);
+  background: var(--white);
+}
+
+.tooltip__arrow{
+  position: absolute;
+  top: -5px;
+  left: 51px;
+  width: 10px;
+  height: 10px;
+  border-top: 1px solid var(--black);
+  border-left: 1px solid var(--black);
+  background: var(--white);
+  transform: rotate(45deg);
+}
+
+.tooltip__btn{
+  width: 135px;
+  height: 31px;
+  border: none;
+  border-radius: 5px;
+  background: var(--light-gray);
+}
+
+.tooltip__btn a{
+  text-decoration: none;
+  color: var(--green);
+}
+
+.tooltip__btn:hover a{
+  color: var(--orange);
+}
+
+.tooltip__name{
+  margin: 0;
+  font-weight: bold;
+}
+
+.tooltip__place{
+  margin: 0;
+  margin-bottom: 15px;
+}
