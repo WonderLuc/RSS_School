@@ -18,6 +18,10 @@ main{
   grid-template-rows: 112px 652px 290px 664px 1188px 390px;
 }
 
+.alligator{
+  grid-template-rows: 112px 652px 290px 664px 1297px 390px;
+}
+
 .text-link{
   text-decoration: none;
   color: var(--green);
@@ -178,7 +182,8 @@ main{
 }
 
 .gorilla .about-animal__img,
-.eagle .about-animal__img{
+.eagle .about-animal__img,
+.alligator .about-animal__img{
   transform: scaleX(-1);
 }
 
@@ -284,4 +289,8 @@ main{
 
 .eagle .donate .btn{
   transform: scaleX(-1);
+}
+
+.alligator .donate{
+  background: 25% 9%/100% 271% no-repeat url(../../assets/images/alligator-donate.png);
 }
