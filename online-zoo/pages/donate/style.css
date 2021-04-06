@@ -1,0 +1,266 @@
+/*wrappers*/
+.animal-happy-view{
+  width: 100%;
+  height: 390px;
+  background: center/cover no-repeat url(../../assets/images/Giant\ Panda.jpg);
+}
+
+main{
+  width: 100%;
+  padding-bottom: 183px;
+  background: var(--orange-grad);
+}
+
+.content{
+  width: 100%;
+  max-width: 1160px;
+  margin: 0 auto;
+}
+
+/* description block*/
+.inform__title{
+  margin: 0;
+  padding-top: 40px;
+  font-size: 2.2rem;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  color: var(--white);
+}
+
+.inform__text{
+  margin: 0;
+  padding-top: 12px;
+  letter-spacing: 0.2px;
+  line-height: 22px;
+  font-weight: 500;
+  color: var(--white); 
+}
+
+.secondary-title{
+  margin: 0;
+  margin-top: 48px;
+  font-size: 2.2rem;
+  letter-spacing: 0.2px;
+  color: var(--orange);
+}
+/*Donate block*/
+.donate-form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 60px;
+  padding: 40px 90px;
+  padding-bottom: 47px;
+  border-radius: 25px;
+  background: var(--frosted-glass-white);
+}
+
+.headers__title{
+  margin: 0;
+  text-align: center;
+  font-size: 3rem;
+  letter-spacing: -0.3px;
+  color: var(--orange);
+}
+
+.headers__subtitle{
+  margin: 0;
+  margin-top: 22px;
+  padding-right: 132px;
+  font-size: 1.5rem;
+  letter-spacing: -0.1px;
+}
+
+.motivation{
+  display: flex;
+  align-items: baseline;
+}
+.diets{
+  position: relative;
+}
+
+.diets::after{
+  content: '\02DF';
+  position: absolute;
+  bottom: 50px;
+  left: 115px;
+  font-size: 3rem;
+}
+.diets__number{
+  position: relative;
+  bottom: 25px;
+  margin: 0;
+  font-size: 5rem;
+}
+
+.diets__text{
+  position: relative;
+  bottom: 32px;
+  right: 53px;
+  margin: 0;
+}
+
+.motivation__img{
+  position: relative;
+  top: 60px;
+  left: 40px;
+}
+
+/*Custom money bar*/
+.money-bar-wrapper{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 976px;
+  margin-top: 106px;
+  margin-bottom: 110px;
+  border-radius: 2px;
+  background: var(--black-blue);
+}
+
+.money-bar{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 27px;
+  width: 100%;
+  max-width: 920px;
+  background: linear-gradient(0deg, transparent 40%, gray, transparent 53%), var(--black-blue);
+}
+
+.money-bar__point{
+  position: relative;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: yellow;
+}
+
+.money-bar__value{
+  position: relative;
+  top: 6px;
+  right: 31px;
+  font-size: 1.7rem;
+  font-weight: bold;
+}
+
+.money-bar__value::before{
+  content: '\0024';
+  font-size: 1.7rem;
+  font-weight: bold;
+}
+
+.money-bar__point::before{
+  content: '\0020';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.money-bar__point_current::before{
+  border: 2px solid var(--orange);
+}
+
+.money-bar__point_current::after{
+  content: '\0020';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 22px;
+  height: 22px;
+  background: transparent;
+  border-radius: 50%;
+  border: 2px solid var(--orange);
+  transform: translate(-50%, -50%);
+}
+
+.money-bar__point:hover{
+  cursor: pointer;
+}
+
+.other-sum-wrapper{
+  position: relative;
+  align-self: flex-start;
+}
+
+.dollar-icon{
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translate(-10px, -50%);
+}
+
+.dollar-icon::after{
+  content: '\0024';
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: var(--gray);
+}
+
+.custom-input:focus ~ .dollar-icon::after{
+  color: var(--green);
+}
+
+.custom-input:invalid ~ .dollar-icon::after{
+  color: var(--red);
+}
+
+.subscribe-pref{
+  padding-top: 4px;
+}
+
+.subscribe-pref label{
+  position: relative;
+  margin-right: 30px;
+  margin-left: 40px;
+}
+
+.subscribe-pref label{
+  cursor: pointer;
+}
+
+.pref-input{
+  position: absolute;
+  top: 50%;
+  left: -25px;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+  transform: translate(0, -50%);
+  z-index: 100;
+}
+
+.check{
+  position: absolute;
+  top: 50%;
+  left: -28px;
+  width: 15px;
+  height: 15px;
+  background: transparent;
+  border-radius: 50%;
+  border: 2px solid var(--orange);
+  transform: translate(0, -50%);
+}
+
+.pref-input:checked ~ .check{
+  background: var(--green);
+  border-color: var(--green);
+}
+
+.pref-input:hover ~ span{
+  color: var(--orange);
+}
+
+.donate-form .btn{
+  margin-top: 42px;
+}
+
+.donate-form__lower-header{
+  margin-top: 32px;
+  font-size: 1rem;
+}

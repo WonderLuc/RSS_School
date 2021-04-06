@@ -151,3 +151,29 @@ body{
   margin: 0;
   margin-bottom: 15px;
 }
+
+.custom-input{
+  position: relative;
+  width: 250px;
+  height: 22px;
+  padding: 16px 9px;
+  border-radius: 5px;
+  border: 1px solid var(--gray);
+  outline: none;
+  font-size: 1rem;
+  background: transparent;
+}
+
+.custom-input:focus{
+  border-color: var(--green);
+  color: var(--green);
+}
+
+.custom-input:invalid{
+  border-color: var(--red);
+  color: var(--red);
+}
+
+.custom-input::-webkit-inner-spin-button{
+  display: none;
+}
