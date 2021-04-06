@@ -3,12 +3,11 @@ main{
   position: relative;
   display: grid;
   grid-template-columns: repeat(12,130px);
-  grid-template-rows: 112px 652px 290px 664px 1328px;
+  grid-template-rows: 112px 652px 290px 664px 1328px 390px;
   margin: 0 auto;
   width: 100%;
   max-width: 1600px;
-  background: bottom right no-repeat url(../../assets/images/leave_foto_big.png),
-  bottom left no-repeat url(../../assets/images/strelitzia\ left.png);
+
 }
 
 .text-link{
@@ -25,6 +24,7 @@ main{
   width: 100px;
   border-radius: 5px;
   background: var(--orange-grad);
+  z-index: 999;
 }
 
 .animal-nav__list{
@@ -177,6 +177,7 @@ main{
 /*Info block*/
 
 .info{
+  position: relative;
   grid-area: 5/2/6/12;
   padding-left: 90px;
   padding-top: 41px;
@@ -218,3 +219,32 @@ main{
   margin-top: 26px;
 }
 
+.info .form-btn{
+  margin-top: 35px;
+}
+
+.background-img{
+  position: absolute;
+  bottom: 0;
+}
+
+.background-img_left{
+  left:-128px;
+}
+
+.background-img_right{
+  right: -170px;
+  bottom: -93px;
+}
+
+.donate{
+  grid-area: 6/1/7/14;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  background: center/cover url(../../assets/images/panda-donate.png);
+}
+
+.donate .btn{
+  margin-bottom: 60px;
+}
