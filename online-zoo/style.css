@@ -190,7 +190,7 @@
   background: center/cover no-repeat url(./assets/images/cheetahis.jpg);
 }
 
-.animal_gorila{
+.animal_gorilla{
   background: center/cover no-repeat url(./assets/images/gorrila.jpg);
 }
 
@@ -363,7 +363,7 @@
   width: 100%;
   height: 925px;
   background: no-repeat url(./assets/images/leav_foto.png);
-  background-position: 98% 645px;
+  background-position: 100% 645px;
 }
 
 .impress-wrapper{
