@@ -13,6 +13,11 @@ main{
 .gorilla{
   grid-template-rows: 112px 652px 290px 664px 2297px 390px;
 }
+
+.eagle{
+  grid-template-rows: 112px 652px 290px 664px 1188px 390px;
+}
+
 .text-link{
   text-decoration: none;
   color: var(--green);
@@ -172,6 +177,11 @@ main{
   margin-top: 25px;
 }
 
+.gorilla .about-animal__img,
+.eagle .about-animal__img{
+  transform: scaleX(-1);
+}
+
 .about-animal__text{
   padding-top: 73px;
   padding-left: 28px;
@@ -265,4 +275,13 @@ main{
 
 .gorilla .donate{
   background: center/cover url(../../assets/images/gorilla-donate.png);
+}
+
+.eagle .donate{
+  background: center/cover url(../../assets/images/eagle-donate.png);
+  transform: scaleX(-1);
+}
+
+.eagle .donate .btn{
+  transform: scaleX(-1);
 }
