@@ -10,6 +10,9 @@ main{
 
 }
 
+.gorilla{
+  grid-template-rows: 112px 652px 290px 664px 2297px 390px;
+}
 .text-link{
   text-decoration: none;
   color: var(--green);
@@ -146,6 +149,17 @@ main{
   border-bottom: 1px solid var(--gray);
 }
 
+.about-animal__intro_long{
+  position: relative;
+  padding-top: 56px;
+}
+
+.about-animal__intro_long .about-animal__title{
+  position: absolute;
+  width: 700px;
+  top: 0;
+}
+
 .about-animal__title{
   margin: 0;
   font-size: 3rem;
@@ -247,4 +261,8 @@ main{
 
 .donate .btn{
   margin-bottom: 60px;
+}
+
+.gorilla .donate{
+  background: center/cover url(../../assets/images/gorilla-donate.png);
 }
