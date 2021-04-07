@@ -32,7 +32,8 @@ function goToAnimal(e){
 
   let pageName = elem.classList.toString().match(/animal_(.+)/)[1];
   //REMOVE WITH PAGES-ARRAY
-  return pages.includes(pageName)? window.location.assign(`./pages/zoos/${pageName}.html`) : console.log('404');
+  return pages.includes(pageName)? window.location.assign(`./pages/zoos/${pageName}.html`) :
+                                   window.location.assign(`./pages/404/404.html`);
   
 }
 
