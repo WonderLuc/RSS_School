@@ -9,3 +9,4 @@ function scrollToHeader(e){
 
 document.querySelector('footer .logo').addEventListener('click', scrollToHeader);
 document.querySelector('.contacts .btn').addEventListener('click', goToDonate);
+document.querySelector('.about-animal .btn').addEventListener('click', goToDonate);
