@@ -102,15 +102,22 @@ footer .form-btn{
   left: 9px;
 }
 
+.subscribe__input:focus{
+  background: transparent;
+}
 .subscribe__input:invalid + .form-btn{
   border-color: var(--red);
   color: var(--red);
 }
-input:placeholder-shown + .form-btn{
-  border-color: var(--red);
-  color: var(--red);
+.subscribe__input:valid + .form-btn{
+  border: 1px solid var(--green);
+  color: var(--green);
 }
 
+.subscribe__input:placeholder-shown + .form-btn{
+  border-color: var(--black-blue);
+  color: var(--black-blue);
+}
 
 .authorship-subscribe{
   display: flex;
