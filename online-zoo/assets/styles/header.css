@@ -43,7 +43,9 @@ nav{
 @media screen and (min-width: 1000px) and (max-width: 1080px) {
 
   .header{
+    position: relative;
     padding: 15px;
+    z-index: 100;
   }
 
   .header__content{
