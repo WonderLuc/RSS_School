@@ -39,3 +39,20 @@ nav{
   color: var( --orange);
   cursor: default;
 }
+
+@media screen and (min-width: 1000px) and (max-width: 1080px) {
+
+  .header{
+    padding: 15px;
+  }
+
+  .header__content{
+    max-width: 1000px;
+  }
+
+  .navigation__item{
+    margin-left: 20px;
+    margin-right: 29px;
+  }
+  
+}
