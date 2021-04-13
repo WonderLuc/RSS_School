@@ -484,3 +484,37 @@
   margin-top: 30px;
   margin-bottom: 183px;
 }
+
+@media screen and (min-width: 1000px) and (max-width: 1080px) {
+
+  .watch{
+    height: auto;
+  }
+
+  .watch-wrapper{
+    max-width: 1000px;
+  }
+
+  .watch__circle{
+    right: 178px;
+    top: -10px;
+    width: 365px;
+    height: 365px
+  }
+
+  .watch__title{
+    top: 57px;
+    left: 69px;
+    font-size: 5.5rem;
+    line-height: 63px;
+    letter-spacing: -3px;
+  }
+
+  .watch .btn {
+    position: relative;
+    top: -47px;
+    right: 139px;
+    margin-top: 84px;
+}
+  
+}
