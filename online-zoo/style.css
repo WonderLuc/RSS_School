@@ -610,5 +610,43 @@
     padding-top: 53px;
     right: unset;
   }
+  
+  .impress{
+    height: 842px;
+    background-position: 100% 130%;
+  }
 
+  .impress-wrapper{
+    max-width: 1000px;
+  }
+
+  .impress__title{
+    padding-top: 70px;
+  }
+
+  .testimonials{
+    width: 100%;
+    overflow: scroll;
+    padding-left: 30px;
+    padding-top: 0;
+  }
+
+  .testimonial-wrapper{
+    width: 308px;
+    padding: 0 2px;
+  }
+
+  .testimonial{
+    width: 288px;
+  }
+
+  .impress .btn{
+    margin-top: 52px;
+    margin-bottom: 0;
+    margin-left: 30px;
+  }
+
+  .progress-bar{
+    width: 400px;
+  }
 }
