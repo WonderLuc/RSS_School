@@ -516,5 +516,26 @@
     right: 139px;
     margin-top: 84px;
 }
+
+.backstage{
+  background: none;
+}
+
+.backstage-wrraper{
+  padding-top: 110px;
+  padding-left: 10px;
+  max-width: 1000px;
+}
+
+.backstage__image{
+  width: 455px;
+  height: 408px;
+}
+
+.backstage__text-block{
+  position: relative;
+  padding-left: 30px;
+  width: 48%;
+}
   
 }
