@@ -133,3 +133,54 @@ footer .form-btn{
   color: var(--gray-smoky);
 }
 
+@media screen and (min-width: 1000px) and (max-width: 1080px) {
+
+  footer .logo{
+    left: 45px;
+    top: 13px;
+    width: 72px;
+  }
+
+  .contacts .btn{
+    position: relative;
+    left: 45px;
+    top: 10px;
+    margin: 0;
+  }
+
+  .socials{
+    bottom: 10px;
+    left: 46px;
+  }
+  footer .navigation__item{
+    margin-left: 13px;
+    margin-right: 40px;
+  }
+
+  footer .navigation{
+    padding: 0;
+  }
+
+  .subscribe__title{
+    position: relative;
+    right: 120px;
+    top: 5px;
+  }
+
+  .subscribe__input{
+    position: relative;
+    right: 120px;
+    top: 5px;
+  }
+
+  .subscribe .form-btn{
+    position: relative;
+    left: 115px;
+    bottom: 40px;
+  }
+
+  .authorship{
+    bottom: 33px;
+    left: -19px;
+  }
+}
