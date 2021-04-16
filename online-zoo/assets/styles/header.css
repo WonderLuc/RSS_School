@@ -40,6 +40,25 @@ nav{
   cursor: default;
 }
 
+.burger{
+  position: relative;
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 20px;
+  height: 10px;
+  margin-left: 535px;
+}
+
+.burger__line{
+  height: 20%;
+  background: var(--white);
+}
+
+.burger:hover .burger__line{
+  background: var(--orange);
+}
+
 @media screen and (min-width: 1000px) and (max-width: 1080px) {
 
   .header{
@@ -57,4 +76,43 @@ nav{
     margin-right: 29px;
   }
   
+}
+
+@media screen and (min-width: 640px) and (max-width: 999px) {
+
+  .header{
+    padding: 0;
+    padding-bottom: 5px;
+  }
+
+  .header__content{
+    max-width: 640px;
+  }
+
+  .logo{
+    width: 46px;
+    height: 29px;
+    border: none;
+    padding: 0;
+    left: 20px;
+  }
+
+  .logo__text{
+    font-size: 0.8rem;
+  }
+
+  .logo__image{
+    width: 7px;
+    left: 4px;
+    bottom: 2px;
+  }
+
+  .navigation{
+    display: none;
+  }
+
+  .burger{
+    display: flex;
+  }
+
 }
