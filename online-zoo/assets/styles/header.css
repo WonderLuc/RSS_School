@@ -89,7 +89,7 @@ nav{
     max-width: 640px;
   }
 
-  .logo{
+  .header .logo{
     width: 46px;
     height: 29px;
     border: none;
@@ -97,17 +97,17 @@ nav{
     left: 20px;
   }
 
-  .logo__text{
+  .header .logo__text{
     font-size: 0.8rem;
   }
 
-  .logo__image{
+  .header .logo__image{
     width: 7px;
     left: 4px;
     bottom: 2px;
   }
 
-  .navigation{
+  .header .navigation{
     display: none;
   }
 
