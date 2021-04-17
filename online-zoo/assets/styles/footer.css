@@ -184,3 +184,67 @@ footer .form-btn{
     left: -19px;
   }
 }
+
+@media screen and (min-width: 640px) and (max-width: 999px) {
+
+  .contacts .logo{
+    left: -15px;
+    top: 10px;
+  }
+
+  .contacts .btn{
+    margin-left: 20px;
+    position: relative;
+    bottom: 56px;
+    top: 95px;
+    right: 190px;
+  }
+
+  .socials__link p{
+    display: none;
+  }
+
+  footer{
+    height: 283px;
+  }
+
+  .footer-content{
+    flex-direction: column;
+  }
+
+  .contacts{
+    flex-direction: row;
+  }
+
+  .socials{
+    bottom: 7px;
+    left: 15px;
+  }
+
+  .socials__item{
+    margin: 19px 0;
+  }
+
+  footer nav{
+    left: -150px;
+    padding: 0;
+    top: 33px;
+  }
+
+  .navigation__item{
+    margin-right: 23px;
+  }
+
+  .authorship-subscribe{
+    height: 0px;
+  }
+
+  .subscribe{
+    display: none;
+  }
+
+  .authorship{
+    bottom: 53px;
+    left: -20px;
+  }
+}
