@@ -116,3 +116,45 @@ nav{
   }
 
 }
+
+@media screen and (max-width: 320px){
+
+  .header{
+    padding: 0;
+    padding-bottom: 5px;
+  }
+
+  .header__content{
+    max-width: 320px;
+  }
+
+  .header .logo{
+    width: 46px;
+    height: 29px;
+    border: none;
+    padding: 0;
+    left: 10px;
+  }
+
+  .header .logo__text{
+    font-size: 0.8rem;
+  }
+
+  .header .logo__image{
+    width: 7px;
+    left: 4px;
+    bottom: 2px;
+  }
+
+  .header .navigation{
+    display: none;
+  }
+
+  .burger{
+    display: flex;
+    margin-left: 226px;
+    width: 18px;
+    height: 12px;
+  }
+
+}
