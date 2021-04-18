@@ -248,3 +248,111 @@ footer .form-btn{
     left: -20px;
   }
 }
+
+@media screen and (min-width: 320px) and (max-width: 639px){
+
+  .contacts .logo{
+    left: -1px;
+    top: 17px;
+    width: 290px;
+    height: 20px;
+    padding: 2px 3px;
+    border: none;
+  }
+
+  .contacts .logo__image{
+    left: 155px;
+    bottom: 5px;
+  }
+
+  .contacts .btn{
+    position: absolute;
+    top: 305px;
+    right: 12px;
+    width: 300px; 
+  }
+
+  address{
+    position: absolute;
+    top: 65px;
+    right: 65px;
+  }
+
+  .socials__link p{
+    display: none;
+  }
+
+  footer{
+    position: relative;
+    height: 540px;
+  }
+
+  .footer-content{
+    flex-direction: column;
+    max-width: 320px;
+    height: 540px;
+  }
+
+  .contacts{
+    flex-direction: row;
+  }
+
+  .socials{
+    display: flex;
+    bottom: 7px;
+    left: 15px;
+  }
+
+  .socials__item{
+    margin: 15px;
+  }
+
+  footer nav{
+    position: absolute;
+    bottom: 16px;
+    left: -180px;
+    top: unset;
+    padding: 0;
+  }
+
+  .navigation__item{
+    margin-right: 15px;
+  }
+
+  .authorship-subscribe{
+    height: 0px;
+  }
+
+  .subscribe{
+    position: relative;
+    top: 65px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .subscribe__title{
+    position: relative;
+    right: 4px;
+    top: 15px;
+    font-size: 1rem;
+    letter-spacing: 0px; 
+  }
+
+  .subscribe__input{
+    margin-top: 10px;
+  }
+
+  .authorship{
+    bottom: -191px;
+    left: -10px;
+    letter-spacing: -0.5px;
+  }
+
+  footer .form-btn{
+    position: relative;
+    top: 8px;
+    left: 0px;
+  }
+}
