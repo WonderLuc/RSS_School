@@ -1016,48 +1016,47 @@
   }
   
   .feed{
-    padding-top: 20px;
-    padding-bottom: 20px;
+    position: relative;
+    padding: 20px 0px;
   }
 
   .feed__title{
-    padding-top: 7px;
-    font-size: 2.6rem;
+    padding-top: 21px;
+    font-size: 1.5rem;
   }
   
   .feed__content{
-    max-width: 100%;
     left: unset;
+    margin: 0 auto;
+    width: 300px;
   }
   
   .feed__subtitle{
-    padding-top: 20px;
-    padding-left: 21px;
-    font-size: 1.4rem;
-    letter-spacing: -0.3px;
+    padding-top: 12px;
+    padding-left: 2px;
+    font-size: 1rem;
+    letter-spacing: 0.8px;
+    text-align: center;
+    line-height: 22px;
   }
   
   .feed__text{
-    padding-top: 21px;
-    padding-left: 21px;
-    padding-right: 25px;
+    display: none;
   }
   
   .feed__subtext{
-    padding-top: 15px;
-    padding-left: 19px;
-    padding-right: 20px;
-    position: static;
-    width: auto;
+    display: none;
   }
   .feed__how{
-    padding-top: 45px;
+    padding-top: 30px;
     right: unset;
+    font-size: 1.5rem;
   }
 
   .process{
     padding-top: 8px;
     justify-content: space-around;
+    flex-direction: column;
   }
   
   .process__arrow_desktop{
@@ -1066,33 +1065,45 @@
 
   .process__arrow_mobile{
     position: absolute;
-    top: -15px;
+    top: 195px;
     left: 140px;
     z-index: 10;
+    transform: rotate(85deg);
   }
 
   .process__stage{
     position: relative;
-    margin: 0;
-    margin-left: -10px;
+    margin-left: 30px;
+    margin-bottom: 75px;
+  }
+
+  .process__stage::after{
+    bottom: -50px;
+  }
+
+  .process__stage:first-child::after {
+    bottom: -30px;
   }
 
   .feed .btn{
-    margin-top: 115px;
+    margin-top: 20px;
+    margin-bottom: 40px;
   }
   
   .impress{
-    height: 670px;
-    background-position: 100% 112%;
+    height: 580px;
+    background-position: 100% 106%;
     background-size: 18%;
   }
 
   .impress-wrapper{
-    max-width: 640px;
+    max-width: 320px;
   }
 
   .impress__title{
-    padding-top: 30px;
+    padding-top: 0;
+    margin-top: 30px;
+    font-size: 1.5rem;
   }
 
   .testimonials{
@@ -1100,7 +1111,11 @@
     overflow: scroll;
     padding-top: 0;
     flex-direction: column;
-    height: 360px;
+    height: 370px;
+  }
+
+  .avatar{
+    margin: 5px 10px;
   }
 
   .testimonials::-webkit-scrollbar{
@@ -1125,13 +1140,16 @@
   }
 
   .testimonial__text{
-    width: 95%;
+    position: relative;
+    top: 5px;
+    height: 40px;
+    width: 88%;
   }
 
   .impress .btn{
-    margin-top: 40px;
+    margin-top: 15px;
     margin-bottom: 0;
-    margin-left: 199px;
+    margin-left: 40px;
     width: 240px;
   }
 
