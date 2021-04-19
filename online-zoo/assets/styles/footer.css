@@ -161,6 +161,11 @@ footer .form-btn{
     padding: 0;
   }
 
+  .footet-nav{
+    left: 9px;
+    padding-bottom: 37px;
+  }
+
   .subscribe__title{
     position: relative;
     right: 120px;
@@ -169,19 +174,19 @@ footer .form-btn{
 
   .subscribe__input{
     position: relative;
-    right: 120px;
+    right: 135px;
     top: 5px;
   }
 
   .subscribe .form-btn{
     position: relative;
-    left: 115px;
+    left: 100px;
     bottom: 40px;
   }
 
   .authorship{
-    bottom: 33px;
-    left: -19px;
+    bottom: 30px;
+    left: -32px;
   }
 }
 
