@@ -246,13 +246,13 @@ svg:hover path{
   }
 
   .map-container{
-    height: 747px;
+    height: 475px;
   }
 
   .earth-map{
     position: relative;
     width: 594px;
-    bottom: 121px;
+    bottom: -16px;
     left: 1px;
   }
 
@@ -261,41 +261,91 @@ svg:hover path{
   }
 
   .animal__place{
-    font-size: 0.9rem;
+    font-size: 0.6rem;
   }
 
   .animal__img{
-    width: 93%;
+    width: 50px;
   }
 
-  .animal_eagle .animal__img{
-    bottom: 79px;
-    right: 39px;
+  .animal__marker{
+    width: 15px;
   }
 
   .animal_eagle{
-    top: 400px;
-    left: 150px;
+    top: 248px;
+    left: 98px;
+  }
+
+  .animal_eagle .animal__place{
+    bottom: 34px;
+    left: 15px;
+  }
+
+  .animal_eagle .animal__img{
+    bottom: 58px;
+    right: 25px;
+  }
+
+  .animal_eagle .tooltip{
+    top: 45px;
+    right: -40px;
   }
 
   .animal_gorilla{
-    top: 490px;
-    left: 498px;
+    left: 321px;
+    top: 304px;
+  }
+
+  .animal_gorilla .animal__img{
+    width: 30px;
+    bottom: 41px;
+  }
+
+  .animal_gorilla .animal__place{
+    bottom: 31px;
+    left: 12px;
+  }
+
+  .animal_gorilla .tooltip{
+    top: 60px;
+    left: -41px;
   }
 
   .animal_alligator{
-    left: 251px;
-    top: 414px;
+    left: 161px;
+    top: 257px;
+  }
+
+  .animal_alligator .animal__img{
+    bottom: 41px;
+    right: 7px;
+  }
+
+  .animal_alligator .animal__place{
+    bottom: 30px;
+    left: 13px;
+  }
+
+  .animal_alligator .tooltip{
+    top: 49px;
+    right: -69px;
   }
 
   .animal_panda{
-    top: 379px;
-    right: 187px;
+    top: 233px;
+    right: 124px;
+  }
+
+  .animal_panda .animal__img{
+    width: 20px;
+    top: -64px;
+    right: 21px;
   }
 
   .animal_panda .animal__place{
-    bottom: 23px;
-    right: 78px;
+    bottom: 22px;
+    right: 47px;
   }
   .zoom{
     display: none;
@@ -305,5 +355,6 @@ svg:hover path{
 
 @media screen and (min-width: 320px) and (max-width: 639px){
 
+  
   
 }
