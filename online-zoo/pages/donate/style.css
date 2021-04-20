@@ -264,3 +264,177 @@ main{
   margin-top: 32px;
   font-size: 1rem;
 }
+
+@media screen and (min-width: 1000px) and (max-width: 1080px) {
+
+  .animal-happy-view{
+    background-size: 150%;
+    background-position: 28%;
+  }
+  main{
+    padding-bottom: 30px;
+  }
+
+  .content{
+    max-width: 1000px;
+  }
+
+  .inform__title{
+    padding-left: 30px;
+    width: 80%;
+  }
+
+  .inform__text{
+    padding-left: 30px;
+    width: 94%;
+    padding-top: 40px;
+  }
+
+  .secondary-title{
+    padding-left: 30px;
+  }
+
+  .donate-form{
+    padding: 0;
+    padding-bottom: 30px;
+    margin: 0 auto;
+    margin-top: 40px;
+    width: 940px;
+  }
+
+  .headers__title{
+    padding-top: 22px;
+    padding-right: 15px;
+  }
+
+  .headers__subtitle{
+    padding-right: 0;
+    margin-top: 10px;
+  }
+
+  .money-bar-wrapper{
+    width: 86%;
+  }
+
+  .money-bar{
+    width: 98%;
+  }
+
+  .money-bar__point:first-child{
+    display: none;
+  }
+
+  .money-bar__value{
+    right: 14px;
+  }
+
+  .other-sum-wrapper{
+    position: relative;
+    left: 24px;
+  }
+
+}
+
+@media screen and (min-width: 640px) and (max-width: 999px) {
+
+  .animal-happy-view{
+    height: 335px;
+    background-size: 220%;
+    background-position: 37%;
+  }
+
+  main{
+    padding-bottom: 45px;
+  }
+
+  .content{
+    max-width: 640px;
+  }
+
+  .inform__title{
+    font-size: 1.4rem;
+    padding-left: 20px;
+    padding-top: 33px;
+    width: 90%;
+    letter-spacing: 0.8px;
+  }
+
+  .inform__text{
+    padding-left: 18px;
+    padding-top: 21px;
+    width: 94%;
+  }
+
+  .secondary-title{
+    padding-left: 20px;
+    margin-top: 34px;
+  }
+
+  .donate-form{
+    padding: 0;
+    margin: 0 auto;
+    margin-top: 30px;
+    padding-bottom: 20px;
+    width: 600px;
+  }
+
+  .headers__title{
+    padding-top: 30px;
+    padding-right: 0px;
+  }
+
+  .headers__subtitle{
+    padding-right: 0;
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  .motivation{
+    position: relative;
+    bottom: 8px;
+  }
+
+  .money-bar-wrapper{
+    width: 100%;
+    margin-top: 81px;
+  }
+
+  .money-bar{
+    width: 88%;
+  }
+
+  .money-bar__point:first-child,
+  .money-bar__point:nth-child(2),
+  .money-bar__point:nth-child(3){
+    display: none;
+  }
+
+  .money-bar__value{
+    right: 20px;
+  }
+
+  .other-sum-wrapper{
+    position: relative;
+    left: 10px;
+    bottom: 22px;
+  }
+
+  .custom-input{
+    width: 160px;
+    height: 10px;
+  }
+
+  .subscribe-pref{
+    padding-top: 18px;
+    padding-right: 5px;
+  }
+
+  .donate-form .btn{
+    margin-top: 30px;
+  }
+  
+}
+
+@media screen and (min-width: 320px) and (max-width: 639px){
+
+}
