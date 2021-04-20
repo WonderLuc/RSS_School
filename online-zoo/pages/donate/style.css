@@ -437,4 +437,158 @@ main{
 
 @media screen and (min-width: 320px) and (max-width: 639px){
 
+  .animal-happy-view{
+    height: 187px;
+    background-size: 240%;
+    background-position: 33%;
+  }
+
+  main{
+    padding-bottom: 21px;
+  }
+
+  .content{
+    max-width: 320px;
+  }
+
+  .inform__title{
+    font-size: 1.4rem;
+    padding-left: 11px;
+    padding-top: 33px;
+    width: 90%;
+    letter-spacing: 0.8px;
+  }
+
+  .inform__text{
+    padding-left: 10px;
+    padding-top: 23px;
+    width: 94%;
+  }
+
+  .secondary-title{
+    padding-left: 10px;
+    margin-top: 30px;
+    font-size: 1.5rem;
+    letter-spacing: 0px;
+  }
+
+  .donate-form{
+    padding: 0;
+    margin: 0 auto;
+    margin-top: 30px;
+    padding-bottom: 5px;
+    width: 300px;
+  }
+
+  .headers__title{
+    padding-top: 20px;
+    padding-right: 0px;
+    font-size: 1.5rem;
+  }
+
+  .headers__subtitle{
+    padding-right: 0;
+    margin-top: 13px;
+    text-align: center;
+    font-size: 1rem;
+  }
+
+  .motivation{
+    position: relative;
+    bottom: 8px;
+    height: 165px;
+  }
+
+  .diets__number{
+    position: relative;
+    bottom: 135px;
+    margin: 0;
+    font-size: 2.5rem;
+    left: 9px;
+  }
+
+  .diets__text{
+    position: relative;
+    bottom: 136px;
+    right: 25px;
+    margin: 0;
+    font-size: 0.6rem;
+    letter-spacing: -0.1px;
+  }
+
+  .motivation__img{
+    width: 160px;
+    position: relative;
+    top: -32px;
+    left: 25px;
+  }
+
+  .diets::after{
+    content: '\02DF';
+    position: absolute;
+    bottom: 144px;
+    left: 70px;
+    font-size: 1.9rem;
+  }
+  .money-bar-wrapper{
+    width: 100%;
+    margin-top: 20px;
+    height: 15px;
+  }
+
+  .money-bar{
+    width: 88%;
+    height: 100%;
+  }
+
+  .money-bar__point{
+    width: 5px;
+    height: 5px;
+  }
+  .money-bar__point:first-child,
+  .money-bar__point:nth-child(2),
+  .money-bar__point:nth-child(3){
+    display: none;
+  }
+
+  .money-bar__value{
+    right: 12px;
+    font-size: 0.9rem;
+    top: 2px;
+  }
+
+  .money-bar__value::before{
+    content: '\0024';
+    font-size: 0.9rem;
+    font-weight: bold;
+  }
+
+  .other-sum-wrapper{
+    position: relative;
+    left: 0;
+    bottom: 69px;
+  }
+
+  .custom-input{
+    width: 160px;
+    height: 10px;
+  }
+
+  .subscribe-pref{
+    position: relative;
+    bottom: 44px;
+    right: 3px;
+  }
+
+  .donate-form .btn{
+    margin: 0;
+    position: relative;
+    bottom: 12px;
+  }
+
+  .donate-form__lower-header{
+    margin-top: 20px;
+    letter-spacing: -0.1px;
+  }
+
 }
