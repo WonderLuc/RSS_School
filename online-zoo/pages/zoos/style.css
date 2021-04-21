@@ -487,7 +487,9 @@ main{
   }
 
   .animal-nav{
-    top: 64px;
+    position: relative;
+    top: 0px;
+    left: 20px;
     width: 70px;
     margin-top: -35px;
     height: 438px;

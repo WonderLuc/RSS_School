@@ -193,6 +193,7 @@ svg:hover path{
 
   .map__legend{
     width: 100%;
+    max-width: 1000px;
   }
 
   .animal__place{
@@ -258,6 +259,7 @@ svg:hover path{
 
   .map__legend{
     width: 100%;
+    max-width: 640px;
   }
 
   .animal__place{
@@ -373,6 +375,7 @@ svg:hover path{
 
   .map__legend{
     width: 100%;
+    max-width: 320px;
   }
 
   .animal__place{
