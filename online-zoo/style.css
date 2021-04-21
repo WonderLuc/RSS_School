@@ -541,6 +541,10 @@
     width: 48%;
   }
   
+  .backstage__text:last-child{
+    width: 94%;
+  }
+
   .zoos-wrapper{
     padding-top: 15px;
     max-width: 1000px;
@@ -658,6 +662,22 @@
     width: 288px;
   }
 
+  .testimonial__about{
+    display: flex;
+    margin: 0 auto;
+    padding-top: 5px;
+    padding-right: 48px;
+  }
+
+  .testimonial__text{
+    width: 250px;
+    letter-spacing: -0.4px;
+    position: relative;
+    right: 5px;
+    top: 3px;
+    line-height: 18px;
+  }
+
   .impress .btn{
     margin-top: 52px;
     margin-bottom: 0;
@@ -670,6 +690,10 @@
 
   .progress-bar__current{
     width: 75px;
+  }
+
+  .process__arrow_mobile{
+    display: none;
   }
 }
 
@@ -777,7 +801,8 @@
   .zoos {
     width: 100%;
     height: 1015px;
-    background: bottom left/16% no-repeat url(./assets/images/palm_foto.png), bottom right/24% no-repeat url(./assets/images/strelitzia\ 1.png);
+    background: bottom left/20% no-repeat url(./assets/images/palm_foto.png),
+                bottom right/27% no-repeat url(./assets/images/strelitzia\ 1.png);
   }
   
   .zoos .btn{
@@ -897,6 +922,24 @@
 
   .testimonial__text{
     width: 95%;
+  }
+
+  .description__name,
+  .description__place,
+  .description__time{
+    position: relative;
+    left: -1px;
+    top: 2px;
+    letter-spacing: 0px;
+    font-size: 1rem;
+  }
+
+  .description__time{
+    left: -3px;
+  }
+
+  .description__time::before{
+    padding: 0 2px;
   }
 
   .impress .btn{
@@ -1026,7 +1069,8 @@
   .zoos {
     width: 100%;
     height: 1561px;
-    background: bottom left/16% no-repeat url(./assets/images/palm_foto.png), bottom right/24% no-repeat url(./assets/images/strelitzia\ 1.png);
+    background: 0% 101%/17% no-repeat url(./assets/images/palm_foto.png),
+                110% 1495px/30% no-repeat url(./assets/images/strelitzia\ 1.png);
   }
   
   .zoos .btn{
@@ -1166,6 +1210,23 @@
     width: 88%;
   }
 
+  .description__name,
+  .description__place,
+  .description__time{
+    position: relative;
+    left: -1px;
+    top: 2px;
+    letter-spacing: 0px;
+    font-size: 1rem;
+  }
+
+  .description__time{
+    left: -3px;
+  }
+
+  .description__time::before{
+    padding: 0 2px;
+  }
   .impress .btn{
     margin-top: 15px;
     margin-bottom: 0;

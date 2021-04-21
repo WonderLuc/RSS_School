@@ -272,7 +272,7 @@ main{
     background-position: 28%;
   }
   main{
-    padding-bottom: 30px;
+    padding-bottom: 32px;
   }
 
   .content{
@@ -282,12 +282,15 @@ main{
   .inform__title{
     padding-left: 30px;
     width: 80%;
+    line-height: 47px;
   }
 
   .inform__text{
     padding-left: 30px;
+    padding-top: 29px;
     width: 94%;
-    padding-top: 40px;
+    letter-spacing: -0.6px;
+    font-size: 0.9rem;
   }
 
   .secondary-title{

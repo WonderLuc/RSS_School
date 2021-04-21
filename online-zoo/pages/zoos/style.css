@@ -414,6 +414,7 @@ main{
     padding: 0;
     padding-left: 30px;
     height: 330px;
+    width: 102%;
   }
 
   .info__text{
@@ -437,9 +438,9 @@ main{
     padding: 0;
   }
 
-  /*Change with JS*/
-  .info .info__piece:nth-child(n+5){
-    display: none;
+  .info__view{
+    height: 301px;
+    overflow: hidden;
   }
 
   .info .form-btn_less{
@@ -450,10 +451,6 @@ main{
     display: block;
     margin-top: -13px;
     margin-left: 3px;
-  }
-
-  .info__piece_multi .info__text:last-child{
-    display: none;
   }
 
 }
