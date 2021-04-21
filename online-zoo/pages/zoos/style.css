@@ -41,7 +41,7 @@ main{
   width: 100px;
   border-radius: 5px;
   background: var(--orange-grad);
-  z-index: 999;
+  z-index: 900;
 }
 
 .animal-nav__list{
@@ -455,11 +455,210 @@ main{
   .info__piece_multi .info__text:last-child{
     display: none;
   }
-  
+
 }
 
 @media screen and (min-width: 640px) and (max-width: 999px) {
 
+  main{
+    background: bottom left/23% no-repeat url(../../assets/images/strelitzia\ left.png),
+                100% 103%/18% no-repeat url(../../assets/images/leave_foto_big.png);
+  }
+
+  .content-wrapper{
+    grid-template-columns: repeat(12,1fr);
+    height: 2047px;
+  }
+
+  .cam-online{
+    position: relative;
+    padding-top: 19px;
+    right: -3px;
+  }
+
+  .cam-online__title{
+    font-size: 2.3rem;
+    padding-top: 2px;
+    letter-spacing: -0.4px;
+    padding-bottom: 12px;
+  }
+
+  .cam-online__frame{
+    width: 495px;
+    height: 277px;
+  }
+
+  .animal-nav{
+    top: 64px;
+    width: 70px;
+    margin-top: -35px;
+    height: 438px;
+  }
+
+  .animal-nav__list{
+    padding-top: 0;
+    margin-top: -6px;
+  }
+
+  .animal-nav__item{
+    position: relative;
+    margin-bottom: -23px;
+  }
+
+  .animal-nav__item svg{
+    width: 53px;
+  }
+
+  .additional-cam{
+    left: 55px;
+    top: -389px;
+    width: 390px;
+  }
+
+  .arrow{
+    width: 45px;
+  }
+
+  .arrow_left{
+    top: 95px;
+    left: 420px;
+  }
+
+  .arrow_right{
+    right: -75px;
+    top: 45px;
+  }
+
+  .cams{
+    overflow: scroll;
+    justify-content: flex-start;
+  }
+
+  .cam{
+    margin-right: 30px;
+  }
+
+  .cam::after{
+    top: 7px;
+    left: 6px;
+    width: 37px;
+    height: 15px;
+    font-size: 0.6rem;
+  }
+
+  .cam iframe{
+    width: 180px;
+    height: 140px;
+  }
+
+  .about-animal{
+    flex-direction: column;
+    position: relative;
+    bottom: 442px;
+    right: 92px;
+    padding: 0;
+    border: none;
+  }
+
+  .about-animal__title,
+  .about-animal__intro_long .about-animal__title {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-34%);
+    width: 100%;
+    top: -38px;
+    text-align: center;
+  }
+
+  .about-animal__img{
+    width: 393px;
+    height: 392px;
+  }
+
+  .about-animal__text{
+    position: relative;
+    right: 10px;
+    top: 2px;
+    padding: 0;
+    padding-left: 53px;
+    padding-top: 10px;
+    margin: 0;
+    width: 423px;
+    font-size: 1.4rem;
+    letter-spacing: -0.2px;
+    line-height: 31px;
+  }
+
+  .about-animal .btn{
+    margin-top: 42px;
+    margin-left: 192px;
+  }
+
+  .info{
+    grid-area: 5/1/6/12;
+    bottom: 148px;
+    padding: 0;
+    padding-left: 20px;
+    height: 330px;
+    width: 100%;
+  }
+
+  .info__view{
+    height: 264px;
+    overflow: hidden;
+  }
+
+  .info__text{
+    width: 106%;
+    padding-left: 5px;
+  }
+
+  .info__title::after{
+    padding: 0;
+  }
+
+  .info__piece{
+    align-items: baseline;
+  }
+
+  .info__piece:first-child{
+    padding-bottom: 9px;
+  }
+
+  .info__piece_multi .info__title{
+    padding-bottom: 23px;
+  }
+
+  .info__piece_multi .info__text{
+    padding: 0;
+  }
+
+  .donate{
+    height: 288px;
+  }
+
+  .donate .btn{
+    margin-bottom: 34px;
+  }
+
+  /*Change with JS*/
+  /* .info .info__piece:nth-child(n+5){
+    display: none;
+  } */
+
+  .info .form-btn_less{
+    display: none;
+  }
+  
+  .info .form-btn_more{
+    display: block;
+    margin-top: 24px;
+    margin-left: -2px;
+  }
+
+  /* .info__piece_multi .info__text:last-child{
+    display: none;
+  } */
   
 }
 
