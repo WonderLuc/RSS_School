@@ -468,6 +468,7 @@ main{
   .content-wrapper{
     grid-template-columns: repeat(12,1fr);
     height: 2047px;
+    max-width: 640px;
   }
 
   .cam-online{
@@ -641,11 +642,6 @@ main{
     margin-bottom: 34px;
   }
 
-  /*Change with JS*/
-  /* .info .info__piece:nth-child(n+5){
-    display: none;
-  } */
-
   .info .form-btn_less{
     display: none;
   }
@@ -655,14 +651,223 @@ main{
     margin-top: 24px;
     margin-left: -2px;
   }
-
-  /* .info__piece_multi .info__text:last-child{
-    display: none;
-  } */
   
 }
 
 @media screen and (min-width: 320px) and (max-width: 639px){
 
+  main{
+    background: bottom left/26% no-repeat url(../../assets/images/strelitzia\ left.png),
+                100% 101%/19% no-repeat url(../../assets/images/leave_foto_big.png);
+  }
+
+  .content-wrapper{
+    grid-template-columns: repeat(12,1fr);
+    height: 1626px;
+    max-width: 320px;
+  }
+
+  .camera{
+    grid-area: 1/1/2/12;
+  }
+
+  .cam-online{
+    position: relative;
+    padding-top: 18px;
+    right: -10px;
+  }
+
+  .cam-online__title{
+    font-size: 1.6rem;
+    padding-top: 2px;
+    letter-spacing: -0.9px;
+    padding-bottom: 9px;
+  }
+
+  .cam-online__frame{
+    width: 298px;
+    height: 167px;
+  }
+
+  .animal-nav{
+    position: relative;
+    top: 135px;
+    left: 10px;
+    width: 63px;
+    height: 232px;
+    overflow-y: scroll;
+  }
+
+  .animal-nav__list{
+    padding: 5px;
+    padding-top: 0;
+    margin-top: -9px;
+  }
+
+  .animal-nav__item{
+    position: relative;
+    margin-bottom: -27px;
+  }
+
+  .animal-nav__item svg{
+    width: 50px;
+  }
+
+  .animal-nav__item:last-child{
+    position: sticky;
+    bottom: 0;
+    padding-top: 10px;
+  }
+
+  .animal-nav__item:last-child svg{
+    height: 53px;
+  }
+
+  .animal-nav::-webkit-scrollbar{
+    display: none;
+  }
+
+  .additional-cam{
+    left: 30px;
+    top: -516px;
+    width: 200px;
+    height: 155px;
+  }
+
+  .arrow{
+    display: none;
+  }
+
+  .cams{
+    overflow: scroll;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    height: 100%;
+  }
+
+  .cam{
+    margin-right: 10px;
+    margin-bottom: 5px;
+  }
+
+  .cam::after{
+    top: 3px;
+    left: 3px;
+    width: 19px;
+    height: 9px;
+    font-size: 0.3rem;
+    border-radius: 2px;
+  }
+
+  .cam iframe{
+    width: 89px;
+    height: 67px;
+  }
+
+  .about-animal{
+    flex-direction: column;
+    position: relative;
+    bottom: 602px;
+    right: 104px;
+    padding: 0;
+    border: none;
+  }
+
+  .about-animal__title,
+  .about-animal__intro_long .about-animal__title {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-14%);
+    width: 100%;
+    top: 2px;
+    text-align: center;
+    font-size: 1.5rem
+  }
+
+  .about-animal__img{
+    width: 320px;
+    height: 193px;
+    object-fit: cover;
+    object-position: 100% 29%;
+  }
+
+  .about-animal__text{
+    position: relative;
+    right: 4px;
+    top: 0px;
+    padding: 0;
+    padding-left: 53px;
+    padding-top: 0;
+    margin: 0;
+    width: 303px;
+    font-size: 1.1rem;
+    letter-spacing: -0.7px;
+    line-height: 22px;
+  }
+
+  .about-animal .btn{
+    margin-top: 30px;
+    margin-left: 52px;
+  }
+
+  .info{
+    grid-area: 4/1/5/12;
+    top: 40px;
+    padding: 0;
+    padding-left: 10px;
+    height: 330px;
+    width: 100%;
+  }
+
+  .info__view{
+    height: 375px;
+    overflow: hidden;
+  }
+
+  .info__text{
+    width: 100%;
+    padding-left: 5px;
+  }
+
+  .info__title::after{
+    padding: 0;
+  }
+
+  .info__piece{
+    align-items: baseline;
+    padding-bottom: 14px;
+  }
+
+  .info__piece:first-child{
+    padding-bottom: 33px;
+  }
+
+  .info__piece_multi .info__title{
+    padding-bottom: 12px;
+  }
+
+  .info__piece_multi .info__text{
+    padding: 0;
+    letter-spacing: 0.2px;
+    line-height: 21px; 
+  }
+
+  .donate{
+    height: 222px;
+  }
+
+  .donate .btn{
+    margin-bottom: 10px;
+  }
+
+  .info .form-btn_less{
+    display: none;
+  }
   
+  .info .form-btn_more{
+    display: block;
+    margin-top: 35px;
+    margin-left: 0px;
+  }
+    
 }
