@@ -301,3 +301,169 @@ main{
   background: center/cover  no-repeat url(../../assets/images/alligator-donate.png);
   background-position: 0 10%;
 }
+
+@media screen and (min-width: 1000px) and (max-width: 1080px) {
+
+  main{
+    background: bottom left/18% no-repeat url(../../assets/images/strelitzia\ left.png),
+                100% 103%/16% no-repeat url(../../assets/images/leave_foto_big.png);
+  }
+
+  .content-wrapper{
+    grid-template-columns: repeat(12,1fr);
+    height: 1970px;
+  }
+
+  .cam-online{
+    padding-top: 19px;
+    position: relative;
+    right: -24px;
+  }
+
+  .cam-online__frame{
+    width: 780px;
+    height: 437px;
+  }
+
+  .animal-nav{
+    width: 70px;
+    margin-top: -20px;
+    height: 438px;
+  }
+
+  .animal-nav__list{
+    padding-top: 0;
+    margin-top: -6px;
+  }
+
+  .animal-nav__item{
+    position: relative;
+    margin-bottom: -23px;
+  }
+
+  .animal-nav__item svg{
+    width: 53px;
+  }
+
+  .additional-cam{
+    left: 108px;
+    top: -176px;
+    width: 618px;
+  }
+
+  .arrow_left{
+    left: 648px;
+    top: 136px;
+  }
+
+  .arrow_right{
+    right: -91px;
+    top: 64px;
+  }
+
+  .cams{
+    overflow: scroll;
+    justify-content: flex-start;
+  }
+
+  .cam{
+    margin-right: 30px;
+  }
+
+  .cam::after{
+    top: 10px;
+    left: 10px;
+  }
+
+  .cam iframe{
+    width: 294px;
+  }
+
+  .about-animal{
+    padding: 0;
+    position: relative;
+    bottom: 172px;
+    right: 92px;
+    border: none;
+  }
+
+  .about-animal__img{
+    width: 453px;
+    height: 457px;
+  }
+
+  .about-animal__text{
+    padding-left: 0;
+    width: 450px;
+    font-size: 1.4rem;
+    position: relative;
+    right: 10px;
+    top: 2px;
+    letter-spacing: -0.2px;
+    line-height: 31px;
+  }
+
+  .about-animal .btn{
+    margin-top: 75px;
+    margin-left: -10px;
+  }
+
+  .info{
+    grid-area: 5/1/6/12;
+    bottom: 218px;
+    padding: 0;
+    padding-left: 30px;
+    height: 330px;
+  }
+
+  .info__text{
+    width: 106%;
+    padding-left: 5px;
+  }
+
+  .info__title::after{
+    padding: 0;
+  }
+
+  .info__piece{
+    align-items: baseline;
+  }
+
+  .info__piece_multi .info__title{
+    padding-bottom: 23px;
+  }
+
+  .info__piece_multi .info__text{
+    padding: 0;
+  }
+
+  /*Change with JS*/
+  .info .info__piece:nth-child(n+5){
+    display: none;
+  }
+
+  .info .form-btn_less{
+    display: none;
+  }
+  
+  .info .form-btn_more{
+    display: block;
+    margin-top: -13px;
+    margin-left: 3px;
+  }
+
+  .info__piece_multi .info__text:last-child{
+    display: none;
+  }
+  
+}
+
+@media screen and (min-width: 640px) and (max-width: 999px) {
+
+  
+}
+
+@media screen and (min-width: 320px) and (max-width: 639px){
+
+  
+}
