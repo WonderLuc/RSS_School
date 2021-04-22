@@ -133,7 +133,7 @@ footer .form-btn{
   color: var(--gray-smoky);
 }
 
-@media screen and (min-width: 1000px) and (max-width: 1080px) {
+@media screen and (min-width: 1000px) and (max-width: 1599px) {
 
   footer .logo{
     left: 45px;
@@ -163,41 +163,41 @@ footer .form-btn{
   }
 
   footer nav{
-    left: -3px;
+    left: -58px;
     top: -52px;
     padding: 0;
   }
 
+  .subscribe{
+    position: relative;
+  }
+
   .subscribe__title{
     position: relative;
-    right: 120px;
+    right: 178px;
     top: 5px;
+    width: 240px;
   }
 
   .subscribe__input{
     position: relative;
-    right: 120px;
+    right: 173px;
     top: 3px;
   }
 
   .subscribe .form-btn{
-    position: relative;
-    left: 100px;
-    bottom: 40px;
+    position: absolute;
+    left: 60px;
+    top: 83px;
   }
 
   .authorship{
-    bottom: 33px;
+    bottom: 50px;
     left: -17px;
   }
 
   .authorship p:last-child{
     margin-bottom: 0;
-  }
-
-  .subscribe .form-btn{
-    position: relative;
-    left: 115px;
   }
 
   .alter .logo{
@@ -213,16 +213,19 @@ footer .form-btn{
   }
 
   .alter .subscribe__title{
-    right: 135px;
+    right: 190px;
+    top: 5px;
+    width: 240px;
   }
 
   .alter .subscribe__input{
-    right: 132px;
+    right: 186px;
   }
 
   .alter .form-btn{
-    position: relative;
-    left: 102px;
+    position: absolute;
+    left: 48px;
+    top: 83px;
   }
 
   .alter .authorship{

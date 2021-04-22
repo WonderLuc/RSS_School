@@ -302,7 +302,7 @@ main{
   background-position: 0 10%;
 }
 
-@media screen and (min-width: 1000px) and (max-width: 1080px) {
+@media screen and (min-width: 1000px) and (max-width: 1599px) {
 
   main{
     background: bottom left/18% no-repeat url(../../assets/images/strelitzia\ left.png),
