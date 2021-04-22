@@ -78,6 +78,19 @@ input[type='range']::-webkit-slider-thumb {
 label:hover input[type='range']::-webkit-slider-thumb {
   background-color: #00c9b7;
 }
+
+label:active [type='range']::-webkit-slider-thumb {
+  width: 20px;
+  height: 25px;
+  border-radius: 5px;
+}
+
+label:active [type='range']::-webkit-slider-runnable-track{
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
 output {
   position: absolute;
   width: 60px;
