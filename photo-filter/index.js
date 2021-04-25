@@ -1,3 +1,6 @@
+let image = document.querySelector('.editor img');
+let editor = document.querySelector('.editor');
+
 // Fullscreen behaviour
 let fullscreenBtn = document.querySelector('.fullscreen');
 
@@ -11,22 +14,55 @@ fullscreenBtn.addEventListener('click', () => {
 
 // Filters behaviour 
 let filtersContainer = document.querySelector('.filters');
-const measure = {
-  'blur' : 'px',
-  'invert' : '%',
-  'sepia' : '%',
-  'saturate' : '%',
-  'hue' : 'deg'
+let baseFilters = getFilters();
+const filter = {
+  'blur' : {measure: 'px', base: 0},
+  'invert' : {measure: '%', base: 0},
+  'sepia' : {measure: '%', base: 0},
+  'saturate' : {measure: '%', base: 100},
+  'hue' : {measure: 'deg', base: 0}
 }
 
 function updateValue (event) {
+  // takes current input[type="range"]
   const elem = event.target;
+  // takes output
   const output = elem.nextElementSibling;
   const name = elem.getAttribute('name');
   output.innerText = elem.value;
-  document.documentElement.style.setProperty(`--${name}`, `${elem.value}${measure[name]}`);
+  document.documentElement.style.setProperty(`--${name}`, `${elem.value}${filter[name].measure}`);
+  drawFiltredImage();
 }
 
 [].forEach.call(filtersContainer.children, function (elem) {
   elem.addEventListener('input', updateValue);
-} )
+} );
+
+// Canvas
+let canvas = document.createElement('canvas');
+let ctx = canvas.getContext('2d');
+canvas.width = image.naturalWidth;
+canvas.height = image.naturalHeight;
+editor.append(canvas);
+
+function getFilters(){
+  return getComputedStyle(image)['filter'];
+}
+
+function drawFiltredImage(){
+  ctx.clearRect(0,0, canvas.width, canvas.height);
+  //Blur correction
+  let blurOriginal = +getFilters().match(/(?<=blur\()\d/);
+  let blurСoefficient =  Math.round(blurOriginal * (image.naturalHeight/image.height));
+  // Filters + correction for blur
+  ctx.filter = getFilters().replace(/(?<=blur\()\d/,`${blurСoefficient}`);
+  ctx.drawImage(image, 0, 0);
+}
+
+
+document.body.onload = () => {
+  drawFiltredImage();
+};
+
+
+
