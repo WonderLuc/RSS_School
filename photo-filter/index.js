@@ -42,12 +42,14 @@ function updateValue (event) {
 let canvas = document.createElement('canvas');
 let ctx = canvas.getContext('2d');
 updateCanvasSize();
+canvas.style.display = 'none';
 editor.append(canvas);
 
 function updateCanvasSize() {
   canvas.width = image.naturalWidth;
   canvas.height = image.naturalHeight;
 }
+
 function getFilters() {
   return getComputedStyle(image)['filter'];
 }
@@ -106,3 +108,43 @@ document.querySelector('.btn-load--input').addEventListener('input', e => {
     e.target.value = '';
   }
 })
+
+//next picture
+let imgCounter = 1;
+let currentTime;
+let date = new Date().getHours();
+if(date >= 0 && date <= 5){
+  currentTime = 'night';
+}
+if(date >= 6 && date <= 11){
+  currentTime = 'morning';
+}
+if(date >= 12 && date <= 17){
+  currentTime = 'day';
+}
+if(date >= 18 && date <= 23){
+  currentTime = 'evening';
+}
+const PRELOAD_IMG = [];
+for (let i = 1; i <= 20; i++) {
+  i = i < 10 ? `0${i}` : i;
+  fetch(`https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/${currentTime}/${i}.jpg`)
+  .then(res => {
+    return res.blob();
+  })
+  .then(blob => {
+    PRELOAD_IMG.push(URL.createObjectURL(blob));
+  })
+}
+
+document.querySelector('.btn-next').addEventListener('click', (e) => {
+  let imgNumber = imgCounter < 10 ? `0${imgCounter}` : imgCounter;
+  image.src = PRELOAD_IMG[imgCounter - 1];
+  image.onload = () => {
+    updateCanvasSize();
+    drawFiltredImage();
+  }
+  imgCounter++;
+  imgCounter = imgCounter >= 20 ? 1 : imgCounter;
+});
+
