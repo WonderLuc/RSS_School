@@ -85,3 +85,10 @@ document.querySelector('.btn-reset').addEventListener('click', () => {
   drawFiltredImage();
 });
 
+//Save picture
+document.querySelector('.btn-save').addEventListener('click', () => {
+  let dataLink = document.createElement('a');
+  dataLink.href = `${canvas.toDataURL()}`; 
+  dataLink.download = 'awesomeImage';
+  dataLink.click();  
+});
