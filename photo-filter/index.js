@@ -41,11 +41,14 @@ function updateValue (event) {
 // Canvas
 let canvas = document.createElement('canvas');
 let ctx = canvas.getContext('2d');
-canvas.width = image.naturalWidth;
-canvas.height = image.naturalHeight;
+updateCanvasSize();
 editor.append(canvas);
 
-function getFilters(){
+function updateCanvasSize() {
+  canvas.width = image.naturalWidth;
+  canvas.height = image.naturalHeight;
+}
+function getFilters() {
   return getComputedStyle(image)['filter'];
 }
 
@@ -89,6 +92,17 @@ document.querySelector('.btn-reset').addEventListener('click', () => {
 document.querySelector('.btn-save').addEventListener('click', () => {
   let dataLink = document.createElement('a');
   dataLink.href = `${canvas.toDataURL()}`; 
-  dataLink.download = 'awesomeImage';
+  dataLink.download = 'awesome-image';
   dataLink.click();  
 });
+
+//Load picture
+document.querySelector('.btn-load--input').addEventListener('input', e => {
+  let file = e.target.files[0];
+  image.src = URL.createObjectURL(file);
+  image.onload = () => {
+    updateCanvasSize();
+    drawFiltredImage();
+    e.target.value = '';
+  }
+})
