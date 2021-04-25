@@ -66,3 +66,22 @@ document.body.onload = () => {
 
 
 
+//Buttons behaviour 
+//Reset
+function clearValue(elem) {
+  let input = elem.querySelector('input');
+  let output = input.nextElementSibling;
+  let name = input.getAttribute('name');
+  input.value = filter[name].base;
+  output.innerText = input.value;
+  document.documentElement.style.setProperty(`--${name}`, `${input.value}${filter[name].measure}`);
+}
+
+document.querySelector('.btn-reset').addEventListener('click', () => {
+  document.documentElement.style.filter = baseFilters;
+  [].forEach.call(filtersContainer.children, function (elem) {
+    clearValue(elem);
+  });
+  drawFiltredImage();
+});
+
