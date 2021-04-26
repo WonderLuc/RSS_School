@@ -9,7 +9,7 @@ a:focus {
 }
 body {
   min-height: 100vh;
-  background-color: #313940;
+  background: #313940;
   font-family: 'Open Sans', Arial, Helvetica, sans-serif;
   overflow-x: hidden;
 }
@@ -35,6 +35,7 @@ body {
   width: 100%;
   max-width: 1140px;
   margin: 0 auto;
+  background: #313940;
 }
 label:not(.btn) {
   display: block;
@@ -211,6 +212,7 @@ img {
 :-webkit-full-screen .fullscreen {
   background-image: url('assets/svg/fullscreen-exit.svg');
 }
+
 .footer {
   border-top: 1px solid;
   border-image-slice: 1;
