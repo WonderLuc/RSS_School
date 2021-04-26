@@ -20,7 +20,9 @@ const filter = {
   'invert' : {measure: '%', base: 0},
   'sepia' : {measure: '%', base: 0},
   'saturate' : {measure: '%', base: 100},
-  'hue' : {measure: 'deg', base: 0}
+  'hue' : {measure: 'deg', base: 0},
+  'contrast' : {measure: '%', base: 100},
+  'brightness' : {measure: '%', base: 100}  
 }
 
 function updateValue (event) {
