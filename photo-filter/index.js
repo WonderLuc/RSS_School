@@ -1,5 +1,4 @@
 let image = document.querySelector('.editor img');
-image.crossOrigin = 'Anonymouse';
 let editor = document.querySelector('.editor');
 
 // Fullscreen behaviour
