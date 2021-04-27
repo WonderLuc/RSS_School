@@ -1,4 +1,5 @@
 let image = document.querySelector('.editor img');
+image.crossOrigin = 'Anonymouse';
 let editor = document.querySelector('.editor');
 
 // Fullscreen behaviour
@@ -143,14 +144,13 @@ for (let i = 1; i <= 20; i++) {
 }
 
 document.querySelector('.btn-next').addEventListener('click', (e) => {
-  let imgNumber = imgCounter < 10 ? `0${imgCounter}` : imgCounter;
   image.src = PRELOAD_IMG[imgCounter - 1];
   image.onload = () => {
     updateCanvasSize();
     drawFiltredImage();
   }
   imgCounter++;
-  imgCounter = imgCounter >= 20 ? 1 : imgCounter;
+  imgCounter = imgCounter > 20 ? 1 : imgCounter;
 });
 
 // Additional behaviour
