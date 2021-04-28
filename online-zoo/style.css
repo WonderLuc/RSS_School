@@ -129,6 +129,7 @@
   height: 900px;
   margin: 0 auto;
   padding-top: 28px;
+  padding-right: 10px;
   overflow: scroll;
 }
 
@@ -200,6 +201,21 @@
 
 .animal_alligator{
   background: center/cover no-repeat url(./assets/images/croco.jpg);
+}
+.animal_monkey{
+  background: center/cover no-repeat url(./assets/images/monkey.jpg);
+}
+.animal_puma{
+  background: center/cover no-repeat url(./assets/images/puma.jpg);
+}
+.animal_elephant{
+  background: center/cover no-repeat url(./assets/images/elephant.jpg);
+}
+.animal_hedgehog{
+  background: center/cover no-repeat url(./assets/images/hedgehog.jpg);
+}
+.animal_parrot{
+  background: center/cover no-repeat url(./assets/images/parrot.jpg);
 }
 .animal__sign{
   position: absolute;
@@ -552,6 +568,8 @@
   
   .animals{
     padding-top: 20px;
+    padding-right: 30px;
+    width: 94.2%;
   }
   .animal{
     width: 294px;
@@ -773,6 +791,11 @@
   .zoos-wrapper{
     padding-top: 15px;
     max-width: 640px;
+  }
+  
+  .animals{
+    padding-right: 30px;
+    width: 92%
   }
   
   .animal{

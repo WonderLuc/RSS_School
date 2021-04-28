@@ -37,8 +37,27 @@ function goToAnimal(e){
   
 }
 
+function scrollPetsSlider(isForward = true){
+  let animalsContainer = document.querySelector('.animals');
+  if ((animalsContainer.scrollLeft === 0 && !isForward) ||
+     ((animalsContainer.scrollWidth - (animalsContainer.clientWidth + animalsContainer.scrollLeft)) === 0) && isForward) {
+      isForward = !isForward;
+      let x = isForward? animalsContainer.scrollWidth: - animalsContainer.scrollWidth;
+      animalsContainer.scrollBy(x,0);
+      return;
+  }
+  let x = isForward? animalsContainer.clientWidth: - animalsContainer.clientWidth;
+  animalsContainer.scrollBy(x,0);
+}
+
 document.querySelector('.watch .btn').addEventListener('click', goToZoos);
 document.querySelector('.zoos .btn').addEventListener('click', goToMap);
 document.querySelector('.contacts .btn').addEventListener('click', goToDonate);
 document.querySelector('footer .logo').addEventListener('click', scrollToHeader);
 document.querySelector('.animals').addEventListener('click', goToAnimal);
+document.querySelector('.zoos-wrapper .arrow_right').addEventListener('click', () => {
+  scrollPetsSlider();
+})
+document.querySelector('.zoos-wrapper .arrow_left').addEventListener('click', () => {
+  scrollPetsSlider(false);
+})
