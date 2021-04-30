@@ -399,6 +399,12 @@
 .testimonials{
   display: flex;
   padding-top: 20px;
+  width: 100%;
+  overflow: scroll;
+}
+
+.testimonials::-webkit-scrollbar {
+  display: none;
 }
 
 .testimonial-wrapper{
@@ -484,6 +490,8 @@
 }
 
 .progress-bar__current{
+  position: relative;
+  left: 0%;
   width: 115px;
   height: 8px;
   background: var(--orange);
