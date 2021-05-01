@@ -31,6 +31,65 @@ function scrollCamSlider(isForward = true){
   camContainer.scrollBy(x,0);
 }
 
+// Show/hide text about animal 
+let contentWrapper = document.querySelector('.content-wrapper');
+let textInfoWrapper = document.querySelector('.info__view');
+let buttonMore = document.querySelector('.form-btn_more');
+let buttonLess = document.querySelector('.form-btn_less');
+
+function showMore() {
+  contentWrapper.style = '';
+  textInfoWrapper.style = '';
+  buttonMore.style.display = 'none';
+  buttonLess.style.display = 'block';
+}
+
+function showLess() {
+  contentWrapper.style = ' grid-template-rows: 112px 652px 290px 664px 50vh;';
+  textInfoWrapper.style = 'height: 300px';
+  buttonLess.style.display = 'none';
+  buttonMore.style.display = 'block';
+}
+
+showLess();
+
+// Fix for sticky aside 
+let isAbsolute = false;
+let lastPageOffset;
+
+function debounce (func , delay) {
+  let isCooldown = false;
+
+  return function () {
+    if (isCooldown) return ;
+    func.apply(this, arguments);
+    isCooldown = true;
+    setTimeout(() => isCooldown = false, delay);
+  }
+}
+
+function fixAnimalNav(){
+  let positionAside = document.querySelector('.animal-nav').getBoundingClientRect().y + window.pageYOffset;
+  let positionAnimalHeader = document.querySelector('.about-animal__title').getBoundingClientRect().y + window.pageYOffset;
+ 
+  if (!isAbsolute && positionAnimalHeader - positionAside < 450){
+    document.querySelector('.animal-nav').style = `position: absolute; top:${positionAside - 203}px;`;
+    isAbsolute = true;
+    lastPageOffset = window.pageYOffset;
+    return;
+  }
+  if (isAbsolute && lastPageOffset > window.pageYOffset){
+    document.querySelector('.animal-nav').style = '';
+    isAbsolute = false;
+  }
+}
+
+if ( window.outerWidth < 1600 && window.outerWidth > 999) {
+  let debounced = debounce(fixAnimalNav, 50);
+  document.addEventListener('scroll', debounced);
+}
+
+
 
 document.querySelector('footer .logo').addEventListener('click', scrollToHeader);
 document.querySelector('.contacts .btn').addEventListener('click', goToDonate);
@@ -41,4 +100,7 @@ document.querySelector('.additional-cam .arrow_right').addEventListener('click',
 })
 document.querySelector('.additional-cam .arrow_left').addEventListener('click', () => {
   scrollCamSlider(false);
-})
+});
+
+buttonMore.addEventListener('click', showMore);
+buttonLess.addEventListener('click', showLess);

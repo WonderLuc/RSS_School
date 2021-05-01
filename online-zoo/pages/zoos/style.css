@@ -142,7 +142,11 @@ main{
 
 .cams{
   display: flex;
-  justify-content: space-around;
+  overflow: scroll;
+}
+
+.cams::-webkit-scrollbar{
+  display: none;
 }
 
 .cams::-webkit-scrollbar{
@@ -151,6 +155,7 @@ main{
 
 .cam{
   position: relative;
+  margin-right: 30px;
 }
 
 .fake{
@@ -223,6 +228,10 @@ main{
   grid-area: 5/2/6/12;
   padding-left: 90px;
   padding-top: 41px;
+}
+
+.info__view{
+  overflow: hidden;
 }
 
 .info__piece{
@@ -319,7 +328,11 @@ main{
 
   .content-wrapper{
     grid-template-columns: repeat(12,1fr);
-    height: 1970px;
+    
+  }
+
+  .gorilla{
+    grid-template-rows: 112px 652px 290px 664px 2330px;
   }
 
   .cam-online{
@@ -421,7 +434,6 @@ main{
     bottom: 218px;
     padding: 0;
     padding-left: 30px;
-    height: 330px;
     width: 102%;
   }
 
@@ -436,6 +448,7 @@ main{
 
   .info__piece{
     align-items: baseline;
+    width: 95%;
   }
 
   .info__piece_multi .info__title{
@@ -447,7 +460,6 @@ main{
   }
 
   .info__view{
-    height: 301px;
     overflow: hidden;
   }
 
@@ -457,7 +469,7 @@ main{
   
   .info .form-btn_more{
     display: block;
-    margin-top: -13px;
+    margin-top: 30px;
     margin-left: 3px;
   }
 
@@ -472,8 +484,12 @@ main{
 
   .content-wrapper{
     grid-template-columns: repeat(12,1fr);
-    height: 2047px;
+    grid-template-rows: 112px 652px 290px 664px 1500px;
     max-width: 640px;
+  }
+
+  .gorilla {
+    grid-template-rows: 112px 652px 290px 664px 3300px;
   }
 
   .cam-online{
@@ -607,17 +623,15 @@ main{
     bottom: 148px;
     padding: 0;
     padding-left: 20px;
-    height: 330px;
     width: 100%;
   }
 
   .info__view{
-    height: 264px;
     overflow: hidden;
   }
 
   .info__text{
-    width: 106%;
+    width: 95%;
     padding-left: 5px;
   }
 
@@ -670,8 +684,12 @@ main{
 
   .content-wrapper{
     grid-template-columns: repeat(12,1fr);
-    height: 1626px;
+    grid-template-rows: 112px 652px 290px 664px 1950px;
     max-width: 320px;
+  }
+
+  .gorilla{
+    grid-template-rows: 112px 652px 290px 664px 5350px;
   }
 
   .camera{
@@ -822,12 +840,10 @@ main{
     top: 40px;
     padding: 0;
     padding-left: 10px;
-    height: 330px;
     width: 100%;
   }
 
   .info__view{
-    height: 375px;
     overflow: hidden;
   }
 
