@@ -21,17 +21,28 @@
 
 .map-container{
   position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   margin: 0;
+  width: 100%;
+  height: 930px;
+  overflow: scroll;
+  cursor: grab;
+}
+
+.map-container:active{
+  cursor: grabbing;
+}
+.map-container::-webkit-scrollbar {
+  display: none;
+}
+
+.earth-map{
   width: 100%;
 }
 
 .map__legend{
   position: absolute;
   top: 0;
-  width: 1085px;
+  width: 100%;
   height: 100%;
 }
 
@@ -46,8 +57,11 @@
   fill:var(--orange);
 }
 
-svg:hover path{
+.animal:hover svg path{
   fill: var(--green);
+  cursor: pointer;
+}
+.animal:hover{
   cursor: pointer;
 }
 
@@ -56,9 +70,7 @@ svg:hover path{
   position: relative;
 }
 
-.animal__img:hover ~ .tooltip,
-.animal__marker:hover ~ .tooltip,
-.tooltip:hover{
+.tooltip_active{
   animation: show 1s;
   display: block;
   position: absolute;
@@ -66,8 +78,8 @@ svg:hover path{
 
 /*PANDA*/
 .animal_panda{
-  top: 327px;
-  right: 187px;
+  left: 80%;
+  top: 45%;
 }
 
 .animal_panda .animal__img{
@@ -87,8 +99,8 @@ svg:hover path{
 
 /*EAGLE*/
 .animal_eagle{
-  top: 355px;
-  left: 140px;
+  top: 50%;
+  left: 13%;
 }
 .animal_eagle .animal__place{
   bottom: 40px;
@@ -107,8 +119,8 @@ svg:hover path{
 
 /*GORILLA*/
 .animal_gorilla{
-  top: 458px;
-  left: 544px;
+  top: 67.6%;
+  left: 50.8%;
 }
 
 .animal_gorilla .animal__place{
@@ -127,8 +139,8 @@ svg:hover path{
 
 
 .animal_alligator{
-  left: 257px;
-  top: 370px;
+  top: 55%;
+  left: 23.8%;
 }
 
 .animal_alligator .animal__place{
@@ -174,34 +186,18 @@ svg:hover path{
   fill: var(--green);
 }
 
-@media screen and (min-width: 1000px) and (max-width: 1080px) {
+@media screen and (min-width: 1000px) and (max-width: 1599px) {
 
   .ocean{
     min-height: auto;
   }
 
   .map-container{
-    height: 747px;
-  }
-
-  .earth-map{
-    width: 937px;
-    position: relative;
-    bottom: -24px;
-    left: 3px;
-  }
-
-  .map__legend{
-    width: 100%;
-    max-width: 1000px;
+    height: 750px;
   }
 
   .animal__place{
     font-size: 0.9rem;
-  }
-
-  .animal__img{
-    width: 93%;
   }
 
   .animal_eagle .animal__img{
@@ -210,23 +206,23 @@ svg:hover path{
   }
 
   .animal_eagle{
-    top: 400px;
-    left: 150px;
+    top: 51%;
+    left: 13%;
   }
 
   .animal_gorilla{
-    top: 490px;
-    left: 498px;
+    top: 67.8%;
+    left: 50.6%;
   }
 
   .animal_alligator{
-    left: 251px;
-    top: 414px;
+    top: 55.6%;
+    left: 23.9%;
   }
 
   .animal_panda{
-    top: 379px;
-    right: 187px;
+    top: 46%;
+    left: 80%;
   }
 
   .animal_panda .animal__place{
