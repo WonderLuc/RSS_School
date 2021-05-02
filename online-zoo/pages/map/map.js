@@ -69,8 +69,26 @@ function zoomOut() {
   });
 }
 
+let lastActive;
+
+function activeTooltip () {
+  lastActive = this.querySelector('.tooltip');
+  lastActive.classList.add('tooltip_active');
+}
+
+function deactiveTooltip () {
+  if (lastActive) {
+    lastActive.classList.remove('tooltip_active');
+    lastActive = undefined;
+  } 
+  return;
+}
 
 document.querySelector('footer .logo').addEventListener('click', scrollToHeader);
 document.querySelector('.contacts .btn').addEventListener('click', goToDonate);
 document.querySelector('.zoom__btn_plus').addEventListener('click', zoomIn);
 document.querySelector('.zoom__btn_minus').addEventListener('click', zoomOut);
+props.animals.forEach(obj => {
+  obj.animal.addEventListener('click', activeTooltip);
+});
+document.querySelector('.map-container').addEventListener('click', deactiveTooltip, true);
