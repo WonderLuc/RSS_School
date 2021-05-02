@@ -32,7 +32,6 @@ props.animals.map(obj => {
     hPercent = (originalH * 100) / props.mapImg.getBoundingClientRect().height;
     obj.wPercent = wPercent;
     obj.hPercent = hPercent;
-    console.log( wPercent, hPercent)
   }, 700);
 })
 
@@ -84,6 +83,20 @@ function deactiveTooltip () {
   return;
 }
 
+let x;
+let y;
+function scrollMap(e) {
+  e.preventDefault();
+  let container = document.querySelector('.map-container');
+  if (!x || !y) {
+    x = e.clientX;
+    y = e.clientY;
+  }
+  container.scrollBy(x - e.clientX, y - e.clientY);
+  x =  e.clientX;
+  y =  e.clientY;
+}
+
 document.querySelector('footer .logo').addEventListener('click', scrollToHeader);
 document.querySelector('.contacts .btn').addEventListener('click', goToDonate);
 document.querySelector('.zoom__btn_plus').addEventListener('click', zoomIn);
@@ -92,3 +105,14 @@ props.animals.forEach(obj => {
   obj.animal.addEventListener('click', activeTooltip);
 });
 document.querySelector('.map-container').addEventListener('click', deactiveTooltip, true);
+document.querySelector('.map-container').addEventListener('mousedown', () => {
+  document.querySelector('.map-container').addEventListener('mousemove', scrollMap);
+});
+document.addEventListener('mouseup', () => {
+  document.querySelector('.map-container').removeEventListener('mousemove', scrollMap);
+  x = undefined;
+  y = undefined;
+});
+document.addEventListener('mousedown', e => {
+  e.preventDefault();
+});
