@@ -131,6 +131,7 @@
   padding-top: 28px;
   padding-right: 10px;
   overflow: scroll;
+  scroll-behavior: smooth;
 }
 
 .animals::-webkit-scrollbar{
@@ -401,6 +402,7 @@
   padding-top: 20px;
   width: 100%;
   overflow: scroll;
+  scroll-behavior: smooth;
 }
 
 .testimonials::-webkit-scrollbar {

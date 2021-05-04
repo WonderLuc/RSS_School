@@ -38,6 +38,7 @@ function goToAnimal(e){
 }
 
 // Scroll for Pets-slider
+
 function scrollPetsSlider(isForward = true){
   let animalsContainer = document.querySelector('.animals');
   if ((animalsContainer.scrollLeft === 0 && !isForward) ||
@@ -51,12 +52,14 @@ function scrollPetsSlider(isForward = true){
   animalsContainer.scrollBy(x,0);
 }
 
+
+
+//Testimonials behaviour
 let wrapper =  document.querySelector('.testimonials');
 let testimonial = document.querySelector('.testimonial-wrapper');
 let widthCalc = Math.floor(wrapper.clientWidth / testimonial.clientWidth);
 let heightCalc = Math.floor(wrapper.clientHeight / testimonial.clientHeight);
 
-//Testimonials behaviour
 function renderTestimonials(){  
   let viewElements = (widthCalc > heightCalc? widthCalc : heightCalc) + 7;
   while (wrapper.children.length != viewElements) {
@@ -144,24 +147,30 @@ function moveProgressBar(event){
     wrapper.scrollTo(offset*(testimonial.getBoundingClientRect().width +30), 0);
   }
 }
+
+function mouseUpTestimonial () {
+  document.removeEventListener('mousemove', moveProgressBar);
+  interval = setInterval(scrollTestimonials, 10000);
+  document.removeEventListener('mouseup', mouseUpTestimonial);
+}
 document.querySelector('.progress-bar__current').ondragstart = () => {return false};
 document.querySelector('.progress-bar__current').addEventListener('mousedown', (e) => {
   clearInterval(interval);
   document.addEventListener('mousemove', moveProgressBar);
+  document.addEventListener('mouseup', mouseUpTestimonial);
 });
-document.addEventListener('mouseup', (e) => {
-  document.removeEventListener('mousemove', moveProgressBar);
-  interval = setInterval(scrollTestimonials, 10000);
-});
+
 
 document.querySelector('.watch .btn').addEventListener('click', goToZoos);
 document.querySelector('.zoos .btn').addEventListener('click', goToMap);
 document.querySelector('.contacts .btn').addEventListener('click', goToDonate);
 document.querySelector('footer .logo').addEventListener('click', scrollToHeader);
 document.querySelector('.animals').addEventListener('click', goToAnimal);
-document.querySelector('.zoos-wrapper .arrow_right').addEventListener('click', () => {
+document.querySelector('.zoos-wrapper .arrow_right').addEventListener('click', (e) => {
+  e.preventDefault();
   scrollPetsSlider();
 })
-document.querySelector('.zoos-wrapper .arrow_left').addEventListener('click', () => {
+document.querySelector('.zoos-wrapper .arrow_left').addEventListener('click', (e) => {
+  e.preventDefault();
   scrollPetsSlider(false);
 })

@@ -143,6 +143,7 @@ main{
 .cams{
   display: flex;
   overflow: scroll;
+  scroll-behavior: smooth;
 }
 
 .cams::-webkit-scrollbar{
