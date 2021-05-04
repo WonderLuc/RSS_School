@@ -164,7 +164,7 @@ document.querySelector('.testimonials').addEventListener('click', (e) => {
     console.log('continue slide every 10sec');
     scrollTestimonials();
     interval = setInterval(scrollTestimonials, 10000);
-  }, 40000)
+  }, 30000)
 });
 
 // progress-bar move
