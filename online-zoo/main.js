@@ -38,20 +38,61 @@ function goToAnimal(e){
 }
 
 // Scroll for Pets-slider
-
-function scrollPetsSlider(isForward = true){
-  let animalsContainer = document.querySelector('.animals');
-  if ((animalsContainer.scrollLeft === 0 && !isForward) ||
-     ((animalsContainer.scrollWidth - (animalsContainer.clientWidth + animalsContainer.scrollLeft)) === 0) && isForward) {
-      isForward = !isForward;
-      let x = isForward? animalsContainer.scrollWidth: - animalsContainer.scrollWidth;
-      animalsContainer.scrollBy(x,0);
-      return;
+class Slider {
+  constructor (element) {
+    this.wrapper = element;
+    this.gap;
+    this.countViewedElems;
+    this.viewedElems = [];
+    this.hiddenElems = [];
   }
-  let x = isForward? animalsContainer.clientWidth: - animalsContainer.clientWidth;
-  animalsContainer.scrollBy(x,0);
+  calculate () {
+    this.gap = +getComputedStyle(this.wrapper.children[0]).marginLeft.replace('px','');
+    this.countViewedElems = 2 * Math.floor(this.wrapper.clientWidth / (this.wrapper.children[0].clientWidth));
+    [].forEach.call(this.wrapper.children, (animal, index) => {
+      if (index < this.countViewedElems) {
+        this.viewedElems.push(animal);
+        return;
+      }
+      this.hiddenElems.push(animal);
+    });
+    this.render();
+  }
+
+  hide () {
+    this.wrapper.innerHTML = '';
+  } 
+ 
+  show () {
+    this.viewedElems.forEach( animal => {
+      this.wrapper.append(animal);
+    });
+  }
+
+  render () {
+    this.hide();
+    this.show();
+  }
+
+  slideRight () {
+    for (let i = 0; i < this.countViewedElems; i++) {
+      this.hiddenElems.push( this.viewedElems.shift() );
+      this.viewedElems.push( this.hiddenElems.shift() );
+    }
+    this.render();  
+  }
+
+  slideLeft () {
+    for (let i = 0; i < this.countViewedElems; i++) {
+      this.hiddenElems.unshift( this.viewedElems.pop() );
+      this.viewedElems.unshift( this.hiddenElems.pop() );
+    }
+    this.render();
+  }
 }
 
+let slider = new Slider(document.querySelector('.animals'));
+slider.calculate();
 
 
 //Testimonials behaviour
@@ -167,10 +208,8 @@ document.querySelector('.contacts .btn').addEventListener('click', goToDonate);
 document.querySelector('footer .logo').addEventListener('click', scrollToHeader);
 document.querySelector('.animals').addEventListener('click', goToAnimal);
 document.querySelector('.zoos-wrapper .arrow_right').addEventListener('click', (e) => {
-  e.preventDefault();
-  scrollPetsSlider();
+  slider.slideRight();
 })
 document.querySelector('.zoos-wrapper .arrow_left').addEventListener('click', (e) => {
-  e.preventDefault();
-  scrollPetsSlider(false);
+  slider.slideLeft();
 })

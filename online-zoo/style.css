@@ -153,6 +153,10 @@
   right: -90px;
 }
 
+.arrow:hover {
+  cursor: pointer;
+}
+
 .arrow:hover circle{
   fill: var(--green);
 }
