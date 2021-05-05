@@ -97,6 +97,19 @@ function scrollMap(e) {
   y =  e.clientY;
 }
 
+function debounce (func , delay) {
+  let isCooldown = false;
+
+  return function () {
+    if (isCooldown) return ;
+    func.apply(this, arguments);
+    isCooldown = true;
+    setTimeout(() => isCooldown = false, delay);
+  }
+}
+
+let debounced  = debounce(scrollMap, 50);
+
 document.querySelector('footer .logo').addEventListener('click', scrollToHeader);
 document.querySelector('.contacts .btn').addEventListener('click', goToDonate);
 document.querySelector('.zoom__btn_plus').addEventListener('click', zoomIn);
@@ -106,10 +119,10 @@ props.animals.forEach(obj => {
 });
 document.querySelector('.map-container').addEventListener('click', deactiveTooltip, true);
 document.querySelector('.map-container').addEventListener('mousedown', () => {
-  document.querySelector('.map-container').addEventListener('mousemove', scrollMap);
+  document.querySelector('.map-container').addEventListener('mousemove',debounced);
 });
 document.addEventListener('mouseup', () => {
-  document.querySelector('.map-container').removeEventListener('mousemove', scrollMap);
+  document.querySelector('.map-container').removeEventListener('mousemove', debounced);
   x = undefined;
   y = undefined;
 });
