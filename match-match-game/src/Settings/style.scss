@@ -1,0 +1,39 @@
+  @import '../comonStyles.scss';
+
+.settings{
+  width: 100%;
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: $dark-glass-color;
+  cursor: default;
+
+  &__header{
+    align-self: flex-start;
+    color: $active-color;
+    margin-bottom: 10px;
+  } 
+}
+
+form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.setting{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 20px 10px;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.setting__input{
+  padding: 5px;
+}
