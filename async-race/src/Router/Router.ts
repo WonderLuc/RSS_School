@@ -3,8 +3,11 @@ import { Route } from '../routes';
 export default class Router {
   routes: Route[];
 
+  currentHash: string;
+
   constructor(routes: Route[]) {
     this.routes = routes;
+    this.currentHash = window.location.hash.slice(2);
     window.addEventListener('popstate', () => {
       this.popStateHandler();
     });
@@ -20,6 +23,11 @@ export default class Router {
     if (!root) {
       return;
     }
+    if (!elem) {
+      root.innerHTML = this.findRoute('404').html;
+      return;
+    }
+    this.currentHash = name;
     root.innerHTML = elem.html;
   }
 
@@ -31,6 +39,7 @@ export default class Router {
 
   changeRoute(name: string): void {
     window.location.hash = `/${name}`;
+    this.currentHash = name;
     const elem = this.findRoute(name);
     const root = document.getElementById('root');
     if (!root) {

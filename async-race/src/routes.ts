@@ -17,6 +17,7 @@ class Route implements RouteTemp {
 const routes = [
   new Route('', '<p>Garage</p>'),
   new Route('winners', '<p>Winners</p>'),
+  new Route('404', '<p>Error 404</p>'),
 ];
 
 export { routes, RouteTemp, Route };
