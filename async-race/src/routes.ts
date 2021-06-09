@@ -1,23 +1,27 @@
+import Garage from './Garage/Garage';
+import Winners from './Winners/Winners';
+import ErrorPage from './ErrorPage/ErrorPage';
+
 interface RouteTemp {
   path: string;
-  html: string;
+  component: Garage | ErrorPage | Winners;
 }
 
 class Route implements RouteTemp {
   path: string;
 
-  html: string;
+  component: Garage | ErrorPage | Winners;
 
-  constructor(path: string, html: string) {
+  constructor(path: string, component: Garage | ErrorPage | Winners) {
     this.path = path;
-    this.html = html;
+    this.component = component;
   }
 }
 
 const routes = [
-  new Route('', '<p>Garage</p>'),
-  new Route('winners', '<p>Winners</p>'),
-  new Route('404', '<p>Error 404</p>'),
+  new Route('404', new ErrorPage()),
+  new Route('', new Garage()),
+  new Route('winners', new Winners()),
 ];
 
 export { routes, RouteTemp, Route };

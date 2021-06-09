@@ -17,6 +17,7 @@ export default class Router {
   }
 
   popStateHandler(): void {
+    // Method for direct adress change
     const name = window.location.hash.slice(2);
     const elem = this.findRoute(name);
     const root = document.getElementById('root');
@@ -24,11 +25,11 @@ export default class Router {
       return;
     }
     if (!elem) {
-      root.innerHTML = this.findRoute('404').html;
+      root.innerHTML = this.findRoute('404').component.render().outerHTML;
       return;
     }
     this.currentHash = name;
-    root.innerHTML = elem.html;
+    root.innerHTML = elem.component.render().outerHTML;
   }
 
   findRoute(name: string): Route {
@@ -38,6 +39,7 @@ export default class Router {
   }
 
   changeRoute(name: string): void {
+    // Method for Links
     window.location.hash = `/${name}`;
     this.currentHash = name;
     const elem = this.findRoute(name);
@@ -45,6 +47,6 @@ export default class Router {
     if (!root) {
       return;
     }
-    root.innerHTML = elem.html;
+    root.innerHTML = elem.component.render().outerHTML;
   }
 }

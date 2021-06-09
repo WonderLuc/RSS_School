@@ -17,6 +17,7 @@ export default class Header {
   }
 
   setActive(): void {
+    // Set active link or remove if it's 404 request
     const elem: HTMLElement | null = document.querySelector(
       `.nav__element[data-src="${this.router.currentHash}"]`
     );
