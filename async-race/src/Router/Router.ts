@@ -16,8 +16,8 @@ export default class Router {
     });
   }
 
-  popStateHandler(): void {
-    // Method for direct adress change
+  async popStateHandler(): Promise<void> {
+    // Method for adress change
     const name = window.location.hash.slice(2);
     const elem = this.findRoute(name);
     const root = document.getElementById('root');
@@ -27,6 +27,9 @@ export default class Router {
     if (!elem) {
       root.innerHTML = this.findRoute('404').component.render().outerHTML;
       return;
+    }
+    if (elem.component.isUpdateble) {
+      await elem.component.update();
     }
     this.currentHash = name;
     root.innerHTML = elem.component.render().outerHTML;
@@ -42,11 +45,5 @@ export default class Router {
     // Method for Links
     window.location.hash = `/${name}`;
     this.currentHash = name;
-    const elem = this.findRoute(name);
-    const root = document.getElementById('root');
-    if (!root) {
-      return;
-    }
-    root.innerHTML = elem.component.render().outerHTML;
   }
 }
