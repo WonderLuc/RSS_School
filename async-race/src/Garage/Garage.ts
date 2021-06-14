@@ -1,5 +1,6 @@
 import CarSettings from '../CarSettings/CarSettings';
 import { Car, CarInterface } from '../Car/Car';
+import Loader from '../Loader/Loader';
 
 require('./style.scss');
 
@@ -12,12 +13,15 @@ export default class Garage {
 
   isUpdateble: boolean;
 
+  loader: HTMLElement;
+
   constructor() {
     this.container = document.createElement('article');
     this.container.classList.add('garage');
     this.carSettings = new CarSettings();
     this.carsArray = [];
     this.isUpdateble = true;
+    this.loader = new Loader().render();
   }
 
   render(): HTMLElement {
@@ -28,9 +32,11 @@ export default class Garage {
     this.renderCars();
     this.container.querySelector('h2')?.before(this.carSettings.render());
     document.addEventListener('carsUpdated', async () => {
+      this.container.querySelector('.cars')?.append(this.loader);
       await this.update();
       await this.updateCarsCount();
       await this.updateCarsRender();
+      this.loader.remove();
     });
     return this.container;
   }
