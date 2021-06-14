@@ -52,6 +52,18 @@ export default class Car {
     return this.container;
   }
 
+  async deleteCar(): Promise<void> {
+    const req = await fetch(
+      `http://127.0.0.1:3000/garage/${this.carData?.id}`,
+      {
+        method: 'DELETE',
+      }
+    );
+    if (req.ok) {
+      document.dispatchEvent(new CustomEvent('carsUpdated'));
+    }
+  }
+
   addListeners(): void {
     // Listener for select car
     this.container
@@ -60,6 +72,13 @@ export default class Car {
         e.preventDefault();
         state.updateCarData = this.carData;
         document.dispatchEvent(new CustomEvent('selectedCar'));
+      });
+    // Listener for delete car
+    this.container
+      .querySelector('.car-controls__btn_remove')
+      ?.addEventListener('click', (e) => {
+        e.preventDefault();
+        this.deleteCar();
       });
   }
 }
