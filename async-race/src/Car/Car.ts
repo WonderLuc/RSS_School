@@ -1,14 +1,9 @@
 import flagIcon from '../../assets/finish.svg';
+import { state, CarInterface } from '../State/State';
 
 require('./style.scss');
 
-export interface CarInterface {
-  name: string;
-  color: string;
-  id: number;
-}
-
-export class Car {
+export default class Car {
   container: HTMLElement;
 
   carData: CarInterface;
@@ -53,6 +48,18 @@ export class Car {
         <img class="flag-img" src="${flagIcon}" alt="flag" width="40">
       </div> 
     `;
+    this.addListeners();
     return this.container;
+  }
+
+  addListeners(): void {
+    // Listener for select car
+    this.container
+      .querySelector('.car-controls__btn_select')
+      ?.addEventListener('click', (e) => {
+        e.preventDefault();
+        state.updateCarData = this.carData;
+        document.dispatchEvent(new CustomEvent('selectedCar'));
+      });
   }
 }

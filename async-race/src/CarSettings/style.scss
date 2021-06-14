@@ -24,6 +24,16 @@ fieldset{
   outline: none;
   border: none;
   cursor: pointer;
+
+  &:disabled{
+    box-shadow: none;
+    
+    &:hover{
+      cursor: default;
+      background-color: $main-light;
+      box-shadow: none;
+    }
+  }
 }
 
 .car-name{

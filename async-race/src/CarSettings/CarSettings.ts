@@ -1,4 +1,4 @@
-import { CarInterface } from '../Car/Car';
+import { state, CarInterface } from '../State/State';
 
 require('./style.scss');
 
@@ -21,9 +21,9 @@ export default class CarSettings {
       <button class="btn-car btn-car_new">Create</button>
     </fieldset>
     <fieldset class="update-car">
-      <input class="car-name car-name_update" type="text">
-      <input class="color-picker color-picker_update" type="color" value="#FFFFFF">
-      <button class="btn-car btn-car_update">Update</button>
+      <input class="car-name car-name_update" type="text" disabled>
+      <input class="color-picker color-picker_update" type="color" value="#FFFFFF" disabled>
+      <button class="btn-car btn-car_update" disabled>Update</button>
     </fieldset>
     <fieldset class="controls">
       <button class="controls__btn controls__btn_race">Race</button>
@@ -127,12 +127,14 @@ export default class CarSettings {
   }
 
   addListeners(): void {
+    // Listener for create car
     this.container
       .querySelector('.btn-car_new')
       ?.addEventListener('click', (e) => {
         e.preventDefault();
         this.addCar(true, e);
       });
+    // Listener for generate car
     this.container
       .querySelector('.controls__btn_generate')
       ?.addEventListener('click', (e) => {
@@ -142,5 +144,30 @@ export default class CarSettings {
         }
         this.addCar(true);
       });
+    // listener for fill update
+    document.addEventListener('selectedCar', () => {
+      if (state.updateCarData) {
+        const { name, color, id } = state.updateCarData;
+        const parent = document.querySelector('.update-car');
+        if (parent) {
+          const nameField: HTMLInputElement | null =
+            parent.querySelector('.car-name_update');
+          if (nameField) {
+            nameField.value = name;
+            nameField.removeAttribute('disabled');
+          }
+          const colorField: HTMLInputElement | null = parent.querySelector(
+            '.color-picker_update'
+          );
+          if (colorField) {
+            colorField.value = color;
+            colorField.removeAttribute('disabled');
+          }
+          const button = parent.querySelector('.btn-car_update');
+          if (button) button.removeAttribute('disabled');
+          parent.setAttribute('data-id', `${id}`);
+        }
+      }
+    });
   }
 }
