@@ -1,5 +1,6 @@
 import CarSettings from '../CarSettings/CarSettings';
-import { Car, CarInterface } from '../Car/Car';
+import Car from '../Car/Car';
+import { CarInterface } from '../State/State';
 import Loader from '../Loader/Loader';
 
 require('./style.scss');
