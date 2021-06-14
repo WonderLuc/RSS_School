@@ -35,7 +35,7 @@ export default class CarSettings {
     return this.container;
   }
 
-  async addCar(e?: Event): Promise<void> {
+  async addCar(isLast: boolean, e?: Event): Promise<void> {
     const carData = await this.generateCarData(e);
     if (carData) {
       const req = await fetch('http://127.0.0.1:3000/garage', {
@@ -45,7 +45,7 @@ export default class CarSettings {
           'Content-Type': 'application/json',
         },
       });
-      if (req.ok) {
+      if (req.ok && isLast) {
         document.dispatchEvent(new CustomEvent('carsUpdated'));
       }
     }
@@ -67,7 +67,34 @@ export default class CarSettings {
   }
 
   generateName(): void {
-    const name = 'random';
+    const brand = [
+      'Tesla',
+      'Ford',
+      'Ferrari',
+      'Mitsubishi',
+      'Dads',
+      'Kia',
+      'BMW',
+      'Audi',
+      'Lada',
+      'Toyota',
+    ];
+
+    const model = [
+      'Y',
+      'Mustang',
+      'Spider',
+      'Lancer',
+      'Glory',
+      'Rio',
+      'x5',
+      'A7',
+      'Vedro',
+      'Land-Cruiser',
+    ];
+    const name = `${brand[Math.floor(Math.random() * 10)]} ${
+      model[Math.floor(Math.random() * 10)]
+    }`;
     this.name = name;
   }
 
@@ -104,15 +131,16 @@ export default class CarSettings {
       .querySelector('.btn-car_new')
       ?.addEventListener('click', (e) => {
         e.preventDefault();
-        this.addCar(e);
+        this.addCar(true, e);
       });
     this.container
       .querySelector('.controls__btn_generate')
       ?.addEventListener('click', (e) => {
         e.preventDefault();
         for (let i = 0; i < 99; i++) {
-          this.addCar();
+          this.addCar(false);
         }
+        this.addCar(true);
       });
   }
 }
