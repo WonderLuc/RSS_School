@@ -6,7 +6,7 @@ require('./style.scss');
 export default class Garage {
   container: HTMLElement;
 
-  carSettings: HTMLElement;
+  carSettings: CarSettings;
 
   carsArray: Car[];
 
@@ -15,21 +15,30 @@ export default class Garage {
   constructor() {
     this.container = document.createElement('article');
     this.container.classList.add('garage');
-    this.carSettings = new CarSettings().init();
+    this.carSettings = new CarSettings();
     this.carsArray = [];
     this.isUpdateble = true;
   }
 
   render(): HTMLElement {
     this.container.innerHTML = `
-      ${this.carSettings.outerHTML}
-      <h2>Garage (${this.carsArray.length})</h2>
+      <h2>Garage (<span class="car-count">${this.carsArray.length}</span>)</h2>
       <section class="cars"></section>
     `;
+    this.renderCars();
+    this.container.querySelector('h2')?.before(this.carSettings.render());
+    document.addEventListener('carsUpdated', async () => {
+      await this.update();
+      await this.updateCarsCount();
+      await this.updateCarsRender();
+    });
+    return this.container;
+  }
+
+  renderCars(): void {
     this.carsArray.forEach((car: Car) => {
       this.container.querySelector('.cars')?.append(car.render());
     });
-    return this.container;
   }
 
   async getCars(): Promise<void> {
@@ -42,5 +51,20 @@ export default class Garage {
 
   async update(): Promise<void> {
     await this.getCars();
+  }
+
+  async updateCarsRender(): Promise<void> {
+    const cars = this.container.querySelector('.cars');
+    if (cars) {
+      cars.innerHTML = '';
+      this.renderCars();
+    }
+  }
+
+  async updateCarsCount(): Promise<void> {
+    const countElem = this.container.querySelector('.car-count');
+    if (countElem) {
+      countElem.innerHTML = `${this.carsArray.length}`;
+    }
   }
 }
