@@ -5,10 +5,13 @@ class State {
 
   updateCarData: CarInterface | undefined;
 
+  newCarData: CarInterface;
+
   constructor() {
     this.garagePage = 0;
     this.winnersPage = 0;
     this.updateCarData = undefined;
+    this.newCarData = { name: '', color: '', id: 0 };
   }
 }
 

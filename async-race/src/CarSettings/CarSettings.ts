@@ -16,14 +16,29 @@ export default class CarSettings {
   render(): HTMLElement {
     this.container.innerHTML = `
     <fieldset class="new-car">
-      <input class="car-name car-name_new" type="text">
-      <input class="color-picker color-picker_new" type="color" value="#FFFFFF">
+      <input class="car-name car-name_new" type="text"
+      value="${state.newCarData?.name ? state.newCarData?.name : ''}" 
+      >
+      <input class="color-picker color-picker_new" type="color" value=
+      "${state.newCarData?.color ? state.newCarData?.color : '#FFFFFF'}" 
+      >
       <button class="btn-car btn-car_new">Create</button>
     </fieldset>
-    <fieldset class="update-car">
-      <input class="car-name car-name_update" type="text" disabled>
-      <input class="color-picker color-picker_update" type="color" value="#FFFFFF" disabled>
-      <button class="btn-car btn-car_update" disabled>Update</button>
+    <fieldset class="update-car" 
+      ${state.updateCarData?.id ? `data-id="${state.updateCarData?.id}"` : ''}
+    >
+      <input class="car-name car-name_update" type="text" 
+        value="${state.updateCarData?.name ? state.updateCarData?.name : ''}" 
+        ${state.updateCarData?.name ? '' : 'disabled'}
+      >
+      <input class="color-picker color-picker_update" type="color" 
+      value=
+      "${state.updateCarData?.color ? state.updateCarData?.color : '#FFFFFF'}" 
+        ${state.updateCarData?.color ? '' : 'disabled'}
+      >
+      <button class="btn-car btn-car_update" 
+        ${state.updateCarData?.id ? '' : 'disabled'}
+      >Update</button>
     </fieldset>
     <fieldset class="controls">
       <button class="controls__btn controls__btn_race">Race</button>
@@ -51,8 +66,25 @@ export default class CarSettings {
     }
   }
 
+  async updateCar(): Promise<void> {
+    this.name = '';
+    const req = await fetch(
+      `http://127.0.0.1:3000/garage/${state.updateCarData?.id}`,
+      {
+        method: 'PUT',
+        body: JSON.stringify(state.updateCarData),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }
+    );
+    if (req.ok) {
+      document.dispatchEvent(new CustomEvent('carsUpdated'));
+    }
+  }
+
   generateCarData(e?: Event): CarInterface | undefined {
-    return !e ? this.carFromCode() : this.carFromInputs(e);
+    return !e ? this.carFromCode() : this.carFromInputs();
   }
 
   carFromCode(): CarInterface {
@@ -98,32 +130,17 @@ export default class CarSettings {
     this.name = name;
   }
 
-  carFromInputs(e: Event): CarInterface | undefined {
-    // Takes inputs value and create carData
-    e.preventDefault();
-    if (e.target instanceof Element) {
-      const parentContainer = e.target.parentElement;
-      if (parentContainer === null) return undefined;
-      // Gets name of car
-      const name: HTMLInputElement | null =
-        parentContainer.querySelector('.car-name');
-      if (name?.value !== '') {
-        this.name = name?.value ? name?.value : '';
-      } else {
-        this.generateName();
-      }
-      // Gets color
-      const colorInput: HTMLInputElement | null =
-        parentContainer.querySelector('.color-picker');
-      const color = colorInput?.value ? colorInput.value : '';
-      const id: number = Math.round(Math.random() * 100000000);
-      return {
-        name: this.name,
-        color,
-        id,
-      };
+  carFromInputs(): CarInterface | undefined {
+    if (!state.newCarData.name || !state.newCarData.color) {
+      return undefined;
     }
-    return undefined;
+    this.name = state.newCarData.name;
+    const id: number = Math.round(Math.random() * 100000000);
+    return {
+      name: state.newCarData.name,
+      color: state.newCarData.color,
+      id,
+    };
   }
 
   addListeners(): void {
@@ -169,5 +186,51 @@ export default class CarSettings {
         }
       }
     });
+    // Listener for new name field
+    this.container
+      .querySelector('.car-name_new')
+      ?.addEventListener('input', (e) => {
+        const elem = e.target;
+        if (elem instanceof HTMLInputElement) {
+          state.newCarData = { ...state.newCarData, name: elem.value };
+        }
+      });
+    // Listener for new color field
+    this.container
+      .querySelector('.color-picker_new')
+      ?.addEventListener('input', (e) => {
+        const elem = e.target;
+        if (elem instanceof HTMLInputElement) {
+          state.newCarData = { ...state.newCarData, color: elem.value };
+        }
+      });
+    // Listener for update name field
+    this.container
+      .querySelector('.car-name_update')
+      ?.addEventListener('input', (e) => {
+        const elem = e.target;
+        if (elem instanceof HTMLInputElement) {
+          if (state.updateCarData) {
+            state.updateCarData = { ...state.updateCarData, name: elem.value };
+          }
+        }
+      });
+    // Listener for update color field
+    this.container
+      .querySelector('.color-picker_update')
+      ?.addEventListener('input', (e) => {
+        const elem = e.target;
+        if (elem instanceof HTMLInputElement) {
+          if (state.updateCarData) {
+            state.updateCarData = { ...state.updateCarData, color: elem.value };
+          }
+        }
+      });
+    // listener for update car
+    this.container
+      .querySelector('.btn-car_update')
+      ?.addEventListener('click', () => {
+        this.updateCar();
+      });
   }
 }
