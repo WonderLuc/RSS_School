@@ -1,0 +1,16 @@
+@import '../../assets/colors.scss';
+@font-face {
+  font-family: 'VT323';
+  src: url('../../assets/VT323-Regular.ttf');
+}
+
+.winners{
+  width: 100%;
+  color: $main-light;
+  font-family: 'VT323';
+}
+
+thead{
+  background-color: $main-light;
+  color: $main-dark;
+}

@@ -7,11 +7,17 @@ class State {
 
   newCarData: CarInterface;
 
+  sortedByWins: boolean;
+
+  isAscending: boolean;
+
   constructor() {
     this.garagePage = 0;
     this.winnersPage = 0;
     this.updateCarData = undefined;
     this.newCarData = { name: '', color: '#FFFFFF', id: 0 };
+    this.sortedByWins = true;
+    this.isAscending = true;
   }
 }
 
@@ -21,4 +27,10 @@ export interface CarInterface {
   name: string;
   color: string;
   id: number;
+}
+
+export interface IWinner {
+  id: number;
+  time: number;
+  wins: number;
 }
