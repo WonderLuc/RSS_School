@@ -8,11 +8,17 @@ export default class Car {
 
   carData: CarInterface;
 
+  velocityPercent: number;
+
+  isBroken: boolean;
+
   constructor(car: CarInterface) {
     this.carData = car;
     this.container = document.createElement('div');
     this.container.classList.add('car');
     this.container.dataset.id = `${this.carData.id}`;
+    this.velocityPercent = 0;
+    this.isBroken = false;
   }
 
   render(): HTMLElement {
@@ -64,6 +70,92 @@ export default class Car {
     }
   }
 
+  async startCarEngine(): Promise<void> {
+    try {
+      const req = await fetch(
+        `http://127.0.0.1:3000/engine?id=${this.carData?.id}&status=started`
+      );
+      if (req.ok) {
+        const res = await req.json();
+        this.velocityPercent = (res.velocity * 100) / res.distance;
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  async stopCarEngine(): Promise<void> {
+    try {
+      const req = await fetch(
+        `http://127.0.0.1:3000/engine?id=${this.carData?.id}&status=stopped`
+      );
+      if (req.ok) {
+        this.velocityPercent = 0;
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  async switchEngineToDrive(): Promise<void> {
+    const driveReq = await fetch(
+      `http://127.0.0.1:3000/engine?id=${this.carData?.id}&status=drive`
+    );
+    if (driveReq.ok) {
+      this.isBroken = false;
+      return;
+    }
+    if (driveReq.status === 500) {
+      this.isBroken = true;
+      console.log(`Car ${this.carData.name} is broken`);
+    }
+  }
+
+  async carStart(): Promise<void> {
+    await this.startCarEngine();
+    const parent = document.querySelector(`.car[data-id="${this.carData.id}"]`);
+    const carImg: HTMLElement | null | undefined =
+      parent?.querySelector('.car-img');
+    const startBtn: HTMLElement | null | undefined = parent?.querySelector(
+      '.car-view__btn_start'
+    );
+    const resetBtn: HTMLElement | null | undefined = parent?.querySelector(
+      '.car-view__btn_reset'
+    );
+    if (carImg && startBtn && resetBtn) {
+      carImg.style.animation = `drive ${
+        this.velocityPercent * 100 + 3
+      }s 0s linear forwards`;
+      startBtn.classList.remove('car-view__btn_active');
+      resetBtn.classList.add('car-view__btn_active');
+    }
+    await this.switchEngineToDrive();
+    if (this.isBroken) {
+      if (carImg) {
+        carImg.style.animationPlayState = `paused`;
+      }
+    }
+  }
+
+  async carReset(): Promise<void> {
+    await this.stopCarEngine();
+    this.isBroken = false;
+    const parent = document.querySelector(`.car[data-id="${this.carData.id}"]`);
+    const carImg: HTMLElement | null | undefined =
+      parent?.querySelector('.car-img');
+    const startBtn: HTMLElement | null | undefined = parent?.querySelector(
+      '.car-view__btn_start'
+    );
+    const resetBtn: HTMLElement | null | undefined = parent?.querySelector(
+      '.car-view__btn_reset'
+    );
+    if (carImg && startBtn && resetBtn) {
+      carImg.style.cssText = '';
+      resetBtn.classList.remove('car-view__btn_active');
+      startBtn.classList.add('car-view__btn_active');
+    }
+  }
+
   addListeners(): void {
     // Listener for select car
     this.container
@@ -79,6 +171,19 @@ export default class Car {
       ?.addEventListener('click', (e) => {
         e.preventDefault();
         this.deleteCar();
+      });
+    // listener for start car
+    this.container
+      .querySelector('.car-view__btn_start')
+      ?.addEventListener('click', async (e) => {
+        e.preventDefault();
+        await this.carStart();
+      });
+    this.container
+      .querySelector('.car-view__btn_reset')
+      ?.addEventListener('click', async (e) => {
+        e.preventDefault();
+        await this.carReset();
       });
   }
 }
