@@ -48,3 +48,21 @@ h3{
     }
   }
 }
+
+.winner {
+  display: none;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%);
+  font-family: 'VT323';
+  font-size: 3rem;
+  color: rgb(243, 151, 52);
+  z-index: 990;
+  text-align: center;
+
+  &_shown{
+    display: block;
+    text-shadow: 0 0 25px white, 0 0 6px;
+  }
+}

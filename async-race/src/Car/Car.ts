@@ -10,7 +10,11 @@ export default class Car {
 
   velocityPercent: number;
 
+  rideTime: number | undefined;
+
   isBroken: boolean;
+
+  isFinsed: boolean;
 
   constructor(car: CarInterface) {
     this.carData = car;
@@ -19,6 +23,8 @@ export default class Car {
     this.container.dataset.id = `${this.carData.id}`;
     this.velocityPercent = 0;
     this.isBroken = false;
+    this.isFinsed = false;
+    this.rideTime = undefined;
   }
 
   render(): HTMLElement {
@@ -30,7 +36,7 @@ export default class Car {
       </div>
       <div class="car-view">
         <button class="car-view__btn car-view__btn_start car-view__btn_active">A</button>
-        <button class="car-view__btn car-view__btn_reset">B</button>
+        <button class="car-view__btn car-view__btn_reset" disabled>B</button>
         <svg class="car-img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="50" height="50">
          <g id="_13-car" data-name="13-car">
            <g id="glyph" fill="${this.carData.color}">
@@ -78,6 +84,7 @@ export default class Car {
       if (req.ok) {
         const res = await req.json();
         this.velocityPercent = (res.velocity * 100) / res.distance;
+        this.rideTime = new Date().getTime();
       }
     } catch (err) {
       console.log(err);
@@ -98,16 +105,22 @@ export default class Car {
   }
 
   async switchEngineToDrive(): Promise<void> {
-    const driveReq = await fetch(
-      `http://127.0.0.1:3000/engine?id=${this.carData?.id}&status=drive`
-    );
-    if (driveReq.ok) {
-      this.isBroken = false;
-      return;
-    }
-    if (driveReq.status === 500) {
-      this.isBroken = true;
-      console.log(`Car ${this.carData.name} is broken`);
+    try {
+      const driveReq = await fetch(
+        `http://127.0.0.1:3000/engine?id=${this.carData?.id}&status=drive`
+      );
+      if (driveReq.ok) {
+        this.isBroken = false;
+        return;
+      }
+      if (driveReq.status === 500) {
+        this.isBroken = true;
+        this.rideTime = undefined;
+        this.isFinsed = false;
+        console.log(`Car ${this.carData.name} is broken`);
+      }
+    } catch (err) {
+      console.log(err);
     }
   }
 
@@ -124,9 +137,24 @@ export default class Car {
     );
     if (carImg && startBtn && resetBtn) {
       carImg.style.animation = `drive ${
-        this.velocityPercent * 100 + 3
+        this.velocityPercent * 100 + 5
       }s 0s linear forwards`;
+      carImg.addEventListener(
+        'animationend',
+        () => {
+          this.rideTime = this.rideTime
+            ? new Date().getTime() - this.rideTime
+            : undefined;
+          this.isFinsed = true;
+          document.dispatchEvent(new CustomEvent('finishedCar'));
+        },
+        {
+          once: true,
+        }
+      );
       startBtn.classList.remove('car-view__btn_active');
+      startBtn.setAttribute('disabled', 'true');
+      resetBtn.removeAttribute('disabled');
       resetBtn.classList.add('car-view__btn_active');
     }
     await this.switchEngineToDrive();
@@ -140,6 +168,8 @@ export default class Car {
   async carReset(): Promise<void> {
     await this.stopCarEngine();
     this.isBroken = false;
+    this.rideTime = undefined;
+    this.isFinsed = false;
     const parent = document.querySelector(`.car[data-id="${this.carData.id}"]`);
     const carImg: HTMLElement | null | undefined =
       parent?.querySelector('.car-img');
@@ -152,6 +182,8 @@ export default class Car {
     if (carImg && startBtn && resetBtn) {
       carImg.style.cssText = '';
       resetBtn.classList.remove('car-view__btn_active');
+      resetBtn.setAttribute('disabled', 'true');
+      startBtn.removeAttribute('disabled');
       startBtn.classList.add('car-view__btn_active');
     }
   }
@@ -179,6 +211,7 @@ export default class Car {
         e.preventDefault();
         await this.carStart();
       });
+    // listener for reset car
     this.container
       .querySelector('.car-view__btn_reset')
       ?.addEventListener('click', async (e) => {

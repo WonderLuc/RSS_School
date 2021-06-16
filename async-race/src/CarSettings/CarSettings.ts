@@ -232,5 +232,19 @@ export default class CarSettings {
       ?.addEventListener('click', () => {
         this.updateCar();
       });
+    // listener for Race
+    this.container
+      .querySelector('.controls__btn_race')
+      ?.addEventListener('click', (e) => {
+        e.preventDefault();
+        document.dispatchEvent(new CustomEvent('raceStart'));
+      });
+    // listener for Reset
+    this.container
+      .querySelector('.controls__btn_reset')
+      ?.addEventListener('click', (e) => {
+        e.preventDefault();
+        document.dispatchEvent(new CustomEvent('raceReset'));
+      });
   }
 }

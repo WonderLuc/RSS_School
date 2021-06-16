@@ -18,6 +18,8 @@ export default class Garage {
 
   loader: HTMLElement;
 
+  currentWinner: Car | undefined;
+
   constructor() {
     this.container = document.createElement('article');
     this.container.classList.add('garage');
@@ -26,7 +28,11 @@ export default class Garage {
     this.currentCars = [];
     this.isUpdateble = true;
     this.loader = new Loader().render();
+    this.currentWinner = undefined;
     document.addEventListener('carsUpdated', () => this.carsUpdatedHandler());
+    document.addEventListener('raceStart', () => this.raceStartHandler());
+    document.addEventListener('raceReset', () => this.raceResetHandler());
+    document.addEventListener('finishedCar', () => this.finishedCarHandler());
   }
 
   render(): HTMLElement {
@@ -42,6 +48,7 @@ export default class Garage {
         ${state.garagePage >= this.carsArray.length / 7 - 1 ? 'disabled' : ''}
         > Next</button>
       </div>
+      <h3 class="winner"></h3>
     `;
     this.renderCars();
     this.container.querySelector('h2')?.before(this.carSettings.render());
@@ -92,6 +99,93 @@ export default class Garage {
     await this.updateCarsCount();
     await this.updateCarsRender();
     this.loader.remove();
+    this.render();
+  }
+
+  async raceStartHandler(): Promise<void> {
+    this.currentCars.forEach((car) => {
+      car.carStart();
+    });
+  }
+
+  async raceResetHandler(): Promise<void> {
+    this.currentWinner = undefined;
+    this.currentCars.forEach((car) => {
+      car.carReset();
+    });
+  }
+
+  async finishedCarHandler(): Promise<void> {
+    if (!this.currentWinner) {
+      let name: string | undefined;
+      let time: number | undefined;
+      this.currentCars.forEach((car) => {
+        if (car.isFinsed) {
+          this.currentWinner = this.currentWinner ? this.currentWinner : car;
+          name = name || car.carData.name;
+          time = time || car.rideTime;
+          if (this.currentWinner?.rideTime && car.rideTime) {
+            if (this.currentWinner.rideTime > car.rideTime) {
+              this.currentWinner = car;
+              name = car.carData.name;
+              time = car.rideTime;
+            }
+          }
+        }
+      });
+      const winnerSign = document.querySelector('.winner');
+      if (winnerSign && time) {
+        winnerSign.classList.add('winner_shown');
+        winnerSign.innerHTML = `Win ${name} in ${time / 1000} seconds`;
+        this.sendWinner();
+        setTimeout(() => {
+          winnerSign?.classList.remove('winner_shown');
+        }, 5000);
+      }
+    }
+  }
+
+  async sendWinner(): Promise<void> {
+    try {
+      const req = await fetch(
+        `http://127.0.0.1:3000/winners/${this.currentWinner?.carData.id}`
+      );
+      if (req.ok) {
+        const res = await req.json();
+        let time = this.currentWinner?.rideTime;
+        if (time) time /= 1000;
+        await fetch(
+          `http://127.0.0.1:3000/winners/${this.currentWinner?.carData.id}`,
+          {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              wins: res.wins + 1,
+              time: time && time < res.time ? time : res.time,
+            }),
+          }
+        );
+      }
+      if (req.status === 404) {
+        let time = this.currentWinner?.rideTime;
+        if (time) time /= 1000;
+        await fetch(`http://127.0.0.1:3000/winners`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            id: this.currentWinner?.carData.id,
+            wins: 1,
+            time,
+          }),
+        });
+      }
+    } catch (err) {
+      console.log('just error');
+    }
   }
 
   toNextPage(): void {
