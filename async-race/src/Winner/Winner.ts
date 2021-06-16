@@ -32,7 +32,7 @@ export default class Winner implements IWinner {
     this.container.innerHTML = `
       <td class="winner-number">${this.index}</td>
       <td class="winner-img">
-        <svg class="car-img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="50" height="50">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="50" height="50">
           <g id="_13-car" data-name="13-car">
             <g id="glyph" fill="${this.color}">
              <path

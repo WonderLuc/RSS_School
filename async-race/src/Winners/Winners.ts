@@ -63,8 +63,14 @@ export default class Winners {
         <td>Number</td>
         <td>Car</td>
         <td>Name</td>
-        <td>Wins</td>
-        <td>Best Time</td>
+        <td class="wins"><span class="wins-selector
+        ${state.isAscending ? 'selector-asc' : 'selector-desc'}
+        ${state.sortedByWins ? 'selector_active' : ''}
+        ">Wins</span></td>
+        <td class="time"><span class="time-selector 
+        ${state.isAscending ? 'selector-asc' : 'selector-desc'}
+        ${state.sortedByWins ? '' : 'selector_active'}
+        ">Best Time</span></td>
       </thead>
     </table>
     <div class="pagination">
@@ -72,7 +78,7 @@ export default class Winners {
       ${state.winnersPage <= 0 ? 'disabled' : ''}
       > Previous</button>
       <button class="pagination__btn pagination__btn_next"
-      ${state.winnersPage >= this.winners.length / 7 - 1 ? 'disabled' : ''}
+      ${state.winnersPage >= this.winners.length / 10 - 1 ? 'disabled' : ''}
       > Next</button>
     </div>
     `;
@@ -158,6 +164,30 @@ export default class Winners {
         e.preventDefault();
         this.toPrevPage();
         this.render();
+      });
+    // listener for wins
+    this.container
+      .querySelector('.wins')
+      ?.addEventListener('click', async (e) => {
+        e.preventDefault();
+        if (state.sortedByWins) {
+          state.isAscending = !state.isAscending;
+        }
+        state.sortedByWins = true;
+        await this.update();
+        await this.render();
+      });
+    // listener for wins
+    this.container
+      .querySelector('.time')
+      ?.addEventListener('click', async (e) => {
+        e.preventDefault();
+        if (!state.sortedByWins) {
+          state.isAscending = !state.isAscending;
+        }
+        state.sortedByWins = false;
+        await this.update();
+        await this.render();
       });
   }
 }
