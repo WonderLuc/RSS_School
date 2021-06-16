@@ -11,7 +11,7 @@ class State {
     this.garagePage = 0;
     this.winnersPage = 0;
     this.updateCarData = undefined;
-    this.newCarData = { name: '', color: '', id: 0 };
+    this.newCarData = { name: '', color: '#FFFFFF', id: 0 };
   }
 }
 

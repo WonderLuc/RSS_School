@@ -1,6 +1,6 @@
 import CarSettings from '../CarSettings/CarSettings';
 import Car from '../Car/Car';
-import { CarInterface } from '../State/State';
+import { CarInterface, state } from '../State/State';
 import Loader from '../Loader/Loader';
 
 require('./style.scss');
@@ -12,6 +12,8 @@ export default class Garage {
 
   carsArray: Car[];
 
+  currentCars: Car[];
+
   isUpdateble: boolean;
 
   loader: HTMLElement;
@@ -21,29 +23,34 @@ export default class Garage {
     this.container.classList.add('garage');
     this.carSettings = new CarSettings();
     this.carsArray = [];
+    this.currentCars = [];
     this.isUpdateble = true;
     this.loader = new Loader().render();
+    document.addEventListener('carsUpdated', () => this.carsUpdatedHandler());
   }
 
   render(): HTMLElement {
     this.container.innerHTML = `
       <h2>Garage (<span class="car-count">${this.carsArray.length}</span>)</h2>
+      <h3>Page <span class="car-count">${state.garagePage + 1}</span></h3>
       <section class="cars"></section>
+      <div class="pagination">
+        <button class="pagination__btn pagination__btn_prev" 
+        ${state.garagePage <= 0 ? 'disabled' : ''}
+        > Previous</button>
+        <button class="pagination__btn pagination__btn_next"
+        ${state.garagePage >= this.carsArray.length / 7 - 1 ? 'disabled' : ''}
+        > Next</button>
+      </div>
     `;
     this.renderCars();
     this.container.querySelector('h2')?.before(this.carSettings.render());
-    document.addEventListener('carsUpdated', async () => {
-      this.container.querySelector('.cars')?.append(this.loader);
-      await this.update();
-      await this.updateCarsCount();
-      await this.updateCarsRender();
-      this.loader.remove();
-    });
+    this.addListeners();
     return this.container;
   }
 
   renderCars(): void {
-    this.carsArray.forEach((car: Car) => {
+    this.currentCars.forEach((car: Car) => {
       this.container.querySelector('.cars')?.append(car.render());
     });
   }
@@ -53,6 +60,10 @@ export default class Garage {
     if (req.ok) {
       const res = await req.json();
       this.carsArray = res.map((car: CarInterface) => new Car(car));
+      this.currentCars = this.carsArray.slice(
+        state.garagePage * 7,
+        state.garagePage * 7 + 7
+      );
     }
   }
 
@@ -73,5 +84,48 @@ export default class Garage {
     if (countElem) {
       countElem.innerHTML = `${this.carsArray.length}`;
     }
+  }
+
+  async carsUpdatedHandler(): Promise<void> {
+    this.container.querySelector('.cars')?.append(this.loader);
+    await this.update();
+    await this.updateCarsCount();
+    await this.updateCarsRender();
+    this.loader.remove();
+  }
+
+  toNextPage(): void {
+    state.garagePage += 1;
+    this.currentCars = this.carsArray.slice(
+      state.garagePage * 7,
+      state.garagePage * 7 + 7
+    );
+  }
+
+  toPrevPage(): void {
+    state.garagePage -= 1;
+    this.currentCars = this.carsArray.slice(
+      state.garagePage * 7,
+      state.garagePage * 7 + 7
+    );
+  }
+
+  addListeners(): void {
+    // listener for paginaton next
+    this.container
+      .querySelector('.pagination__btn_next')
+      ?.addEventListener('click', (e) => {
+        e.preventDefault();
+        this.toNextPage();
+        this.render();
+      });
+    // listener for paginaton prev
+    this.container
+      .querySelector('.pagination__btn_prev')
+      ?.addEventListener('click', (e) => {
+        e.preventDefault();
+        this.toPrevPage();
+        this.render();
+      });
   }
 }

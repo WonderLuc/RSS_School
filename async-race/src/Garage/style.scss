@@ -1,4 +1,8 @@
 @import '../../assets/colors.scss';
+@font-face {
+  font-family: 'VT323';
+  src: url('../../assets/VT323-Regular.ttf');
+}
 
 .garage{
   background-color: $second-dark;
@@ -7,10 +11,40 @@
   min-height: 90vh;
 }
 
-h2{
+h2, h3{
   color: $main-light;
+  margin-left: 20px;
+  font-family: 'VT323';
+  font-size: 2rem;
+  font-weight: lighter;
+}
+
+h3{
+  font-size: 1.5rem;
+  margin-top: 10px;
+  
 }
 
 .cars{
   position: relative;
+  margin-left: 20px;
+}
+
+.pagination{
+  margin: 20px 0;
+  margin-left: 20px;
+
+  &__btn{
+    padding: 0 10px;
+    font-family: 'VT323';
+    border: none;
+    outline: none;
+    transition: all 0.5s;
+    
+    &:hover{
+      box-shadow:  0 2px 0 $active;
+      transition: all 0.5s;
+      cursor: pointer;
+    }
+  }
 }
