@@ -25,14 +25,16 @@ export default class Router {
       return;
     }
     if (!elem) {
-      root.innerHTML = this.findRoute('404').component.render().outerHTML;
+      root.innerHTML = '';
+      root.append(this.findRoute('404').component.render());
       return;
     }
     if (elem.component.isUpdateble) {
       await elem.component.update();
     }
     this.currentHash = name;
-    root.innerHTML = elem.component.render().outerHTML;
+    root.innerHTML = '';
+    root.append(elem.component.render());
   }
 
   findRoute(name: string): Route {

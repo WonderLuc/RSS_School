@@ -212,6 +212,7 @@ export default class Garage {
         e.preventDefault();
         this.toNextPage();
         this.render();
+        this.raceResetHandler();
       });
     // listener for paginaton prev
     this.container
@@ -220,6 +221,7 @@ export default class Garage {
         e.preventDefault();
         this.toPrevPage();
         this.render();
+        this.raceResetHandler();
       });
   }
 }
