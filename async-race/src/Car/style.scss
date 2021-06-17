@@ -1,0 +1,88 @@
+@import '../../assets/colors.scss';
+
+@font-face {
+  font-family: 'VT323';
+  src: url('../../assets/VT323-Regular.ttf');
+}
+
+@keyframes drive {
+  0%{
+    left: 10%;
+  }
+  100%{
+    left: 90%;
+  }
+}
+
+.car{
+  margin: 20px 0 30px 0;
+}
+
+.car-controls{
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+  
+
+  &__btn{
+    margin: 0 5px;
+    padding: 0 10px;
+    font-family: 'VT323';
+    background-color: $main-light;
+    outline: none;
+    border: none;
+    border-radius: 1px;
+    transition: all 0.5s;
+
+    &:hover{
+      box-shadow: 0 2px 0 $active;
+      background-color: $main-light;
+      cursor: pointer;
+      transition: all 0.5s;
+    }
+  }
+
+  .car__name{
+    font-size: 1.2rem;
+    cursor: default;
+    color: $main-light;
+  }
+}
+
+.car-view{
+  padding-bottom: 10px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  border-bottom: 2px dashed $main-light;
+}
+
+.car-img{
+  position: absolute;
+  left: 10%;
+}
+
+.car-view__btn{
+  align-self: flex-start;
+  margin: 0 5px;
+  padding: 10px;
+  font-family: 'VT323';
+  background-color: transparent;
+  outline: none;
+  border: 1px solid $main-light;
+  border-radius: 1px;
+  color: $main-light;
+  transition: all 0.4s;
+
+  &_active{
+    border-color: $active;
+    color: $active;
+    cursor: pointer;
+  }
+}
+
+.flag-img{
+  position: absolute;
+  right: 10%;
+}
+

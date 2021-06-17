@@ -1,0 +1,76 @@
+@import '../../assets/colors.scss';
+@font-face {
+  font-family: 'VT323';
+  src: url('../../assets/VT323-Regular.ttf');
+}
+
+.car-settings{
+  padding: 20px 0 30px 0;
+  margin-left: 20px;
+}
+
+fieldset{
+  display: flex;
+  align-items: stretch;
+  outline: none;
+  border: none;
+  padding: 10px 0;
+}
+
+
+.car-name, .color-picker, .btn-car{
+  background-color: $main-light;
+  border-radius: 1px;
+  margin: 0 5px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+
+  &:disabled{
+    box-shadow: none;
+    
+    &:hover{
+      cursor: default;
+      background-color: $main-light;
+      box-shadow: none;
+    }
+  }
+}
+
+.car-name{
+  padding-left: 10px;
+}
+
+.btn-car{
+  padding: 0 10px;
+  font-family: 'VT323';
+  box-shadow:  0 2px 0 $active;
+  transition: all 0.5s;
+
+  &:hover{
+    background-color: $active;
+    box-shadow: inset 0 2px 3px black;
+    transition: all 0.5s;
+  }
+}
+
+.controls__btn{
+  margin: 0 5px;
+  padding: 0 10px;
+  font-family: 'VT323';
+  transition: all 0.5s;
+  font-size: 1.2rem;
+  border: 0;
+  outline: none;
+  cursor: pointer;
+
+  &:hover{   
+    box-shadow:  0 2px 0 $active;
+    transition: all 0.5s;
+  }
+
+  &_race{
+    background-color: $active-light;
+  }
+}
+
