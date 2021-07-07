@@ -1,0 +1,64 @@
+@keyframes FadeOut {
+  0%{
+    position: absolute;
+    display: none;
+    opacity: 0;
+  }
+  30%{
+    position: relative;
+  }
+  100%{
+    position: relative;
+    display: block;
+    opacity: 1;
+  }
+}
+
+.header{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--train-grad);
+  padding: 20px;
+  width: 5%;
+  font-size: 1.5rem;
+  transition: all 1.5s ease-out;
+
+  &_play{
+    background: var(--play-grad);
+  }
+
+  &_open{
+    width: 300px;
+    transition: all 1.5s ease-out;
+    .nav {
+      animation: FadeOut 1.5s ease-in-out;
+    }
+  }
+}
+
+.burger{
+  align-self: flex-end;
+  margin-bottom: 20px;
+}
+
+@media screen and (max-width: 400px) {
+  .header{
+    width: auto;
+    height: 5%;
+    transition: all 1.5s ease-out;
+
+    &_open{
+      position: absolute;
+      top:0;
+      left:0;
+      bottom: 0;
+      right: 0;
+      height: 100%;
+      font-size: 3rem;
+      transition: all 1.5s ease-out;
+    }
+    
+  }
+}
