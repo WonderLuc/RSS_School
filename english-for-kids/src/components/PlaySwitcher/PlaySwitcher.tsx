@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
-import { playModeOff, playModeOn } from '../../store/actions';
+import { clearGame, playModeOff, playModeOn } from '../../store/actions';
 import './style.scss';
 
 export default function PlaySwitcher(): JSX.Element {
@@ -10,6 +10,7 @@ export default function PlaySwitcher(): JSX.Element {
   function tooglePlayMode() {
     if (playState.isPlay) {
       dispatch(playModeOff());
+      dispatch(clearGame());
     } else {
       dispatch(playModeOn());
     }

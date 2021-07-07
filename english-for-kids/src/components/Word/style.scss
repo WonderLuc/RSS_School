@@ -24,6 +24,7 @@
   }
 
   &__image{
+    position: relative;
     width: 200px;
     height: 100px;
     object-fit: cover;
@@ -33,7 +34,7 @@
     padding: 10px;
     font-size: 1.2rem;
   }
-  &_play  &__front, &__back{
+  &_play  &__front, &_play &__back{
     background: var(--play-grad);
   }
 }
@@ -56,4 +57,13 @@
     border-color: var(--active-color);
     color: var(--active-color);
   }
+}
+
+.card-block{
+  position: absolute;
+  width: 200px;
+  height: 180px;
+  z-index: 98;
+  background: rgba(0,0,0,.7);
+  border-radius: 0 0 10px 10px;
 }

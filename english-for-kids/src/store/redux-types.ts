@@ -3,11 +3,23 @@ export interface IWord {
   word: string;
   translation: string;
   image: string;
+  audioSrc: string;
+}
+
+export interface IWordStatistics extends IWord{
+  tries: number;
+  succesfull: number;
+  trained: number;
 }
 
 export interface ICategory {
   name: string;
   words: IWord[];
+}
+
+export interface ICategoryStatistics{
+  name: string;
+  words: IWordStatistics[];
 }
 
 export interface IDataState {
@@ -21,6 +33,18 @@ export interface IMenuState {
 
 export interface IPlayModeState {
   isPlay: boolean;
+}
+
+export interface IGameState {
+  isFinished: boolean;
+  words: IWordStatistics[];
+  succesfulyWords: IWordStatistics[];
+  categoryName: string;
+  mistakes: number;
+}
+
+export interface IGameStatistics {
+  categories: ICategoryStatistics[];
 }
 
 // Action types
@@ -77,3 +101,49 @@ export interface PlayModeOffAction {
 }
 
 export type PlayModeAction = PlayModeOffAction | PlayModeOnAction;
+
+// Game
+export enum GameManageTypes {
+  UPDATE_GAME_STATE = 'UPDATE_GAME_STATE',
+  CORRECT_WORD = 'CORRECT_WORD',
+  WRONG_WORD = 'WRONG_WORD',
+  CLEAR_GAME = 'CLEAR_GAME',
+}
+
+export interface UpdateGameAction {
+  type: GameManageTypes.UPDATE_GAME_STATE;
+  payload: IGameState;
+}
+
+export interface CorrectWordAction {
+  type: GameManageTypes.CORRECT_WORD;
+  payload: IWordStatistics;
+}
+
+export interface WrongWordAction {
+  type: GameManageTypes.WRONG_WORD;
+  payload: IWordStatistics;
+}
+
+export interface ClearGameAction {
+  type: GameManageTypes.CLEAR_GAME;
+}
+
+export type GameAction = UpdateGameAction | WrongWordAction | CorrectWordAction | ClearGameAction;
+
+// Statistics
+export enum StatisticsTypes {
+  SAVE_GAME_STAT = 'UPDATE_GAME_STATE',
+  UPDATE_STATISTICS = 'UPDATE_STATISTICS',
+}
+
+export interface SaveStatAction {
+  type: StatisticsTypes.SAVE_GAME_STAT;
+}
+
+export interface UpdateStatisticsAction {
+  type: StatisticsTypes.UPDATE_STATISTICS;
+  payload: IGameStatistics;
+}
+
+export type StatisticsAction = SaveStatAction | UpdateStatisticsAction;

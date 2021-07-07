@@ -1,15 +1,26 @@
 import {
+  ClearGameAction,
   CloseMenuAction,
+  CorrectWordAction,
   DataManageTypes,
   FetchDataAction,
   FetchDataReciveAction,
   FetchSuccessAction,
+  GameManageTypes,
   ICategory,
+  IGameState,
+  IGameStatistics,
+  IWordStatistics,
   MenuManageTypes,
   OpenMenuAction,
   PlayModeManageTypes,
   PlayModeOffAction,
   PlayModeOnAction,
+  SaveStatAction,
+  StatisticsTypes,
+  UpdateGameAction,
+  UpdateStatisticsAction,
+  WrongWordAction,
 } from './redux-types';
 
 // Data Actions
@@ -55,5 +66,47 @@ export function playModeOn(): PlayModeOnAction {
 export function playModeOff(): PlayModeOffAction {
   return {
     type: PlayModeManageTypes.PLAY_MODE_OFF,
+  };
+}
+
+// Game Actions
+export function updateGame(payload: IGameState): UpdateGameAction {
+  return {
+    type: GameManageTypes.UPDATE_GAME_STATE,
+    payload,
+  };
+}
+
+export function sendCorrectWord(payload: IWordStatistics): CorrectWordAction {
+  return {
+    type: GameManageTypes.CORRECT_WORD,
+    payload,
+  };
+}
+
+export function sendWrongWord(payload: IWordStatistics): WrongWordAction {
+  return {
+    type: GameManageTypes.WRONG_WORD,
+    payload,
+  };
+}
+
+export function clearGame(): ClearGameAction {
+  return {
+    type: GameManageTypes.CLEAR_GAME,
+  };
+}
+
+// Statistics
+export function saveStatistics(): SaveStatAction {
+  return {
+    type: StatisticsTypes.SAVE_GAME_STAT,
+  };
+}
+
+export function updateStatistics(payload: IGameStatistics): UpdateStatisticsAction {
+  return {
+    type: StatisticsTypes.UPDATE_STATISTICS,
+    payload,
   };
 }
