@@ -1,0 +1,49 @@
+.switcher{
+  --time: 0.5s;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  height: 10px;
+  width: 60px;
+  border-radius: 20px;
+  background: var(--train-grad);
+  box-shadow: 0 4px 10px black;
+  cursor: pointer;
+  transition: all var(--time) ease-in-out;
+
+  &__text{
+    position: relative;
+    left: 0;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    font-weight: bold;
+    transition: all var(--time) ease-in-out;
+  }
+
+  &__point{
+    position: relative;
+    right: 0;
+    align-self: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: white;
+    box-shadow: 0 0 5px black;
+    transition: all var(--time) ease-in-out;
+  }
+
+  &_play{
+    background: var(--play-grad);
+    transition: all var(--time) ease-in-out;
+  }
+
+  &_play &__text{
+    left: 50%;
+    transition: all var(--time) ease-in-out;
+  }
+
+  &_play &__point{
+    right: 70%;
+    transition: all var(--time) ease-in-out;
+  }
+}
