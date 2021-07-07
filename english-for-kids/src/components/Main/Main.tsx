@@ -15,16 +15,9 @@ function Main(): JSX.Element {
       dispatch(closeMenu());
     }
   }
-  const changeColor = (e: React.MouseEvent<HTMLHeadingElement, MouseEvent>) => {
-    const bol = dataState.loading ? dispatch(dataEnd()) : dispatch(getData());
-    e.currentTarget.style.color = dataState.loading ? 'black' : 'red';
-  };
-
   return (
     <main className="main" onClick={closeOpenMenu}>
       <PlaySwitcher />
-      {dataState.loading && <Download />}
-      <h2 onClick={changeColor}>Main Page</h2>
       <div className="categories">
         {dataState.categories.map((category) => <CategoryCard {...category}
           key={category.name} />)}

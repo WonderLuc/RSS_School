@@ -319,6 +319,106 @@ const data: IDataState = {
         audioSrc: 'audio/laugh.mp3',
       }],
     },
+    {
+      name: 'fables',
+      words: [
+        {
+          word: 'King',
+          translation: 'Король',
+          image: 'img/king.jpg',
+          audioSrc: 'audio/king-us.mp3',
+        },
+        {
+          word: 'Knight',
+          translation: 'Рыцарь',
+          image: '/img/knight.jpg',
+          audioSrc: '/audio/knight-us.mp3',
+        },
+        {
+          word: 'Elf',
+          translation: 'Эльф',
+          image: '/img/elf.jpg',
+          audioSrc: '/audio/elf-us.mp3',
+        },
+        {
+          word: 'Raven',
+          translation: 'Ворон',
+          image: '/img/raven.jpg',
+          audioSrc: '/audio/raven-us.mp3',
+        },
+        {
+          word: 'Dragon',
+          translation: 'Меч',
+          image: '/img/dragon.jpg',
+          audioSrc: '/audio/dragon-us.mp3',
+        },
+        {
+          word: 'Ogre',
+          translation: 'Людоед',
+          image: '/img/Ogre.jpg',
+          audioSrc: '/audio/ogre-us.mp3',
+        },
+        {
+          word: 'Castel',
+          translation: 'Замок',
+          image: '/img/castel.jpg',
+          audioSrc: '/audio/castle-us.mp3',
+        },
+      ],
+    },
+    {
+      name: 'food',
+      words: [
+        {
+          word: 'Pie',
+          translation: 'Пирог',
+          image: '/img/pie.jpg',
+          audioSrc: '/audio/pie.mp3',
+        },
+        {
+          word: 'Fries',
+          translation: 'Картошка фри',
+          image: '/img/fries.jpeg',
+          audioSrc: '/audio/fries.mp3',
+        },
+        {
+          word: 'Egg',
+          translation: 'Яйцо',
+          image: '/img/egg.jpg',
+          audioSrc: '/audio/egg.mp3',
+        },
+        {
+          word: 'Cookie',
+          translation: 'Печенье',
+          image: '/img/cookie.jpg',
+          audioSrc: '/audio/cookie.mp3',
+        },
+        {
+          word: 'Meat',
+          translation: 'Мясо',
+          image: '/img/meat.jpg',
+          audioSrc: '/audio/meat.mp3',
+        },
+        {
+          word: 'Juice',
+          translation: 'Сок',
+          image: '/img/juice.jpeg',
+          audioSrc: '/audio/juice.mp3',
+        },
+        {
+          word: 'Apple',
+          translation: 'Яблоко',
+          image: '/img/apple.jpg',
+          audioSrc: '/audio/apple.mp3',
+        },
+        {
+          word: 'Flour',
+          translation: 'Мука',
+          image: '/img/flour.jpg',
+          audioSrc: '/audio/flour.mp3',
+        },
+      ],
+    },
   ],
 };
 
