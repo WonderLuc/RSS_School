@@ -1,0 +1,33 @@
+.category{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 20px;
+  background: var(--dark-grad);
+
+  .switcher{
+    align-self: flex-end;
+    margin: 20px 0;
+  }
+
+  &__name{
+    align-self: flex-start;
+    font-size: 2rem;
+    text-transform: capitalize;
+    background: var(--train-grad);
+    padding: 5px 20px;
+  }
+  &_play &__name{
+    background: var(--play-grad);
+  }
+}
+
+.words{
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  perspective: 600px;
+}

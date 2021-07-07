@@ -1,0 +1,59 @@
+.word{
+  position: relative;
+  width: 200px;
+  height: 180px;
+  margin: 20px;
+  transition: transform 1s;
+  transform-style: preserve-3d;
+  transform-origin: center right;
+
+  &__front, &__back{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    backface-visibility: hidden;
+    background: var(--train-grad);
+    border-radius: 10px;
+  }
+
+  &__back{
+    transform: rotateY(180deg);
+  }
+
+  &__image{
+    width: 200px;
+    height: 100px;
+    object-fit: cover;
+  }
+
+  &__text{
+    padding: 10px;
+    font-size: 1.2rem;
+  }
+  &_play  &__front, &__back{
+    background: var(--play-grad);
+  }
+}
+
+.flipped{
+  transform: translateX(-100%) rotateY(-180deg);
+}
+
+.btn__translate{
+  align-self: flex-end;
+  margin: 0 10px;
+  padding: 5px 10px;
+  border: 2px solid black;
+  outline: none;
+  border-radius: 10px;
+  background: transparent;
+  cursor: pointer;
+
+  &:hover{
+    border-color: var(--active-color);
+    color: var(--active-color);
+  }
+}
