@@ -1,0 +1,20 @@
+.main{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
+  background: var(--dark-grad);
+  padding: 0 20px;
+  .switcher{
+    align-self: flex-end;
+    margin: 20px 0;
+  }
+}
+
+.categories{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
