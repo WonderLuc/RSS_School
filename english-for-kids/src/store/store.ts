@@ -1,6 +1,6 @@
 import { createStore } from 'redux';
-import { initialState, dataManageReducer } from './reducers';
+import { reducer } from './reducers';
 
-const store = createStore(dataManageReducer, initialState);
+const store = createStore(reducer);
 
 export default store;
