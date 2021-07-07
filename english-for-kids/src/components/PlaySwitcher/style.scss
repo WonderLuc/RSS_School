@@ -8,6 +8,7 @@
   border-radius: 20px;
   background: var(--train-grad);
   box-shadow: 0 4px 10px black;
+  cursor: pointer;
   transition: all var(--time) ease-in-out;
 
   &__text{
