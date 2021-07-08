@@ -17,7 +17,7 @@ export default function App(): JSX.Element {
         <Switch>
           <Route exact path='/' component={Main} />
           <Route path='/category/:categoryName' component={CategoryPage}/>
-          <Route path='/statistic/' component={Statistics} />
+          <Route path='/statistic' component={Statistics} />
         </Switch>
       </HashRouter>
     </div>
