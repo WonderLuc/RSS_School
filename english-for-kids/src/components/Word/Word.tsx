@@ -58,17 +58,17 @@ export default function Word(props: WordProps): JSX.Element {
       onMouseLeave={() => flippedChange(false)}
       onClick={handleMainClick}>
       <div className="word__front">
-        <img className='word__image' src={`../${props.image}`} />
+        <img className='word__image' src={`./${props.image}`} />
         {isSuccessed && <div className="card-block"></div>}
         {!playState.isPlay
          && <h4 className="word__text">{props.word}</h4>}
-        <audio ref={audio} src={`../${props.audioSrc}`}></audio>
+        <audio ref={audio} src={`./${props.audioSrc}`}></audio>
         {!playState.isPlay
         && <button className="btn__translate" onClick={() => flippedChange(true)}>Translate!</button> }
         {isCurrent && props.repeat ? playAudio() : ''}
       </div>
       <div className="word__back">
-        <img className="word__image" src={`../${props.image}`} />
+        <img className="word__image" src={`./${props.image}`} />
         <h4 className="word__text">{props.translation}</h4>
       </div>
     </div>

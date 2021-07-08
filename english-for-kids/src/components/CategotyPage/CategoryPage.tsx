@@ -69,10 +69,10 @@ function CategoryPage(props: RouteComponentProps<ParamsRoute>): JSX.Element {
     const sound = document.createElement('audio');
     let isWin;
     if (percentToWin < 40) {
-      sound.src = '../audio/success.mp3';
+      sound.src = './audio/success.mp3';
       isWin = true;
     } else {
-      sound.src = '../audio/failure.mp3';
+      sound.src = './audio/failure.mp3';
       isWin = false;
     }
     sound.play();
@@ -100,8 +100,8 @@ function CategoryPage(props: RouteComponentProps<ParamsRoute>): JSX.Element {
       && <button className="btn_gameActions" onClick={handleGameActionBtnClick}>
         {gameState.isFinished ? 'Play!' : 'Repeat'}
       </button>}
-      {gameState.isFinished ? '' : <audio ref={error} src="../audio/error.mp3" /> }
-      {gameState.isFinished ? '' : <audio ref={success} src="../audio/correct.mp3" />}
+      {gameState.isFinished ? '' : <audio ref={error} src="./audio/error.mp3" /> }
+      {gameState.isFinished ? '' : <audio ref={success} src="./audio/correct.mp3" />}
       {playState.isPlay && gameState.isFinished && endGame()}
     </div>
   );
