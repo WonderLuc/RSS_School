@@ -17,6 +17,7 @@ import {
   PlayModeManageTypes,
   PlayModeOffAction,
   PlayModeOnAction,
+  ResetStatAction,
   SaveStatAction,
   StatisticsTypes,
   UpdateGameAction,
@@ -108,6 +109,12 @@ export function clearMistakes(): ClearMistakesAction {
 export function saveStatistics(): SaveStatAction {
   return {
     type: StatisticsTypes.SAVE_GAME_STAT,
+  };
+}
+
+export function resetStatistics(): ResetStatAction {
+  return {
+    type: StatisticsTypes.RESET_STATISTICS,
   };
 }
 

@@ -154,6 +154,15 @@ export function staticticsManageReducer(state = mockStatictics, action: Statisti
         ...state,
         categories: buildCategories(state.categories, action),
       };
+    case StatisticsTypes.RESET_STATISTICS:
+      return {
+        categories: mockData.categories.map((cat) => ({
+          words: cat.words.map((word) => ({
+            ...word, tries: 0, trained: 0, succesfull: 0, categoryName: cat.name,
+          })),
+          name: cat.name,
+        })),
+      };
     default:
       return state;
   }
