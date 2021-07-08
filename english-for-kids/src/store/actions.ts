@@ -1,5 +1,6 @@
 import {
   ClearGameAction,
+  ClearMistakesAction,
   CloseMenuAction,
   CorrectWordAction,
   DataManageTypes,
@@ -94,6 +95,12 @@ export function sendWrongWord(payload: IWordStatistics): WrongWordAction {
 export function clearGame(): ClearGameAction {
   return {
     type: GameManageTypes.CLEAR_GAME,
+  };
+}
+
+export function clearMistakes(): ClearMistakesAction {
+  return {
+    type: GameManageTypes.CLEAR_MISTAKES,
   };
 }
 

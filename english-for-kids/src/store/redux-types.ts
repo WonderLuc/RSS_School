@@ -4,6 +4,10 @@ export interface IWord {
   translation: string;
   image: string;
   audioSrc: string;
+  tries?: number;
+  succesfull?: number;
+  trained?: number;
+  categoryName: string;
 }
 
 export interface IWordStatistics extends IWord{
@@ -41,6 +45,7 @@ export interface IGameState {
   succesfulyWords: IWordStatistics[];
   categoryName: string;
   mistakes: number;
+  misScore: number;
 }
 
 export interface IGameStatistics {
@@ -108,6 +113,7 @@ export enum GameManageTypes {
   CORRECT_WORD = 'CORRECT_WORD',
   WRONG_WORD = 'WRONG_WORD',
   CLEAR_GAME = 'CLEAR_GAME',
+  CLEAR_MISTAKES = 'CLEAR_MISTAKES',
 }
 
 export interface UpdateGameAction {
@@ -129,7 +135,11 @@ export interface ClearGameAction {
   type: GameManageTypes.CLEAR_GAME;
 }
 
-export type GameAction = UpdateGameAction | WrongWordAction | CorrectWordAction | ClearGameAction;
+export interface ClearMistakesAction {
+  type: GameManageTypes.CLEAR_MISTAKES;
+}
+
+export type GameAction = UpdateGameAction | WrongWordAction | CorrectWordAction | ClearGameAction | ClearMistakesAction;
 
 // Statistics
 export enum StatisticsTypes {

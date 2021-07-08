@@ -15,6 +15,9 @@ import {
   IGameStatistics,
   StatisticsAction,
   StatisticsTypes,
+  IWordStatistics,
+  ICategoryStatistics,
+  UpdateStatisticsAction,
 } from './redux-types';
 import mockData from './mockData';
 
@@ -27,7 +30,16 @@ export const mockMenu: IMenuState = { isOpenNav: false };
 export const mockPlayMode: IPlayModeState = { isPlay: false };
 const savedStat = localStorage.getItem('statistics');
 export const mockStatictics: IGameStatistics = savedStat ? JSON.parse(savedStat) : {
-  games: [],
+  categories: mockData.categories.map((cat) => ({
+    words: cat.words.map((word) => {
+      word.tries = 0;
+      word.trained = 0;
+      word.succesfull = 0;
+      word.categoryName = cat.name;
+      return word;
+    }),
+    name: cat.name,
+  })),
 };
 export const mockGame: IGameState = {
   words: [],
@@ -35,6 +47,7 @@ export const mockGame: IGameState = {
   isFinished: true,
   categoryName: '',
   mistakes: 0,
+  misScore: 0,
 };
 
 export function dataManageReducer(state = mockData, action: DataAction): IDataState {
@@ -86,12 +99,49 @@ export function gameManageReducer(state = mockGame, action: GameAction): IGameSt
       return {
         ...state,
         mistakes: state.mistakes + 1,
+        misScore: state.misScore + 1,
       };
     case GameManageTypes.CLEAR_GAME:
       return mockGame;
+    case GameManageTypes.CLEAR_MISTAKES:
+      return {
+        ...state,
+        mistakes: 0,
+      };
     default:
       return state;
   }
+}
+
+function findWordInCategoryState(cat: ICategoryStatistics, find: string): IWordStatistics | undefined {
+  return cat.words.filter((word) => word.word === find)[0];
+}
+
+function buildCategories(categories: ICategoryStatistics[], action: UpdateStatisticsAction): ICategoryStatistics[] {
+  const newData = action.payload.categories[0];
+  const tryFindCategory: ICategoryStatistics | undefined = categories
+    .filter((category) => category.name === newData.name)[0];
+  if (!tryFindCategory) {
+    return categories.concat(newData);
+  }
+  return categories.map((cat) => {
+    if (cat.name === newData.name) {
+      const newWordsArr: IWordStatistics[] = [];
+      newData.words.forEach((word) => {
+        const findedWord: IWordStatistics | undefined = findWordInCategoryState(cat, word.word);
+        if (!findedWord) {
+          newWordsArr.push(word);
+          return;
+        }
+        findedWord.trained += word.trained;
+        findedWord.tries += word.tries;
+        findedWord.succesfull += word.succesfull;
+      });
+
+      cat.words = cat.words.concat(newWordsArr);
+    }
+    return cat;
+  });
 }
 
 export function staticticsManageReducer(state = mockStatictics, action: StatisticsAction): IGameStatistics {
@@ -100,7 +150,10 @@ export function staticticsManageReducer(state = mockStatictics, action: Statisti
       localStorage.setItem('statistics', JSON.stringify(state));
       return state;
     case StatisticsTypes.UPDATE_STATISTICS:
-      return { ...state, ...action.payload };
+      return {
+        ...state,
+        categories: buildCategories(state.categories, action),
+      };
     default:
       return state;
   }
