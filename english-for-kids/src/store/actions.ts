@@ -1,5 +1,6 @@
 import {
   ClearGameAction,
+  ClearMistakesAction,
   CloseMenuAction,
   CorrectWordAction,
   DataManageTypes,
@@ -16,6 +17,7 @@ import {
   PlayModeManageTypes,
   PlayModeOffAction,
   PlayModeOnAction,
+  ResetStatAction,
   SaveStatAction,
   StatisticsTypes,
   UpdateGameAction,
@@ -97,10 +99,22 @@ export function clearGame(): ClearGameAction {
   };
 }
 
+export function clearMistakes(): ClearMistakesAction {
+  return {
+    type: GameManageTypes.CLEAR_MISTAKES,
+  };
+}
+
 // Statistics
 export function saveStatistics(): SaveStatAction {
   return {
     type: StatisticsTypes.SAVE_GAME_STAT,
+  };
+}
+
+export function resetStatistics(): ResetStatAction {
+  return {
+    type: StatisticsTypes.RESET_STATISTICS,
   };
 }
 

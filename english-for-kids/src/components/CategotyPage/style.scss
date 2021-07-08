@@ -42,3 +42,12 @@
   border-radius: 10px;
   cursor: pointer;
 }
+
+@media  screen and (max-width: 760px) {
+  .category{
+    padding: 0;
+  }
+  .words{
+    padding: 20px 0;
+  }
+}

@@ -348,9 +348,15 @@ const data: IDataState = {
         },
         {
           word: 'Dragon',
-          translation: 'Меч',
+          translation: 'Дракон',
           image: '/img/dragon.jpg',
           audioSrc: '/audio/dragon-us.mp3',
+        },
+        {
+          word: 'Sword',
+          translation: 'Меч',
+          image: '/img/sword.jpg',
+          audioSrc: '/audio/sword-us.mp3',
         },
         {
           word: 'Ogre',
