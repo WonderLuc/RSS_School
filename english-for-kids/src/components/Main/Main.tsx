@@ -1,9 +1,8 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
-import { closeMenu, dataEnd, getData } from '../../store/actions';
+import { closeMenu } from '../../store/actions';
 import CategoryCard from '../CategotyCard/CategoryCard';
-import Download from '../Download/Download';
 import PlaySwitcher from '../PlaySwitcher/PlaySwitcher';
 import './style.scss';
 

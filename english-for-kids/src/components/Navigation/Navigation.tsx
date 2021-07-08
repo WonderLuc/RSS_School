@@ -29,6 +29,10 @@ export default function Navigation(props: NavProps): JSX.Element {
             }} to={`/category/${category.name}`} >{category.name}</NavLink>
           </li>);
       })}
+      <li className="nav__item"><NavLink to='/statistic/' onClick={(e) => {
+        props.onClick(e);
+        dispatch(clearGame());
+      }}>Statistics</NavLink></li>
     </ul>
   );
 }

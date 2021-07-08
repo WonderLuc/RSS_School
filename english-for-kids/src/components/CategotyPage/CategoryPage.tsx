@@ -25,7 +25,6 @@ function CategoryPage(props: RouteComponentProps<ParamsRoute>): JSX.Element {
     dataManageReducer: dataState,
     menuManageReducer: menuState,
     playModeManageReducer: playState,
-    staticticsManageReducer: statistics,
     gameManageReducer: gameState,
   } = useTypedSelector((store) => store);
   const dispatch = useDispatch();
@@ -35,7 +34,7 @@ function CategoryPage(props: RouteComponentProps<ParamsRoute>): JSX.Element {
     (category) => category.name === props.match.params.categoryName,
   )[0];
   const words: IWordStatistics[] = iWords.map((word: IWord) => ({
-    ...word, tries: 0, trained: 0, succesfull: 0,
+    ...word, tries: 0, trained: 0, succesfull: 0, categoryName: '',
   }));
   const [needRepeat, reapeatState] = useState(false);
   function closeOpenMenu() {
@@ -50,6 +49,7 @@ function CategoryPage(props: RouteComponentProps<ParamsRoute>): JSX.Element {
       words: shuffle(words),
       succesfulyWords: [],
       mistakes: 0,
+      misScore: 0,
     }));
     reapeatState(true);
   }
@@ -65,10 +65,10 @@ function CategoryPage(props: RouteComponentProps<ParamsRoute>): JSX.Element {
     if (!gameState.succesfulyWords.length) {
       return null;
     }
-    const percentToWin = (gameState.mistakes * 100) / gameState.succesfulyWords.length;
+    const percentToLose = (gameState.misScore * 100) / gameState.succesfulyWords.length;
     const sound = document.createElement('audio');
     let isWin;
-    if (percentToWin < 40) {
+    if (percentToLose <= 50) {
       sound.src = './audio/success.mp3';
       isWin = true;
     } else {
@@ -78,6 +78,7 @@ function CategoryPage(props: RouteComponentProps<ParamsRoute>): JSX.Element {
     sound.play();
     setTimeout(() => {
       dispatch(clearGame());
+      window.location.hash = '/';
     }, 5000);
     return <GameEndSmile isWin={isWin}/>;
   }
@@ -87,7 +88,8 @@ function CategoryPage(props: RouteComponentProps<ParamsRoute>): JSX.Element {
     {...word}
     key={word.word}
     error = {error}
-    success = { success }/>);
+    success = { success }
+    categoryName={props.match.params.categoryName}/>);
 
   return (
     <div className={`category ${playState.isPlay ? 'category_play' : ''}`} onClick={closeOpenMenu}>
