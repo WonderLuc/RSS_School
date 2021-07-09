@@ -1,4 +1,6 @@
-import { state, IWinner } from '../State/State';
+import { Api } from '../Api/Api';
+import { state } from '../State/State';
+import { IWinnersData } from '../types';
 import Winner from '../Winner/Winner';
 
 require('./style.scss');
@@ -94,22 +96,8 @@ export default class Winners {
     });
   }
 
-  async getWinners(): Promise<void> {
-    const req = await fetch('http://127.0.0.1:3000/winners');
-    if (req.ok) {
-      const res = await req.json();
-      this.winners = res.map((winner: IWinner) => new Winner(winner));
-      this.sort();
-      this.currentWinners = this.winners.slice(
-        state.winnersPage * 10,
-        state.winnersPage * 10 + 10
-      );
-      this.winners.forEach((winner) => winner.getCar());
-    }
-  }
-
   async update(): Promise<void> {
-    await this.getWinners();
+    await this.configureWiiners();
   }
 
   sortByWins(): Winner[] {
@@ -129,6 +117,21 @@ export default class Winners {
       this.winners = state.isAscending
         ? this.sortByTime()
         : this.sortByTime().reverse();
+    }
+  }
+
+  async configureWiiners(): Promise<void> {
+    const winnersData = await Api.getWinners();
+    if (winnersData) {
+      this.winners = winnersData.map(
+        (winner: IWinnersData) => new Winner(winner)
+      );
+      this.sort();
+      this.currentWinners = this.winners.slice(
+        state.winnersPage * 10,
+        state.winnersPage * 10 + 10
+      );
+      this.winners.forEach((winner) => winner.getWinnerData());
     }
   }
 

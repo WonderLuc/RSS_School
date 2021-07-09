@@ -1,9 +1,11 @@
 import flagIcon from '../../assets/finish.svg';
-import { state, CarInterface } from '../State/State';
+import { state } from '../State/State';
+import { Api } from '../Api/Api';
+import { CarInterface, ICar } from '../types';
 
 require('./style.scss');
 
-export default class Car {
+export default class Car implements ICar {
   container: HTMLElement;
 
   carData: CarInterface;
@@ -64,68 +66,10 @@ export default class Car {
     return this.container;
   }
 
-  async deleteCar(): Promise<void> {
-    const req = await fetch(
-      `http://127.0.0.1:3000/garage/${this.carData?.id}`,
-      {
-        method: 'DELETE',
-      }
-    );
-    if (req.ok) {
-      document.dispatchEvent(new CustomEvent('carsUpdated'));
-    }
-  }
-
-  async startCarEngine(): Promise<void> {
-    try {
-      const req = await fetch(
-        `http://127.0.0.1:3000/engine?id=${this.carData?.id}&status=started`
-      );
-      if (req.ok) {
-        const res = await req.json();
-        this.velocityPercent = (res.velocity * 100) / res.distance;
-        this.rideTime = new Date().getTime();
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  }
-
-  async stopCarEngine(): Promise<void> {
-    try {
-      const req = await fetch(
-        `http://127.0.0.1:3000/engine?id=${this.carData?.id}&status=stopped`
-      );
-      if (req.ok) {
-        this.velocityPercent = 0;
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  }
-
-  async switchEngineToDrive(): Promise<void> {
-    try {
-      const driveReq = await fetch(
-        `http://127.0.0.1:3000/engine?id=${this.carData?.id}&status=drive`
-      );
-      if (driveReq.ok) {
-        this.isBroken = false;
-        return;
-      }
-      if (driveReq.status === 500) {
-        this.isBroken = true;
-        this.rideTime = undefined;
-        this.isFinsed = false;
-        console.log(`Car ${this.carData.name} is broken`);
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  }
-
   async carStart(): Promise<void> {
-    await this.startCarEngine();
+    const data = await Api.startCarEngine(this.carData.id);
+    this.velocityPercent = (data.velocity * 100) / data.distance;
+    this.rideTime = new Date().getTime();
     const parent = document.querySelector(`.car[data-id="${this.carData.id}"]`);
     const carImg: HTMLElement | null | undefined =
       parent?.querySelector('.car-img');
@@ -157,7 +101,7 @@ export default class Car {
       resetBtn.removeAttribute('disabled');
       resetBtn.classList.add('car-view__btn_active');
     }
-    await this.switchEngineToDrive();
+    await Api.switchEngineToDrive(this.carData.id, this);
     if (this.isBroken) {
       if (carImg) {
         carImg.style.animationPlayState = `paused`;
@@ -166,7 +110,7 @@ export default class Car {
   }
 
   async carReset(): Promise<void> {
-    await this.stopCarEngine();
+    await Api.stopCarEngine(this);
     this.isBroken = false;
     this.rideTime = undefined;
     this.isFinsed = false;
@@ -202,7 +146,7 @@ export default class Car {
       .querySelector('.car-controls__btn_remove')
       ?.addEventListener('click', (e) => {
         e.preventDefault();
-        this.deleteCar();
+        Api.deleteCar(this.carData.id);
       });
     // listener for start car
     this.container

@@ -1,7 +1,9 @@
 import CarSettings from '../CarSettings/CarSettings';
 import Car from '../Car/Car';
-import { CarInterface, state } from '../State/State';
+import { state } from '../State/State';
 import Loader from '../Loader/Loader';
+import { CarInterface } from '../types';
+import { Api } from '../Api/Api';
 
 require('./style.scss');
 
@@ -62,11 +64,10 @@ export default class Garage {
     });
   }
 
-  async getCars(): Promise<void> {
-    const req = await fetch('http://127.0.0.1:3000/garage');
-    if (req.ok) {
-      const res = await req.json();
-      this.carsArray = res.map((car: CarInterface) => new Car(car));
+  async showCars(): Promise<void> {
+    const cars = await Api.getCars();
+    if (cars) {
+      this.carsArray = cars.map((car: CarInterface) => new Car(car));
       this.currentCars = this.carsArray.slice(
         state.garagePage * 7,
         state.garagePage * 7 + 7
@@ -75,7 +76,7 @@ export default class Garage {
   }
 
   async update(): Promise<void> {
-    await this.getCars();
+    await this.showCars();
   }
 
   async updateCarsRender(): Promise<void> {
@@ -137,54 +138,11 @@ export default class Garage {
       if (winnerSign && time) {
         winnerSign.classList.add('winner_shown');
         winnerSign.innerHTML = `Win ${name} in ${time / 1000} seconds`;
-        this.sendWinner();
+        Api.sendWinner(this);
         setTimeout(() => {
           winnerSign?.classList.remove('winner_shown');
         }, 5000);
       }
-    }
-  }
-
-  async sendWinner(): Promise<void> {
-    try {
-      const req = await fetch(
-        `http://127.0.0.1:3000/winners/${this.currentWinner?.carData.id}`
-      );
-      if (req.ok) {
-        const res = await req.json();
-        let time = this.currentWinner?.rideTime;
-        if (time) time /= 1000;
-        await fetch(
-          `http://127.0.0.1:3000/winners/${this.currentWinner?.carData.id}`,
-          {
-            method: 'PUT',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              wins: res.wins + 1,
-              time: time && time < res.time ? time : res.time,
-            }),
-          }
-        );
-      }
-      if (req.status === 404) {
-        let time = this.currentWinner?.rideTime;
-        if (time) time /= 1000;
-        await fetch(`http://127.0.0.1:3000/winners`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            id: this.currentWinner?.carData.id,
-            wins: 1,
-            time,
-          }),
-        });
-      }
-    } catch (err) {
-      console.log('just error');
     }
   }
 

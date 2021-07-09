@@ -1,3 +1,5 @@
+import { CarInterface } from '../types';
+
 class State {
   garagePage: number;
 
@@ -22,15 +24,3 @@ class State {
 }
 
 export const state = new State();
-
-export interface CarInterface {
-  name: string;
-  color: string;
-  id: number;
-}
-
-export interface IWinner {
-  id: number;
-  time: number;
-  wins: number;
-}

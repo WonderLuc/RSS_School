@@ -1,16 +1,21 @@
-import { state, CarInterface } from '../State/State';
+import { Api } from '../Api/Api';
+import { state } from '../State/State';
+import { CarInterface, ICarSettings } from '../types';
 
 require('./style.scss');
 
-export default class CarSettings {
+export default class CarSettings implements ICarSettings {
   container: HTMLElement;
 
   name: string;
+
+  carData: CarInterface | undefined;
 
   constructor() {
     this.container = document.createElement('form');
     this.container.classList.add('car-settings');
     this.name = '';
+    this.carData = undefined;
   }
 
   render(): HTMLElement {
@@ -51,35 +56,12 @@ export default class CarSettings {
   }
 
   async addCar(isLast: boolean, e?: Event): Promise<void> {
-    const carData = await this.generateCarData(e);
-    if (carData) {
-      const req = await fetch('http://127.0.0.1:3000/garage', {
-        method: 'POST',
-        body: JSON.stringify(carData),
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
+    this.carData = await this.generateCarData(e);
+    if (this.carData) {
+      const req = await Api.addCar(this);
       if (req.ok && isLast) {
         document.dispatchEvent(new CustomEvent('carsUpdated'));
       }
-    }
-  }
-
-  async updateCar(): Promise<void> {
-    this.name = '';
-    const req = await fetch(
-      `http://127.0.0.1:3000/garage/${state.updateCarData?.id}`,
-      {
-        method: 'PUT',
-        body: JSON.stringify(state.updateCarData),
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      }
-    );
-    if (req.ok) {
-      document.dispatchEvent(new CustomEvent('carsUpdated'));
     }
   }
 
@@ -230,7 +212,7 @@ export default class CarSettings {
     this.container
       .querySelector('.btn-car_update')
       ?.addEventListener('click', () => {
-        this.updateCar();
+        Api.updateCar();
       });
     // listener for Race
     this.container
