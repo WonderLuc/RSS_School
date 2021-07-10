@@ -6,6 +6,31 @@ require('./style.scss');
 
 const sixFForRGB = 16777215;
 const maxIdNumber = 100000000;
+const brand = [
+  'Tesla',
+  'Ford',
+  'Ferrari',
+  'Mitsubishi',
+  'Dads',
+  'Kia',
+  'BMW',
+  'Audi',
+  'Lada',
+  'Toyota',
+];
+
+const model = [
+  'Y',
+  'Mustang',
+  'Spider',
+  'Lancer',
+  'Glory',
+  'Rio',
+  'x5',
+  'A7',
+  'Vedro',
+  'Land-Cruiser',
+];
 
 export default class CarSettings implements ICarSettings {
   container: HTMLElement;
@@ -84,31 +109,6 @@ export default class CarSettings implements ICarSettings {
   }
 
   generateName(): void {
-    const brand = [
-      'Tesla',
-      'Ford',
-      'Ferrari',
-      'Mitsubishi',
-      'Dads',
-      'Kia',
-      'BMW',
-      'Audi',
-      'Lada',
-      'Toyota',
-    ];
-
-    const model = [
-      'Y',
-      'Mustang',
-      'Spider',
-      'Lancer',
-      'Glory',
-      'Rio',
-      'x5',
-      'A7',
-      'Vedro',
-      'Land-Cruiser',
-    ];
     const name = `${brand[Math.floor(Math.random() * 10)]} ${
       model[Math.floor(Math.random() * 10)]
     }`;
