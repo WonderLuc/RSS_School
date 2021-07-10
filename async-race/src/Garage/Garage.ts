@@ -4,6 +4,7 @@ import { state } from '../State/State';
 import Loader from '../Loader/Loader';
 import { CarInterface } from '../types';
 import { Api } from '../Api/Api';
+import { leafThroughtPage } from '../commonFunc';
 
 require('./style.scss');
 
@@ -146,20 +147,15 @@ export default class Garage {
     }
   }
 
-  toNextPage(): void {
-    state.garagePage += 1;
+  leafThroughtPageHandler(e: Event, isForward: boolean): void {
+    e.preventDefault();
+    leafThroughtPage('garagePage', isForward);
     this.currentCars = this.carsArray.slice(
       state.garagePage * 7,
       state.garagePage * 7 + 7
     );
-  }
-
-  toPrevPage(): void {
-    state.garagePage -= 1;
-    this.currentCars = this.carsArray.slice(
-      state.garagePage * 7,
-      state.garagePage * 7 + 7
-    );
+    this.render();
+    this.raceResetHandler();
   }
 
   addListeners(): void {
@@ -167,19 +163,13 @@ export default class Garage {
     this.container
       .querySelector('.pagination__btn_next')
       ?.addEventListener('click', (e) => {
-        e.preventDefault();
-        this.toNextPage();
-        this.render();
-        this.raceResetHandler();
+        this.leafThroughtPageHandler.bind(this)(e, true);
       });
     // listener for paginaton prev
     this.container
       .querySelector('.pagination__btn_prev')
       ?.addEventListener('click', (e) => {
-        e.preventDefault();
-        this.toPrevPage();
-        this.render();
-        this.raceResetHandler();
+        this.leafThroughtPageHandler.bind(this)(e, false);
       });
   }
 }

@@ -1,4 +1,5 @@
 import { Api } from '../Api/Api';
+import { leafThroughtPage } from '../commonFunc';
 import { state } from '../State/State';
 import { IWinnersData } from '../types';
 import Winner from '../Winner/Winner';
@@ -135,62 +136,55 @@ export default class Winners {
     }
   }
 
-  toNextPage(): void {
-    state.winnersPage += 1;
+  leafThroughtPageHandler(e: Event, isForward: boolean): void {
+    e.preventDefault();
+    leafThroughtPage('winnersPage', isForward);
     this.currentWinners = this.winners.slice(
       state.winnersPage * 10,
       state.winnersPage * 10 + 10
     );
+    this.render();
   }
 
-  toPrevPage(): void {
-    state.winnersPage -= 1;
-    this.currentWinners = this.winners.slice(
-      state.winnersPage * 10,
-      state.winnersPage * 10 + 10
-    );
+  async sortByWinsHandler(e: Event): Promise<void> {
+    e.preventDefault();
+    if (state.sortedByWins) {
+      state.isAscending = !state.isAscending;
+    }
+    state.sortedByWins = true;
+    await this.update();
+    await this.render();
+  }
+
+  async sortByTimeHandler(e: Event): Promise<void> {
+    e.preventDefault();
+    if (!state.sortedByWins) {
+      state.isAscending = !state.isAscending;
+    }
+    state.sortedByWins = false;
+    await this.update();
+    await this.render();
   }
 
   addListeners(): void {
-    // listener for paginaton next
     this.container
       .querySelector('.pagination__btn_next')
       ?.addEventListener('click', (e) => {
-        e.preventDefault();
-        this.toNextPage();
-        this.render();
+        this.leafThroughtPageHandler.bind(this)(e, true);
       });
-    // listener for paginaton prev
+
     this.container
       .querySelector('.pagination__btn_prev')
       ?.addEventListener('click', (e) => {
-        e.preventDefault();
-        this.toPrevPage();
-        this.render();
+        this.leafThroughtPageHandler.bind(this)(e, false);
       });
-    // listener for wins
+
     this.container
       .querySelector('.wins')
-      ?.addEventListener('click', async (e) => {
-        e.preventDefault();
-        if (state.sortedByWins) {
-          state.isAscending = !state.isAscending;
-        }
-        state.sortedByWins = true;
-        await this.update();
-        await this.render();
-      });
+      ?.addEventListener('click', this.sortByWinsHandler.bind(this));
     // listener for wins
     this.container
       .querySelector('.time')
-      ?.addEventListener('click', async (e) => {
-        e.preventDefault();
-        if (!state.sortedByWins) {
-          state.isAscending = !state.isAscending;
-        }
-        state.sortedByWins = false;
-        await this.update();
-        await this.render();
-      });
+      ?.addEventListener('click', this.sortByTimeHandler.bind(this));
   }
 }

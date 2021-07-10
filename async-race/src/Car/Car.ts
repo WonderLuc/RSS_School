@@ -132,35 +132,42 @@ export default class Car implements ICar {
     }
   }
 
+  selectCarHandler(e: Event): void {
+    e.preventDefault();
+    state.updateCarData = this.carData;
+    document.dispatchEvent(new CustomEvent('selectedCar'));
+  }
+
+  deleteCarHandler(e: Event): void {
+    e.preventDefault();
+    Api.deleteCar(this.carData.id);
+  }
+
+  async startCarHandler(e: Event): Promise<void> {
+    e.preventDefault();
+    await this.carStart();
+  }
+
+  async resetCarHandler(e: Event): Promise<void> {
+    e.preventDefault();
+    await this.carReset();
+  }
+
   addListeners(): void {
-    // Listener for select car
     this.container
       .querySelector('.car-controls__btn_select')
-      ?.addEventListener('click', (e) => {
-        e.preventDefault();
-        state.updateCarData = this.carData;
-        document.dispatchEvent(new CustomEvent('selectedCar'));
-      });
-    // Listener for delete car
+      ?.addEventListener('click', this.selectCarHandler);
+
     this.container
       .querySelector('.car-controls__btn_remove')
-      ?.addEventListener('click', (e) => {
-        e.preventDefault();
-        Api.deleteCar(this.carData.id);
-      });
-    // listener for start car
+      ?.addEventListener('click', this.deleteCarHandler);
+
     this.container
       .querySelector('.car-view__btn_start')
-      ?.addEventListener('click', async (e) => {
-        e.preventDefault();
-        await this.carStart();
-      });
-    // listener for reset car
+      ?.addEventListener('click', this.startCarHandler);
+
     this.container
       .querySelector('.car-view__btn_reset')
-      ?.addEventListener('click', async (e) => {
-        e.preventDefault();
-        await this.carReset();
-      });
+      ?.addEventListener('click', this.resetCarHandler);
   }
 }
