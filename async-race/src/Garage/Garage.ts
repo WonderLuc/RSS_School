@@ -159,13 +159,12 @@ export default class Garage {
   }
 
   addListeners(): void {
-    // listener for paginaton next
     this.container
       .querySelector('.pagination__btn_next')
       ?.addEventListener('click', (e) => {
         this.leafThroughtPageHandler.bind(this)(e, true);
       });
-    // listener for paginaton prev
+
     this.container
       .querySelector('.pagination__btn_prev')
       ?.addEventListener('click', (e) => {

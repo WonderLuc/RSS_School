@@ -182,7 +182,7 @@ export default class Winners {
     this.container
       .querySelector('.wins')
       ?.addEventListener('click', this.sortByWinsHandler.bind(this));
-    // listener for wins
+
     this.container
       .querySelector('.time')
       ?.addEventListener('click', this.sortByTimeHandler.bind(this));
