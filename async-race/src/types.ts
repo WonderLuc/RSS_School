@@ -14,6 +14,8 @@ export interface CarInterface {
 }
 
 export interface IWinner {
+  setIndex: any;
+  getWinnerData(): void;
   container: HTMLElement;
   id: number;
   wins: number;
@@ -50,6 +52,12 @@ export interface IWinners {
   isUpdateble: boolean;
   winners: IWinner[];
   currentWinners: IWinner[];
+}
+
+export interface IWinnerSortedArray {
+  component: IWinner;
+  wins: number;
+  time: number;
 }
 
 export interface IWinnersData {
