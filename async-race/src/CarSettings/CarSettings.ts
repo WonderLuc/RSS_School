@@ -4,6 +4,9 @@ import { CarInterface, ICarSettings } from '../types';
 
 require('./style.scss');
 
+const sixFForRGB = 16777215;
+const maxIdNumber = 100000000;
+
 export default class CarSettings implements ICarSettings {
   container: HTMLElement;
 
@@ -71,8 +74,8 @@ export default class CarSettings implements ICarSettings {
 
   carFromCode(): CarInterface {
     this.generateName();
-    const color = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
-    const id: number = Math.round(Math.random() * 100000000);
+    const color = `#${Math.floor(Math.random() * sixFForRGB).toString(16)}`;
+    const id: number = Math.round(Math.random() * maxIdNumber);
     return {
       name: this.name,
       color,
