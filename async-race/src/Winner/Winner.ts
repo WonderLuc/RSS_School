@@ -1,4 +1,5 @@
-import { IWinner } from '../State/State';
+import { Api } from '../Api/Api';
+import { IWinner, IWinnersData } from '../types';
 
 require('./style.scss');
 
@@ -17,7 +18,7 @@ export default class Winner implements IWinner {
 
   index: number;
 
-  constructor(winnnerData: IWinner) {
+  constructor(winnnerData: IWinnersData) {
     this.container = document.createElement('tr');
     this.container.classList.add('winners__item');
     this.id = winnnerData.id;
@@ -60,18 +61,8 @@ export default class Winner implements IWinner {
     return this.container;
   }
 
-  async getCar(): Promise<void> {
-    try {
-      const req = await fetch(`http://127.0.0.1:3000/garage/${this.id}`);
-      if (req.ok) {
-        const res = await req.json();
-        this.name = res.name;
-        this.color = res.color;
-        this.render();
-      }
-    } catch (err) {
-      console.log(err);
-    }
+  async getWinnerData(): Promise<void> {
+    await Api.getWinner(this);
   }
 
   setIndex(index: number): void {

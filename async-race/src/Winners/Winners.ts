@@ -1,40 +1,50 @@
-import { state, IWinner } from '../State/State';
+import { Api } from '../Api/Api';
+import { leafThroughtPage } from '../commonFunc';
+import { state } from '../State/State';
+import { IWinner, IWinnersData, IWinnerSortedArray } from '../types';
 import Winner from '../Winner/Winner';
 
 require('./style.scss');
 
-function quickSortWins(arr: Winner[]): Winner[] {
-  if (arr.length < 2) {
-    return arr;
-  }
-  const pivot = arr[Math.floor(arr.length / 2)];
-  const less = arr.filter((winner) => {
-    return winner.wins < pivot.wins;
+function transfromToSortArray(arr: IWinner[]): IWinnerSortedArray[] {
+  return arr.map((winner) => {
+    return {
+      component: winner,
+      wins: winner.wins,
+      time: winner.time,
+    };
   });
-  const greater = arr.filter((winner) => {
-    return winner.wins > pivot.wins;
-  });
-  const equal = arr.filter((winner) => {
-    return winner.wins === pivot.wins;
-  });
-  return [...quickSortWins(less), ...equal, pivot, ...quickSortWins(greater)];
 }
 
-function quickSortTime(arr: Winner[]): Winner[] {
+function transformToWinnerArray(arr: IWinnerSortedArray[]): IWinner[] {
+  return arr.map((winner) => {
+    return winner.component;
+  });
+}
+
+function quickSort(
+  arr: IWinnerSortedArray[],
+  sortProp: 'wins' | 'time'
+): IWinnerSortedArray[] {
   if (arr.length < 2) {
     return arr;
   }
   const pivot = arr[Math.floor(arr.length / 2)];
   const less = arr.filter((winner) => {
-    return winner.time < pivot.time;
+    return winner[sortProp] < pivot[sortProp];
   });
   const greater = arr.filter((winner) => {
-    return winner.time > pivot.time;
+    return winner[sortProp] > pivot[sortProp];
   });
   const equal = arr.filter((winner) => {
-    return winner.time === pivot.time;
+    return winner[sortProp] === pivot[sortProp];
   });
-  return [...quickSortTime(less), ...equal, pivot, ...quickSortTime(greater)];
+  return [
+    ...quickSort(less, sortProp),
+    ...equal,
+    pivot,
+    ...quickSort(greater, sortProp),
+  ];
 }
 
 export default class Winners {
@@ -42,9 +52,9 @@ export default class Winners {
 
   isUpdateble: boolean;
 
-  winners: Winner[];
+  winners: IWinner[];
 
-  currentWinners: Winner[];
+  currentWinners: IWinner[];
 
   constructor() {
     this.container = document.createElement('article');
@@ -88,106 +98,98 @@ export default class Winners {
   }
 
   renderWinners(): void {
-    this.currentWinners.forEach((winnner: Winner, index) => {
+    this.currentWinners.forEach((winnner: IWinner, index) => {
       winnner.setIndex(state.winnersPage * 10 + index);
       this.container.querySelector('.winners')?.append(winnner.render());
     });
   }
 
-  async getWinners(): Promise<void> {
-    const req = await fetch('http://127.0.0.1:3000/winners');
-    if (req.ok) {
-      const res = await req.json();
-      this.winners = res.map((winner: IWinner) => new Winner(winner));
-      this.sort();
-      this.currentWinners = this.winners.slice(
-        state.winnersPage * 10,
-        state.winnersPage * 10 + 10
-      );
-      this.winners.forEach((winner) => winner.getCar());
-    }
-  }
-
   async update(): Promise<void> {
-    await this.getWinners();
+    await this.configureWiiners();
   }
 
-  sortByWins(): Winner[] {
-    return quickSortWins(this.winners);
-  }
-
-  sortByTime(): Winner[] {
-    return quickSortTime(this.winners);
+  sortByTypes(sortType: 'wins' | 'time'): IWinner[] {
+    let arr = transfromToSortArray(this.winners);
+    arr = quickSort(arr, sortType);
+    return transformToWinnerArray(arr);
   }
 
   sort(): void {
     if (state.sortedByWins) {
       this.winners = state.isAscending
-        ? this.sortByWins()
-        : this.sortByWins().reverse();
+        ? this.sortByTypes('wins')
+        : this.sortByTypes('wins').reverse();
     } else {
       this.winners = state.isAscending
-        ? this.sortByTime()
-        : this.sortByTime().reverse();
+        ? this.sortByTypes('time')
+        : this.sortByTypes('time').reverse();
     }
   }
 
-  toNextPage(): void {
-    state.winnersPage += 1;
-    this.currentWinners = this.winners.slice(
-      state.winnersPage * 10,
-      state.winnersPage * 10 + 10
-    );
+  async configureWiiners(): Promise<void> {
+    const winnersData = await Api.getWinners();
+    if (winnersData) {
+      this.winners = winnersData.map(
+        (winner: IWinnersData) => new Winner(winner)
+      );
+      this.sort();
+      this.currentWinners = this.winners.slice(
+        state.winnersPage * 10,
+        state.winnersPage * 10 + 10
+      );
+      this.winners.forEach((winner) => winner.getWinnerData());
+    }
   }
 
-  toPrevPage(): void {
-    state.winnersPage -= 1;
+  leafThroughtPageHandler(e: Event, isForward: boolean): void {
+    e.preventDefault();
+    leafThroughtPage('winnersPage', isForward);
     this.currentWinners = this.winners.slice(
       state.winnersPage * 10,
       state.winnersPage * 10 + 10
     );
+    this.render();
+  }
+
+  async sortByWinsHandler(e: Event): Promise<void> {
+    e.preventDefault();
+    if (state.sortedByWins) {
+      state.isAscending = !state.isAscending;
+    }
+    state.sortedByWins = true;
+    await this.update();
+    await this.render();
+  }
+
+  async sortByTimeHandler(e: Event): Promise<void> {
+    e.preventDefault();
+    if (!state.sortedByWins) {
+      state.isAscending = !state.isAscending;
+    }
+    state.sortedByWins = false;
+    await this.update();
+    await this.render();
   }
 
   addListeners(): void {
-    // listener for paginaton next
     this.container
       .querySelector('.pagination__btn_next')
       ?.addEventListener('click', (e) => {
-        e.preventDefault();
-        this.toNextPage();
-        this.render();
+        this.leafThroughtPageHandler.bind(this)(e, true);
       });
-    // listener for paginaton prev
+
     this.container
       .querySelector('.pagination__btn_prev')
       ?.addEventListener('click', (e) => {
-        e.preventDefault();
-        this.toPrevPage();
-        this.render();
+        this.leafThroughtPageHandler.bind(this)(e, false);
       });
-    // listener for wins
+
     this.container
       .querySelector('.wins')
-      ?.addEventListener('click', async (e) => {
-        e.preventDefault();
-        if (state.sortedByWins) {
-          state.isAscending = !state.isAscending;
-        }
-        state.sortedByWins = true;
-        await this.update();
-        await this.render();
-      });
-    // listener for wins
+      ?.addEventListener('click', this.sortByWinsHandler.bind(this));
+
     this.container
       .querySelector('.time')
-      ?.addEventListener('click', async (e) => {
-        e.preventDefault();
-        if (!state.sortedByWins) {
-          state.isAscending = !state.isAscending;
-        }
-        state.sortedByWins = false;
-        await this.update();
-        await this.render();
-      });
+      ?.addEventListener('click', this.sortByTimeHandler.bind(this));
   }
 }
