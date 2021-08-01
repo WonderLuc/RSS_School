@@ -1,0 +1,11 @@
+.price, .comments, .likes{
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  color: rgb(73, 73, 73);
+
+  &__img{
+    max-width: 25%;
+    margin-right: 5px;
+  }
+}

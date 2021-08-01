@@ -1,0 +1,24 @@
+.book{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 300px;
+  margin: 30px;
+
+  &__details{
+    display: flex;
+  }
+
+  &__button{
+    align-self: center;
+    padding: 10px 30px;
+    border-radius: 20px;
+    transition: all 1s;
+
+    &:hover{
+      cursor: pointer;
+      background-color: #ffb24a;
+      transition: all 1s;
+    }
+  }
+}
