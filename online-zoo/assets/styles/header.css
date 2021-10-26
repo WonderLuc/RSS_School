@@ -1,0 +1,166 @@
+.header{
+  padding: 12px;
+  width: 100%;
+  box-sizing: border-box;
+  background: var( --black);
+}
+
+.header__content{
+  display: flex;
+  align-items: center;
+  max-width: 1160px;
+  margin: 0 auto;
+}
+
+nav{
+  margin-left: 20px;
+  width: 100%;
+}
+
+.navigation{
+  display: flex;
+  list-style: none;
+}
+.navigation__item{
+  margin-left: 15px;
+  margin-right: 43px;
+}
+
+.navigation__link{
+  color: var(--light-gray);
+  text-decoration: none;
+}
+
+.navigation__link:hover{
+  color: var( --orange);
+}
+
+.navigation__link_active{
+  color: var( --orange);
+  cursor: default;
+}
+
+.burger{
+  position: relative;
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 20px;
+  height: 10px;
+  margin-left: 535px;
+}
+
+.burger__line{
+  height: 20%;
+  background: var(--white);
+}
+
+.burger:hover .burger__line{
+  background: var(--orange);
+}
+
+@media screen and (min-width: 1000px) and (max-width: 1080px) {
+
+  .header{
+    position: relative;
+    padding: 15px;
+    z-index: 100;
+  }
+
+  .header__content{
+    max-width: 1000px;
+  }
+
+  .navigation__item{
+    margin-left: 20px;
+    margin-right: 29px;
+  }
+  
+}
+
+@media screen and (min-width: 640px) and (max-width: 999px) {
+
+  .header{
+    position: sticky;
+    top:0;
+    padding: 0;
+    padding-bottom: 5px;
+    z-index: 999;
+  }
+
+  .header__content{
+    max-width: 640px;
+  }
+
+  .header .logo{
+    width: 46px;
+    height: 29px;
+    border: none;
+    padding: 0;
+    left: 20px;
+  }
+
+  .header .logo__text{
+    font-size: 0.8rem;
+  }
+
+  .header .logo__image{
+    width: 7px;
+    left: 4px;
+    bottom: 2px;
+  }
+
+  .header .navigation{
+    display: none;
+  }
+
+  .burger{
+    display: flex;
+  }
+
+}
+
+@media screen  and (min-width: 320px) and (max-width: 639px){
+
+  .header{
+    position: sticky;
+    top:0;
+    padding: 0;
+    padding-bottom: 5px;
+    z-index: 999;
+  }
+
+  .header__content{
+    max-width: 320px;
+  }
+
+  .header .logo{
+    width: 46px;
+    height: 29px;
+    border: none;
+    padding: 0;
+    left: 10px;
+  }
+
+  .header .logo__text{
+    font-size: 0.8rem;
+  }
+
+  .header .logo__image{
+    width: 7px;
+    left: 4px;
+    bottom: 2px;
+  }
+
+  .header .navigation{
+    display: none;
+  }
+
+  .burger{
+    display: flex;
+    margin-left: 226px;
+    width: 18px;
+    height: 12px;
+  }
+
+}

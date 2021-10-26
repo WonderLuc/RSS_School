@@ -1,0 +1,425 @@
+footer{
+  display: flex;
+  width: 100%;
+  height: 443px;
+  margin: 0;
+  padding: 0;
+  background: var(--black);
+}
+
+.footer-content{
+  display: flex;
+  max-width: 1160px;
+  width: 100%;
+  margin: 0 auto;
+}
+.contacts{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+footer .logo{
+  margin-bottom: 14px;
+}
+
+
+.contacts .btn{
+  margin-left: 10px;
+}
+
+.socials{
+  position: relative;
+  bottom: 17px;
+  left: 9px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.socials__item{
+  margin: 10px 0;
+}
+
+.socials__link{
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--light-gray);
+}
+
+.socials__link p{
+  margin: 0;
+  margin-left: 10px;
+  font-style: normal;
+}
+
+.socials__link:hover svg circle,
+.socials__link:hover p{
+  fill: var(--green);
+  color: var(--green);
+}
+
+footer nav{
+  position: relative;
+  left: 10px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  width: 493px;
+  margin: 0;
+  padding-bottom: 41px;
+}
+
+
+
+.subscribe{
+  width: 100%;
+}
+
+.subscribe__title{
+  margin-bottom: 13px;
+  font-size: 1.6rem;
+  font-weight: normal;
+  letter-spacing: -0.5px;
+  color: var(--white);
+}
+
+.subscribe__input{
+  padding-left: 5px;
+  width: 215px;
+  height: 42px;
+  outline: none;
+  border: 1px solid var(--orange);
+  border-radius: 5px;
+  font-size: 1.0rem;
+  background: transparent;
+  color: var(--light-gray);
+}
+
+footer .form-btn{
+  position: relative;
+  left: 9px;
+}
+
+.subscribe__input:focus{
+  background: transparent;
+}
+.subscribe__input:invalid + .form-btn{
+  border-color: var(--red);
+  color: var(--red);
+}
+.subscribe__input:valid + .form-btn{
+  border: 1px solid var(--green);
+  color: var(--green);
+}
+
+.subscribe__input:placeholder-shown + .form-btn{
+  border-color: var(--black-blue);
+  color: var(--black-blue);
+}
+
+.authorship-subscribe{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.authorship{
+  position: relative;
+  bottom: 38px;
+  left: 10px;
+  align-self: flex-end;
+  color: var(--gray-smoky);
+}
+
+@media screen and (min-width: 1000px) and (max-width: 1599px) {
+
+  footer .logo{
+    left: 45px;
+    top: 13px;
+    width: 72px;
+  }
+
+  .contacts .btn{
+    position: relative;
+    left: 45px;
+    top: 10px;
+    margin: 0;
+  }
+
+  .socials{
+    bottom: 10px;
+    left: 46px;
+  }
+  footer .navigation__item{
+    margin-left: 13px;
+    margin-right: 36px;
+  }
+
+  footer .navigation{
+    padding: 0;
+    margin: 0;
+  }
+
+  footer nav{
+    left: -58px;
+    top: -52px;
+    padding: 0;
+  }
+
+  .subscribe{
+    position: relative;
+  }
+
+  .subscribe__title{
+    position: relative;
+    right: 178px;
+    top: 5px;
+    width: 240px;
+  }
+
+  .subscribe__input{
+    position: relative;
+    right: 173px;
+    top: 3px;
+  }
+
+  .subscribe .form-btn{
+    position: absolute;
+    left: 60px;
+    top: 83px;
+  }
+
+  .authorship{
+    bottom: 50px;
+    left: -17px;
+  }
+
+  .authorship p:last-child{
+    margin-bottom: 0;
+  }
+
+  .alter .logo{
+    left: 32px;
+  }
+
+  .alter .btn{
+    left: 30px;
+  }
+
+  .alter .socials{
+    left: 33px;
+  }
+
+  .alter .subscribe__title{
+    right: 190px;
+    top: 5px;
+    width: 240px;
+  }
+
+  .alter .subscribe__input{
+    right: 186px;
+  }
+
+  .alter .form-btn{
+    position: absolute;
+    left: 48px;
+    top: 83px;
+  }
+
+  .alter .authorship{
+    bottom: 47px;
+    left: -30px;
+  }
+}
+
+@media screen and (min-width: 640px) and (max-width: 999px) {
+
+  .contacts .logo{
+    left: -15px;
+    top: 10px;
+  }
+
+  .contacts .btn{
+    margin-left: 20px;
+    position: relative;
+    bottom: 56px;
+    top: 95px;
+    right: 190px;
+  }
+
+  .socials__link p{
+    display: none;
+  }
+
+  footer{
+    height: 283px;
+  }
+
+  .footer-content{
+    flex-direction: column;
+  }
+
+  .contacts{
+    flex-direction: row;
+  }
+
+  .socials{
+    bottom: 7px;
+    left: 15px;
+  }
+
+  .socials__item{
+    margin: 19px 0;
+  }
+
+  footer nav{
+    left: -150px;
+    padding: 0;
+    top: 33px;
+  }
+
+  .navigation__item{
+    margin-right: 23px;
+  }
+
+  .authorship-subscribe{
+    height: 0px;
+  }
+
+  .subscribe{
+    display: none;
+  }
+
+  .authorship{
+    bottom: 50px;
+    left: -20px;
+  }
+
+  .authorship p:last-child{
+    margin-bottom: 0;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 639px){
+
+  .contacts .logo{
+    left: -1px;
+    top: 17px;
+    width: 290px;
+    height: 20px;
+    padding: 2px 3px;
+    border: none;
+  }
+
+  .contacts .logo__image{
+    left: 155px;
+    bottom: 5px;
+  }
+
+  .contacts .btn{
+    position: absolute;
+    top: 305px;
+    right: 50%;
+    width: 300px;
+    transform: translateX(49%); 
+  }
+
+  address{
+    position: absolute;
+    top: 65px;
+    right: 50%;
+    transform: translateX(43%);
+  }
+
+  .socials__link p{
+    display: none;
+  }
+
+  footer{
+    position: relative;
+    height: 540px;
+  }
+
+  .footer-content{
+    flex-direction: column;
+    max-width: 320px;
+    height: 540px;
+  }
+
+  .contacts{
+    flex-direction: row;
+  }
+
+  .socials{
+    display: flex;
+    bottom: 7px;
+    left: 15px;
+  }
+
+  .socials__item{
+    margin: 15px;
+  }
+
+  footer nav{
+    position: absolute;
+    bottom: 16px;
+    left: -180px;
+    top: unset;
+    padding: 0;
+  }
+
+  .navigation__item{
+    margin-right: 15px;
+  }
+
+  .authorship-subscribe{
+    height: 0px;
+  }
+
+  .subscribe{
+    position: relative;
+    top: 65px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .subscribe__title{
+    position: relative;
+    right: 4px;
+    top: 15px;
+    font-size: 1rem;
+    letter-spacing: 0px; 
+  }
+
+  .subscribe__input{
+    margin-top: 10px;
+  }
+
+  .authorship{
+    bottom: -191px;
+    left: -10px;
+    letter-spacing: -0.5px;
+  }
+
+  .authorship p:last-child{
+    margin-bottom: 0;
+  }
+
+  footer .form-btn{
+    position: relative;
+    top: 8px;
+    left: 0px;
+  }
+}
+
+@media screen and (min-width: 1080px) and (max-width: 1200px){
+ 
+  .authorship{
+    left: -2px;
+  }
+  
+}
