@@ -1,0 +1,89 @@
+.word{
+  position: relative;
+  width: 200px;
+  height: 180px;
+  margin: 20px;
+  cursor: pointer;
+  transition: all 1s;
+  transform-style: preserve-3d;
+  transform-origin: center right;
+
+  &__front, &__back{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    backface-visibility: hidden;
+    background: var(--train-grad);
+    border-radius: 10px;
+    transition: all 1s;
+  }
+
+  &__back{
+    transform: rotateY(180deg);
+  }
+
+  &__image{
+    position: relative;
+    width: 200px;
+    height: 100px;
+    object-fit: contain;
+  }
+
+  &__text{
+    padding: 5px 10px;
+    font-size: 1.2rem;
+  }
+  &_play  &__front, &_play &__back{
+    background: var(--play-grad);
+    transition: all 1s;
+  }
+}
+
+.flipped{
+  transform: translateX(-100%) rotateY(-180deg);
+}
+
+.btn__translate{
+  align-self: flex-end;
+  margin: 0 10px;
+  padding: 5px 10px;
+  border: 2px solid black;
+  outline: none;
+  border-radius: 10px;
+  background: transparent;
+  cursor: pointer;
+
+  &:hover{
+    border-color: var(--active-color);
+    color: var(--active-color);
+  }
+}
+
+.card-block{
+  position: absolute;
+  width: 200px;
+  height: 180px;
+  z-index: 98;
+  background: rgba(0,0,0,.7);
+  border-radius: 0 0 10px 10px;
+}
+
+.star{
+ 
+  &-cool{
+    background: url('../../../public/img/star-win.svg'), rgba(0,0,0,0.8);;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+
+  &-empty{
+    background: url('../../../public/img/star.svg'), rgba(0,0,0,0.8);;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+}

@@ -1,0 +1,47 @@
+main{
+  width: 100%;
+  background: var(--orange-grad);
+}
+
+.content{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 1160px;
+  width: 100%;
+  margin: 0 auto;
+  padding-bottom: 50px;
+}
+
+.error{
+  padding: 10px;
+  background: center/cover no-repeat url(../../assets/images/Keep+it+Tropical+Noir.png);
+  -webkit-background-clip: text;
+  background-position: 0 -500%;
+}
+.error__title{
+  margin: 0;
+  margin-top: 30px;
+  font-family: 'Knewave', cursive;
+  font-size: 10rem;
+  letter-spacing: 15px;
+  color: transparent;
+}
+
+.error__text{
+  margin: 0;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bolder;
+}
+
+.solution{
+  display: flex;
+  flex-direction: column;
+}
+
+.solution__animal{
+  width: 200px;
+  align-self: center;
+}
