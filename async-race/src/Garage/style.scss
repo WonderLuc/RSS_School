@@ -1,0 +1,68 @@
+@import '../../assets/colors.scss';
+@font-face {
+  font-family: 'VT323';
+  src: url('../../assets/VT323-Regular.ttf');
+}
+
+.garage{
+  background-color: $second-dark;
+  width: 100%;
+  height: 100%;
+  min-height: 90vh;
+}
+
+h2, h3{
+  color: $main-light;
+  margin-left: 20px;
+  font-family: 'VT323';
+  font-size: 2rem;
+  font-weight: lighter;
+}
+
+h3{
+  font-size: 1.5rem;
+  margin-top: 10px;
+  
+}
+
+.cars{
+  position: relative;
+  margin-left: 20px;
+}
+
+.pagination{
+  margin: 20px 0;
+  margin-left: 20px;
+
+  &__btn{
+    padding: 0 10px;
+    font-family: 'VT323';
+    border: none;
+    outline: none;
+    transition: all 0.5s;
+    
+    &:hover{
+      box-shadow:  0 2px 0 $active;
+      transition: all 0.5s;
+      cursor: pointer;
+    }
+  }
+}
+
+.winner {
+  display: none;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%);
+  font-family: 'VT323';
+  font-size: 3rem;
+  color: rgb(243, 151, 52);
+  z-index: 990;
+  text-align: center;
+
+  &_shown{
+    display: block;
+    text-shadow: 0 0 25px white, 0 0 6px;
+  }
+}

@@ -1,0 +1,30 @@
+.category-card{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 200px;
+  height: 150px;
+  margin: 20px;
+  border-radius: 10px;
+  background: var(--train-grad);
+  cursor: pointer;
+
+  &_play{
+    background: var(--play-grad);
+  }
+}
+
+.category-image-container{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  background: linear-gradient(to top, transparent 40%, white 40%);
+}
+
+.category-image{
+  margin: 10px;
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0 5px 0px 1px white;
+  object-fit: cover;
+}

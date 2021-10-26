@@ -1,0 +1,19 @@
+*{
+  margin: 0;
+  padding: 0;
+  font-family: cursive;
+}
+
+body, #root, .app{
+  min-height: 100vh;
+}
+
+.app{
+  display: flex;
+}
+
+@media screen and (max-width: 760px) {
+ .app{
+   flex-direction: column;
+ }
+}
