@@ -1,5 +1,5 @@
-# wonderluc-JSFE2021Q1
-Private repository for @wonderluc
+# [RSS-School](https://rollingscopes.com) Projects
+These a short descriptions of projects that were finished during I learned in RSS-School
 
 # Wildlife
   ![Screenshot_1](https://user-images.githubusercontent.com/52273527/110997988-ff3a9480-839f-11eb-8b2c-aaf595d9da9f.png)
